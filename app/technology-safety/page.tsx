@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import {
   Activity,
   Check,
@@ -20,6 +19,7 @@ import { CtaSection } from "@/components/ui/cta-section";
 import { FadeIn, ImageReveal, Stagger, TextReveal } from "@/components/motion/reveal";
 import { technologies, type TechnologyIcon } from "@/lib/data/technologies";
 import { createMetadata } from "@/lib/seo";
+import { ShoeSprite } from "@/components/products/shoe-sprite";
 
 export const metadata: Metadata = createMetadata({
   title: "Technology & Safety",
@@ -144,13 +144,7 @@ export default function TechnologyPage() {
         <div className="container-page grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <FadeIn>
             <ImageReveal className="h-[360px] w-full sm:h-[500px]">
-              <Image
-                src="/images/product-oil-resistant.webp"
-                alt="Work boot on a challenging outdoor surface"
-                fill
-                sizes="(max-width: 1024px) 100vw, 48vw"
-                className="object-cover"
-              />
+              <ShoeSprite position={5} className="absolute inset-0" />
             </ImageReveal>
           </FadeIn>
           <div>

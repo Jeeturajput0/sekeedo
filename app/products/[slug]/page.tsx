@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, Check, Ruler } from "lucide-react";
@@ -10,6 +9,7 @@ import { CtaSection } from "@/components/ui/cta-section";
 import { FadeIn, ImageReveal, Stagger } from "@/components/motion/reveal";
 import { getProductBySlug, products } from "@/lib/data/products";
 import { createMetadata } from "@/lib/seo";
+import { ShoeSprite } from "@/components/products/shoe-sprite";
 
 export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
@@ -60,6 +60,7 @@ export default async function ProductDetailPage({
         description={product.summary}
         image={product.image}
         imageAlt={product.imageAlt}
+        imagePosition={product.imagePosition}
         breadcrumb={product.name}
         tone="dark"
       />
@@ -70,17 +71,8 @@ export default async function ProductDetailPage({
 
           <div className="mt-10 grid gap-12 lg:grid-cols-2 lg:gap-20">
             <FadeIn>
-              <ImageReveal
-                className={`h-[380px] w-full sm:h-[520px] ${product.tone === "dark" ? "bg-charcoal" : "bg-paper"}`}
-              >
-                <Image
-                  src={product.image}
-                  alt={product.imageAlt}
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 48vw"
-                  className="object-cover"
-                />
+              <ImageReveal className="h-[380px] w-full bg-white sm:h-[520px]">
+                <ShoeSprite position={product.imagePosition ?? 0} className="absolute inset-0" />
               </ImageReveal>
             </FadeIn>
 

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { FadeIn, ImageReveal } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
+import { ShoeSprite } from "@/components/products/shoe-sprite";
 
 type CtaSectionProps = {
   title: string;
@@ -57,13 +58,7 @@ export function CtaSection({
         </div>
         {image ? (
           <ImageReveal className="relative h-[280px] w-full lg:h-[380px]" delay={0.1}>
-            <Image
-              src={image}
-              alt={imageAlt ?? "Industrial workforce"}
-              fill
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover"
-            />
+            {image === "/images/cta-workforce.webp" ? <ShoeSprite position={3} className="absolute inset-0" /> : <Image src={image} alt={imageAlt ?? "Industrial workforce"} fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" />}
             <div className="absolute inset-0 bg-forest/25" aria-hidden="true" />
           </ImageReveal>
         ) : (

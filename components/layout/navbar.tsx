@@ -45,11 +45,11 @@ export function Navbar() {
         <div
           className={cn(
             "flex items-center justify-between transition-all duration-300",
-            scrolled ? "h-[60px]" : "h-[68px]",
+            scrolled ? "h-[54px]" : "h-[60px]",
           )}
         >
-          <Link href="/" aria-label="Home" className="flex items-center gap-2 bg-charcoal px-1">
-            <Image src="/images/logo/logo.png" alt="SEKEEDO Safety Footwear" width={2048} height={576} priority className="h-9 w-auto object-contain" />
+          <Link href="/" aria-label="Home" className="flex items-center gap-2px-1">
+            <Image src="/images/logo/logo.png" alt="SEKEEDO Safety Footwear" width={2000} height={556} priority className=" h-45 w-43 object-contain invert hue-rotate-180" />
           </Link>
 
           <div className="hidden items-center gap-1 lg:flex">
@@ -140,7 +140,7 @@ export function Navbar() {
               <Search className="h-4 w-4" aria-hidden="true" />
               <span className="sr-only xl:not-sr-only">Search</span>
             </Link>
-            <Link href="/contact?enquiry=quote" className="btn-primary hidden sm:inline-flex">
+            <Link href="/contact?enquiry=quote" className="btn-primary hidden min-h-[38px] px-3 text-xs sm:inline-flex">
               Request a Quote
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </Link>

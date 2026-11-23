@@ -12,7 +12,7 @@ export const metadata: Metadata = createMetadata({
   title: "Safety Footwear Catalogue",
   description: "Browse the SEKEEDO industrial safety footwear range and request a quote for your team or distribution business.",
   path: "/products",
-  image: "/images/product-steel-toe.webp",
+  image: "/images/clawz-shoes-sheet.png",
 });
 
 async function Catalogue({ searchParams }: { searchParams: Promise<{ category?: string }> }) {

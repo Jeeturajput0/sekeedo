@@ -31,6 +31,7 @@ export type Product = {
   category: ProductCategorySlug;
   image: string;
   imageAlt: string;
+  imagePosition?: number;
   tone: "light" | "dark";
   tagline: string;
   summary: string;
@@ -104,8 +105,9 @@ export const products: Product[] = [
     availableSizes: [],
     industries: [],
     category: "steel-toe",
-    image: "/images/product-steel-toe.webp",
-    imageAlt: "Dark industrial safety shoes with reinforced toe area",
+    image: "/images/clawz-shoes-sheet.png",
+    imageAlt: "Black low-cut safety shoe with yellow eyelet details",
+    imagePosition: 0,
     tone: "dark",
     tagline: "Everyday industrial protection",
     summary:
@@ -123,8 +125,9 @@ export const products: Product[] = [
     availableSizes: [],
     industries: [],
     category: "composite-toe",
-    image: "/images/product-composite.webp",
-    imageAlt: "Tan work boots photographed in natural light",
+    image: "/images/clawz-shoes-sheet.png",
+    imageAlt: "Black low-cut safety shoe with a yellow heel accent",
+    imagePosition: 1,
     tone: "light",
     tagline: "Non-metallic toe protection option",
     summary:
@@ -142,8 +145,9 @@ export const products: Product[] = [
     availableSizes: [],
     industries: [],
     category: "lightweight",
-    image: "/images/product-lightweight.webp",
-    imageAlt: "Lightweight low-profile work shoe with mesh upper",
+    image: "/images/clawz-shoes-sheet.png",
+    imageAlt: "Black low-cut safety shoe with reinforced lace loops",
+    imagePosition: 2,
     tone: "light",
     tagline: "Comfort across long shifts",
     summary:
@@ -161,8 +165,9 @@ export const products: Product[] = [
     availableSizes: [],
     industries: [],
     category: "safety-boots",
-    image: "/images/product-boot.webp",
-    imageAlt: "Brown leather industrial work boots on a neutral surface",
+    image: "/images/clawz-shoes-sheet.png",
+    imageAlt: "Black high-top safety shoe with silver lace loops",
+    imagePosition: 3,
     tone: "light",
     tagline: "Built for demanding shifts",
     summary:
@@ -180,8 +185,9 @@ export const products: Product[] = [
     availableSizes: [],
     industries: [],
     category: "high-ankle",
-    image: "/images/product-high-ankle.webp",
-    imageAlt: "High-ankle work boots displayed on a wooden block",
+    image: "/images/clawz-shoes-sheet.png",
+    imageAlt: "Black mesh-panel safety shoe",
+    imagePosition: 4,
     tone: "light",
     tagline: "Added ankle support",
     summary:
@@ -198,8 +204,9 @@ export const products: Product[] = [
     availableSizes: [],
     industries: [],
     category: "waterproof",
-    image: "/images/product-waterproof.webp",
-    imageAlt: "Waterproof protective boots for wet working conditions",
+    image: "/images/clawz-shoes-sheet.png",
+    imageAlt: "Black low-cut safety shoe with a small red side accent",
+    imagePosition: 5,
     tone: "light",
     tagline: "Ready for wet conditions",
     summary:
@@ -217,8 +224,9 @@ export const products: Product[] = [
     availableSizes: [],
     industries: [],
     category: "slip-resistant",
-    image: "/images/product-slip-resistant.webp",
-    imageAlt: "Work boot stepping onto a metal industrial surface",
+    image: "/images/clawz-shoes-sheet.png",
+    imageAlt: "Black high-top safety boot with a tan collar accent",
+    imagePosition: 6,
     tone: "light",
     tagline: "Outsole-focused grip",
     summary:
@@ -235,8 +243,9 @@ export const products: Product[] = [
     availableSizes: [],
     industries: [],
     category: "industrial-sneakers",
-    image: "/images/product-industrial-sneaker.webp",
-    imageAlt: "Low-profile industrial sneaker worn on site",
+    image: "/images/clawz-shoes-sheet.png",
+    imageAlt: "Black safety shoe with a textured toe and red accent",
+    imagePosition: 7,
     tone: "light",
     tagline: "Athletic feel, industrial purpose",
     summary:
@@ -253,8 +262,9 @@ export const products: Product[] = [
     availableSizes: [],
     industries: [],
     category: "industrial-sneakers",
-    image: "/images/product-safety-boot-2.webp",
-    imageAlt: "Tan leather work shoe with rugged outsole",
+    image: "/images/clawz-shoes-sheet.png",
+    imageAlt: "Black low-cut safety shoe with yellow eyelet details",
+    imagePosition: 0,
     tone: "light",
     tagline: "Movement without compromise",
     summary:
@@ -271,8 +281,9 @@ export const products: Product[] = [
     availableSizes: [],
     industries: [],
     category: "specialized",
-    image: "/images/product-specialized.webp",
-    imageAlt: "Rugged work boot photographed against a dark industrial background",
+    image: "/images/clawz-shoes-sheet.png",
+    imageAlt: "Black low-cut safety shoe with a yellow heel accent",
+    imagePosition: 1,
     tone: "dark",
     tagline: "For specific site requirements",
     summary:
@@ -289,8 +300,9 @@ export const products: Product[] = [
     availableSizes: [],
     industries: [],
     category: "specialized",
-    image: "/images/product-puncture.webp",
-    imageAlt: "Black work boot on rough ground near debris",
+    image: "/images/clawz-shoes-sheet.png",
+    imageAlt: "Black low-cut safety shoe with reinforced lace loops",
+    imagePosition: 2,
     tone: "dark",
     tagline: "Underfoot protection focus",
     summary:
@@ -307,8 +319,9 @@ export const products: Product[] = [
     availableSizes: [],
     industries: [],
     category: "slip-resistant",
-    image: "/images/product-oil-resistant.webp",
-    imageAlt: "Work boot on a muddy industrial site",
+    image: "/images/clawz-shoes-sheet.png",
+    imageAlt: "Black high-top safety shoe with silver lace loops",
+    imagePosition: 3,
     tone: "dark",
     tagline: "For oily and dirty surfaces",
     summary:

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { RevealText } from "@/components/animation/reveal-text";
 import { Reveal } from "@/components/animation/reveal";
+import { ShoeSprite } from "@/components/products/shoe-sprite";
 
 type PageHeroProps = {
   eyebrow: string;
@@ -10,6 +11,7 @@ type PageHeroProps = {
   description: string;
   image?: string;
   imageAlt?: string;
+  imagePosition?: number;
   tone?: "light" | "dark";
   breadcrumb?: string;
   children?: React.ReactNode;
@@ -21,6 +23,7 @@ export function PageHero({
   description,
   image,
   imageAlt,
+  imagePosition,
   tone = "light",
   breadcrumb,
   children,
@@ -68,14 +71,7 @@ export function PageHero({
 
         {image ? (
           <Reveal variant="image" className="relative h-[280px] lg:h-[440px]" delay={0.1}>
-            <Image
-              src={image}
-              alt={imageAlt ?? ""}
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 45vw"
-              className={cn("object-cover", dark ? "image-graded-dark" : "image-graded")}
-            />
+            {imagePosition !== undefined ? <ShoeSprite position={imagePosition} className="absolute inset-0" /> : <Image src={image} alt={imageAlt ?? ""} fill priority sizes="(max-width: 1024px) 100vw, 45vw" className={cn("object-cover", dark ? "image-graded-dark" : "image-graded")} />}
             <div
               className={cn(
                 "absolute inset-0",

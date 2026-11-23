@@ -13,7 +13,7 @@ export const metadata: Metadata = createMetadata({
   description:
     "Answers about SEKEEDO products, safety certifications, wholesale orders, distributors, delivery and general enquiries.",
   path: "/faq",
-  image: "/images/product-steel-toe.webp",
+  image: "/images/clawz-shoes-sheet.png",
 });
 
 export default function FaqPage() {
@@ -23,8 +23,9 @@ export default function FaqPage() {
         eyebrow="FAQ"
         title="Questions answered, clearly."
         description="Browse answers by topic. Certification information is published only after verification, and product suitability always depends on assessed workplace hazards and verified specifications."
-        image="/images/product-steel-toe.webp"
+        image="/images/clawz-shoes-sheet.png"
         imageAlt="Industrial safety shoe"
+        imagePosition={0}
         breadcrumb="FAQ"
       />
 

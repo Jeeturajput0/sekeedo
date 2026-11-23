@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowDownWideNarrow, ArrowUpRight, ChevronDown, ChevronLeft, ChevronRight, SlidersHorizontal, X } from "lucide-react";
@@ -9,6 +8,7 @@ import { ProductCard } from "@/components/products/product-card";
 import { Stagger } from "@/components/motion/reveal";
 import { productCategories, products, type Product } from "@/lib/data/products";
 import { cn } from "@/lib/utils";
+import { ShoeSprite } from "@/components/products/shoe-sprite";
 
 type SortOption = "featured" | "newest" | "price-asc" | "price-desc";
 const categoryTiles = [
@@ -29,12 +29,10 @@ const facets = {
   Certification: ["BIS certification", "Other certification"],
 };
 
-const categoryImages: Record<string, string> = {
-  "steel-toe": "/images/product-steel-toe.webp", "composite-toe": "/images/product-composite.webp",
-  lightweight: "/images/product-lightweight.webp", "safety-boots": "/images/product-boot.webp",
-  "high-ankle": "/images/product-high-ankle.webp", waterproof: "/images/product-waterproof.webp",
-  "slip-resistant": "/images/product-slip-resistant.webp", "industrial-sneakers": "/images/product-industrial-sneaker.webp",
-  "electrical-safety": "/images/product-specialized.webp",
+const categoryImages: Record<string, number> = {
+  "steel-toe": 0, "composite-toe": 1, lightweight: 2, "safety-boots": 3,
+  "high-ankle": 6, waterproof: 5, "slip-resistant": 4, "industrial-sneakers": 7,
+  "electrical-safety": 3,
 };
 
 function FilterGroup({ title, options, selected, onToggle }: { title: string; options: string[]; selected: string[]; onToggle: (value: string) => void }) {
@@ -133,7 +131,7 @@ export function ProductCatalog({ initialCategory = "all" }: { initialCategory?: 
       <Stagger className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8">
         {categoryTiles.map((item) => <button key={item.slug} type="button" onClick={() => { setCategory(category === item.slug ? "all" : item.slug); setPage(1); }} aria-pressed={category === item.slug} className={cn("group text-left", category === item.slug && "text-brand")}>
           <span data-stagger className="block">
-          <span className="relative block aspect-[1.12] overflow-hidden bg-paper"><Image src={categoryImages[item.slug]} alt="" fill sizes="(max-width:640px) 45vw, 15vw" className="object-cover transition-transform duration-500 group-hover:scale-105" /><span className="absolute inset-0 border border-transparent transition-colors group-hover:border-brand/60" /></span>
+          <span className="relative block aspect-[1.12] overflow-hidden bg-paper"><ShoeSprite position={categoryImages[item.slug]} className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.03]" /><span className="absolute inset-0 border border-transparent transition-colors group-hover:border-brand/60" /></span>
           <span className="mt-2 block text-xs font-medium leading-5 text-charcoal group-hover:text-brand">{item.label}</span>
           </span>
         </button>)}

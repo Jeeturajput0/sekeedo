@@ -1,87 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { SectionHeading } from "@/components/ui/section-heading";
-import { FadeIn, ImageReveal, Stagger } from "@/components/motion/reveal";
-import { featuredIndustries, industries } from "@/lib/data/industries";
-import { cn } from "@/lib/utils";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { featuredIndustries } from "@/lib/data/industries";
 
 export function IndustriesPreview() {
-  const remaining = industries.filter((industry) => !industry.featured).slice(0, 9);
-
   return (
-    <section className="bg-white py-20 lg:py-28">
-      <div className="container-page">
-        <SectionHeading
-          eyebrow="Industries we serve"
-          title="One catalogue. Many working environments."
-          lead="From construction sites to controlled facilities, we support procurement teams across a wide range of industrial sectors."
-          action={
-            <Link href="/industries" className="btn-outline">
-              Explore industries
-              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          }
-        />
-
-        <div className="mt-12 grid gap-5 lg:grid-cols-12">
-          {featuredIndustries.map((industry, index) => (
-            <Link
-              key={industry.slug}
-              href={`/industries/${industry.slug}`}
-              className={cn(
-                "group relative block overflow-hidden",
-                index === 0 ? "lg:col-span-6 lg:row-span-2" : "lg:col-span-6",
-              )}
-            >
-              <ImageReveal
-                className={cn("relative", index === 0 ? "h-[320px] lg:h-[560px]" : "h-[268px]")}
-              >
-                <Image
-                  src={industry.image}
-                  alt={industry.imageAlt}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-charcoal/20 to-transparent" aria-hidden="true" />
-              </ImageReveal>
-              <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand">
-                  {String(index + 1).padStart(2, "0")} / Industry
-                </p>
-                <h3 className="mt-2 text-xl font-semibold tracking-tight text-white sm:text-2xl">
-                  {industry.name}
-                </h3>
-                <p className="mt-2 max-w-md text-sm leading-6 text-white/65">{industry.description}</p>
-                <span className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-white transition-colors group-hover:text-brand">
-                  Explore sector
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
-                </span>
-              </div>
+    <section className="px-4 py-5 sm:px-6 lg:py-6">
+      <div className="mx-auto grid max-w-[1320px] gap-4 rounded-xl bg-[#f5f5f5] p-4 sm:p-5 lg:grid-cols-[250px_1fr] lg:items-center lg:gap-3">
+        <div className="px-1 lg:px-3">
+          <p className="text-[10px] font-bold uppercase tracking-wide text-brand">Industries we serve</p>
+          <h2 className="mt-1.5 text-xl font-bold leading-tight tracking-tight text-charcoal">Safety Footwear for <span className="text-brand">Every Industry</span></h2>
+          <p className="mt-2 text-xs leading-[1.45] text-charcoal/80">Trusted by a wide range of sectors for workplace safety and performance.</p>
+          <Link href="/industries" className="btn-primary mt-3 min-h-[36px] px-4 text-xs">Explore Industries <ArrowRight className="h-3.5 w-3.5" /></Link>
+        </div>
+        <div className="relative grid grid-cols-2 gap-2 sm:grid-cols-4">
+          {featuredIndustries.slice(0, 4).map((industry) => (
+            <Link key={industry.slug} href={`/industries/${industry.slug}`} className="group relative h-[150px] overflow-hidden rounded-md bg-charcoal sm:h-[168px]">
+              <Image src={industry.image} alt={industry.imageAlt} fill sizes="(max-width: 640px) 46vw, 20vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+              <span className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/15 to-transparent" />
+              <span className="absolute inset-x-2 bottom-2 text-[11px] font-semibold leading-tight text-white">{industry.name}</span>
             </Link>
           ))}
+          <Link href="/industries" aria-label="Previous industries" className="absolute -left-3 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full bg-white text-charcoal shadow"><ChevronLeft className="h-4 w-4" /></Link>
+          <Link href="/industries" aria-label="More industries" className="absolute -right-3 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full bg-white text-charcoal shadow"><ChevronRight className="h-4 w-4" /></Link>
         </div>
-
-        <FadeIn>
-          <div className="mt-10 border-t border-line pt-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
-              Also supporting
-            </p>
-            <Stagger className="mt-5 flex flex-wrap gap-2">
-              {remaining.map((industry) => (
-                <Link
-                  key={industry.slug}
-                  href={`/industries/${industry.slug}`}
-                  data-stagger
-                  className="border border-line px-3.5 py-2 text-xs text-charcoal/70 transition-colors hover:border-brand hover:text-brand"
-                >
-                  {industry.shortName}
-                </Link>
-              ))}
-            </Stagger>
-          </div>
-        </FadeIn>
       </div>
     </section>
   );
