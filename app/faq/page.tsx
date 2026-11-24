@@ -32,15 +32,16 @@ export default function FaqPage() {
             </SlideIn>
           ))}
           <SlideIn direction="right" distance={48}>
-          <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
-            <div>
-              <h2 className="text-sm font-bold text-charcoal">Still have a question?</h2>
-              <p className="mt-0.5 text-xs text-muted">Our team can help with product selection, documentation and bulk enquiries.</p>
+            <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
+              <div>
+                <h2 className="text-sm font-bold text-charcoal">Still have a question?</h2>
+                <p className="mt-0.5 text-xs text-muted">Our team can help with product selection, documentation and bulk enquiries.</p>
+              </div>
+              <Link href="/contact" className="btn-primary min-h-9 px-4 text-xs">
+                Contact Our Team <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
             </div>
-            <Link href="/contact" className="btn-primary min-h-9 px-4 text-xs">
-              Contact Our Team <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </div>
+          </SlideIn>
         </div>
       </section>
     </>

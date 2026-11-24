@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { Stagger } from "@/components/motion/reveal";
 import { ShoeSprite } from "@/components/products/shoe-sprite";
 
 const categories = [
@@ -23,17 +22,27 @@ export function   CategoryPreview() {
           </div>
           <Link href="/products" className="hidden items-center gap-2 text-xs font-semibold text-brand transition-colors hover:text-charcoal sm:inline-flex">View All Categories <ArrowUpRight className="h-4 w-4" /></Link>
         </div>
-        <Stagger className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-7">
-          {categories.map((category) => (
-            <Link key={`${category.slug}-${category.label}`} href={`/products?category=${category.slug}`} data-stagger className="group">
-              <span className="relative block aspect-[1.12] overflow-hidden rounded-lg bg-[#f5f5f5]">
-                <ShoeSprite position={category.position} className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.03]" />
-                <span className="absolute inset-0 border border-transparent transition-colors group-hover:border-brand/60" />
-              </span>
-              <span className="mt-1.5 block text-center text-[11px] font-semibold leading-tight text-charcoal transition-colors group-hover:text-brand">{category.label}</span>
-            </Link>
-          ))}
-        </Stagger>
+        <div className="relative overflow-hidden" role="group" aria-label="Shop by category">
+          <div className="category-marquee flex w-max motion-reduce:animate-none">
+            {[0, 1].map((copy) =>
+              categories.map((category) => (
+                <Link
+                  key={`${copy}-${category.slug}`}
+                  href={`/products?category=${category.slug}`}
+                  tabIndex={copy === 1 ? -1 : undefined}
+                  aria-hidden={copy === 1 || undefined}
+                  className="group w-28 shrink-0 pr-2 sm:w-40 lg:w-44"
+                >
+                  <span className="relative block aspect-[1.12] overflow-hidden rounded-lg bg-[#f5f5f5]">
+                    <ShoeSprite position={category.position} className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.03]" />
+                    <span className="absolute inset-0 border border-transparent transition-colors group-hover:border-brand/60" />
+                  </span>
+                  <span className="mt-1.5 block text-center text-[11px] font-semibold leading-tight text-charcoal transition-colors group-hover:text-brand">{category.label}</span>
+                </Link>
+              )),
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );

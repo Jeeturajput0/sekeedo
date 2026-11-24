@@ -30,7 +30,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  overflow-x: hidden;
+  overflow-x: clip;
   font-feature-settings: "cv11", "ss01";
   -webkit-font-smoothing: antialiased;
 }
@@ -334,6 +334,25 @@ body {
 
 .hero-slide-progress {
   animation: hero-slide-progress 3s linear forwards;
+}
+
+/* Category marquee ------------------------------------------------------- */
+@keyframes category-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.category-marquee {
+  animation: category-marquee 42s linear infinite;
+}
+
+.category-marquee:hover,
+.category-marquee:focus-within {
+  animation-play-state: paused;
 }
 
 /* Component primitives --------------------------------------------------- */

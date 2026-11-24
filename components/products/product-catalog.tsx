@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { ProductCard } from "@/components/products/product-card";
-import { Stagger } from "@/components/motion/reveal";
 import { productCategories, products, type Product } from "@/lib/data/products";
 import { cn } from "@/lib/utils";
 import { ShoeSprite } from "@/components/products/shoe-sprite";
@@ -263,7 +262,7 @@ export function ProductCatalog({
     return result;
   }, [category, maxPrice, minPrice, query, selected, sort]);
 
-  const pageSize = 8;
+  const pageSize = 6;
   const pageCount = Math.max(1, Math.ceil(visible.length / pageSize));
   const pageItems = visible.slice((page - 1) * pageSize, page * pageSize);
   const chips = [
@@ -315,36 +314,43 @@ export function ProductCatalog({
             {categoryTiles.length} categories
           </span>
         </div>
-        <Stagger className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8">
-          {categoryTiles.map((item) => (
-            <button
-              key={item.slug}
-              type="button"
-              onClick={() => {
-                setCategory(category === item.slug ? "all" : item.slug);
-                setPage(1);
-              }}
-              aria-pressed={category === item.slug}
-              className={cn(
-                "group text-left",
-                category === item.slug && "text-brand",
-              )}
-            >
-              <span data-stagger className="block">
-                <span className="relative block aspect-[1.12] overflow-hidden bg-paper">
-                  <ShoeSprite
-                    position={categoryImages[item.slug]}
-                    className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
-                  <span className="absolute inset-0 border border-transparent transition-colors group-hover:border-brand/60" />
-                </span>
-                <span className="mt-2 block text-xs font-medium leading-5 text-charcoal group-hover:text-brand">
-                  {item.label}
-                </span>
-              </span>
-            </button>
-          ))}
-        </Stagger>
+        <div className="relative overflow-hidden" role="group" aria-label="Shop by category">
+          <div className="category-marquee flex w-max motion-reduce:animate-none">
+            {[0, 1].map((copy) =>
+              categoryTiles.map((item) => {
+                const active = category === item.slug;
+                return (
+                  <button
+                    key={`${copy}-${item.slug}`}
+                    type="button"
+                    tabIndex={copy === 1 ? -1 : undefined}
+                    aria-hidden={copy === 1 || undefined}
+                    onClick={() => {
+                      setCategory(active ? "all" : item.slug);
+                      setPage(1);
+                    }}
+                    aria-pressed={active}
+                    className={cn(
+                      "group w-32 shrink-0 pr-3 text-left sm:w-40 lg:w-44",
+                      active && "text-brand",
+                    )}
+                  >
+                    <span className="relative block aspect-[1.12] overflow-hidden bg-paper">
+                      <ShoeSprite
+                        position={categoryImages[item.slug]}
+                        className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.03]"
+                      />
+                      <span className="absolute inset-0 border border-transparent transition-colors group-hover:border-brand/60" />
+                    </span>
+                    <span className="mt-2 block text-xs font-medium leading-5 text-charcoal group-hover:text-brand">
+                      {item.label}
+                    </span>
+                  </button>
+                );
+              }),
+            )}
+          </div>
+        </div>
       </section>
 
       <div className="mb-5 flex flex-col gap-4 border-y border-line py-4 sm:flex-row sm:items-center sm:justify-between">
@@ -429,7 +435,7 @@ export function ProductCatalog({
             </span>
           </div>
           {pageItems.length ? (
-            <div className="grid grid-cols-1 gap-x-5 gap-y-8 min-[420px]:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-x-5 gap-y-8 min-[420px]:grid-cols-2 md:grid-cols-2 xl:grid-cols-3">
               {pageItems.map((product, index) => (
                 <ProductCard
                   key={product.slug}
