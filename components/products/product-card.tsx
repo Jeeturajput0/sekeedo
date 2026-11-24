@@ -4,7 +4,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Check, Plus, ShieldCheck } from "lucide-react";
+import {
+  ArrowUpRight,
+  Droplet,
+  Feather,
+  Footprints,
+  Heart,
+  Package,
+  Shield,
+  ShieldCheck,
+  Star,
+  Waves,
+  Wind,
+} from "lucide-react";
 import { DEFAULT_PRODUCT_SIZES, type Product } from "@/lib/data/products";
 import { cn } from "@/lib/utils";
 import { ShoeSprite } from "@/components/products/shoe-sprite";
@@ -18,6 +30,17 @@ type ProductCardProps = {
   onToggleEnquiry?: () => void;
 };
 
+function FeatureIcon({ feature }: { feature: string }) {
+  const value = feature.toLowerCase();
+  if (value.includes("slip") || value.includes("grip")) return <Footprints className="h-3.5 w-3.5" aria-hidden="true" />;
+  if (value.includes("oil")) return <Droplet className="h-3.5 w-3.5" aria-hidden="true" />;
+  if (value.includes("water")) return <Waves className="h-3.5 w-3.5" aria-hidden="true" />;
+  if (value.includes("lightweight")) return <Feather className="h-3.5 w-3.5" aria-hidden="true" />;
+  if (value.includes("breathable") || value.includes("comfort")) return <Wind className="h-3.5 w-3.5" aria-hidden="true" />;
+  if (value.includes("puncture")) return <Shield className="h-3.5 w-3.5" aria-hidden="true" />;
+  return <ShieldCheck className="h-3.5 w-3.5" aria-hidden="true" />;
+}
+
 export function ProductCard({
   product,
   compact = false,
@@ -26,6 +49,7 @@ export function ProductCard({
   onToggleEnquiry,
 }: ProductCardProps) {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [localWishlisted, setLocalWishlisted] = useState(false);
 
   const sizes = product.sizes?.length ? product.sizes : DEFAULT_PRODUCT_SIZES;
   const hasPublishedAvailability = Array.isArray(product.availableSizes);
@@ -46,11 +70,21 @@ export function ProductCard({
         : product.category === "lightweight"
           ? "Lightweight"
           : undefined);
-  const emphasizedBadge = badge === "Bestseller" || badge === "New Arrival";
+  const isBestseller = badge === "Bestseller";
+  const isNew = badge === "New Arrival" || product.newArrival;
+
+  const wishlisted = onToggleEnquiry ? added : localWishlisted;
+  const toggleWishlist = () => {
+    if (onToggleEnquiry) onToggleEnquiry();
+    else setLocalWishlisted((current) => !current);
+  };
 
   const quoteParams = new URLSearchParams({
     enquiry: "quote",
     product: product.name,
+    products: product.name,
+    sku: product.sku ?? "",
+    productId: product.id ?? product.slug,
   });
   if (selectedSize) quoteParams.set("size", selectedSize);
   const quoteHref = `/contact?${quoteParams.toString()}`;
@@ -68,17 +102,17 @@ export function ProductCard({
       }}
       whileHover={{ y: -4 }}
       className={cn(
-        "product-card group relative flex h-full flex-col border border-line bg-white",
-        "transition-[border-color,box-shadow] duration-300",
-        "hover:border-[#C9C9C9] hover:shadow-[0_16px_32px_rgba(23,23,23,0.07)]",
+        "group relative flex h-full flex-col rounded-xl border border-line bg-white",
+        compact ? "p-3" : "p-3.5 sm:p-4",
+        "shadow-[0_2px_14px_rgba(17,17,17,0.035)] transition-[border-color,box-shadow] duration-300",
+        "hover:border-[#D6D6D6] hover:shadow-[0_18px_40px_rgba(17,17,17,0.10)]",
       )}
     >
-      {/* Product image --------------------------------------------------- */}
+      {/* Image ------------------------------------------------------------ */}
       <div
         className={cn(
-          "relative w-full overflow-hidden border-b border-line",
-          compact ? "aspect-[5/4]" : "aspect-[4/3]",
-          product.imagePosition !== undefined ? "bg-white" : "bg-paper",
+          "relative w-full overflow-hidden rounded-lg bg-[#F7F7F7]",
+          compact ? "aspect-[5/4]" : "aspect-square",
         )}
       >
         <Link
@@ -86,9 +120,9 @@ export function ProductCard({
           className="absolute inset-0 z-0 block"
           aria-label={`View ${product.name}`}
         >
-          <div className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-[1.055] motion-reduce:group-hover:scale-100">
+          <div className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-[1.06] motion-reduce:group-hover:scale-100">
             {product.imagePosition !== undefined ? (
-              <ShoeSprite position={product.imagePosition} className="relative h-full w-full p-2" />
+              <ShoeSprite position={product.imagePosition} className="h-full w-full p-3 sm:p-5" />
             ) : (
               <Image
                 src={product.image}
@@ -101,60 +135,67 @@ export function ProductCard({
           </div>
         </Link>
 
-        {badge ? (
-          <span
-            className={cn(
-              "pointer-events-none absolute left-3 top-3 z-10 inline-flex items-center px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.14em]",
-              emphasizedBadge
-                ? "bg-brand text-white"
-                : "border border-line bg-white/95 text-charcoal",
-              compact && "left-2 top-2 px-1.5 py-0.5 text-[8px]",
-            )}
-          >
-            {badge}
-          </span>
-        ) : null}
+        <div className="pointer-events-none absolute left-3 top-3 z-10 flex flex-wrap items-center gap-1.5">
+          {isBestseller ? (
+            <span className="inline-flex items-center gap-1 rounded-full bg-brand px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.1em] text-white">
+              <Star className="h-3 w-3 fill-white" aria-hidden="true" />
+              Bestseller
+            </span>
+          ) : null}
+          {isNew ? (
+            <span className="inline-flex items-center rounded-full bg-[#FFE8DE] px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.1em] text-charcoal">
+              New
+            </span>
+          ) : null}
+          {badge && !isBestseller && !isNew ? (
+            <span className="inline-flex items-center rounded-full border border-line bg-white px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.1em] text-charcoal">
+              {badge}
+            </span>
+          ) : null}
+        </div>
 
-        {onToggleEnquiry ? (
-          <button
-            type="button"
-            onClick={onToggleEnquiry}
-            aria-pressed={added}
-            aria-label={
-              added
-                ? `Remove ${product.name} from enquiry`
-                : `Add ${product.name} to enquiry`
-            }
-            className={cn(
-              "absolute right-3 top-3 z-10 grid h-8 w-8 place-items-center border bg-white/95 transition-colors",
-              added
-                ? "border-brand text-brand"
-                : "border-line text-charcoal hover:border-charcoal",
-              compact && "right-2 top-2 h-7 w-7",
-            )}
-          >
-            {added ? (
-              <Check className="h-3.5 w-3.5" aria-hidden="true" />
-            ) : (
-              <Plus className="h-3.5 w-3.5" aria-hidden="true" />
-            )}
-          </button>
-        ) : null}
+        <motion.button
+          type="button"
+          whileTap={{ scale: 0.92 }}
+          onClick={toggleWishlist}
+          aria-pressed={wishlisted}
+          aria-label={
+            wishlisted
+              ? `Remove ${product.name} from wishlist`
+              : `Add ${product.name} to wishlist`
+          }
+          className={cn(
+            "absolute right-3 top-3 z-10 grid h-9 w-9 place-items-center rounded-lg border bg-white transition-colors duration-200",
+            wishlisted
+              ? "border-brand text-brand"
+              : "border-line text-charcoal hover:border-brand hover:text-brand",
+          )}
+        >
+          <Heart
+            className={cn("h-4 w-4", wishlisted && "fill-brand text-brand")}
+            aria-hidden="true"
+          />
+        </motion.button>
       </div>
 
-      {/* Product information -------------------------------------------- */}
-      <div className={cn("flex flex-1 flex-col", compact ? "p-4" : "p-5")}>
-        <div className="flex items-center justify-between gap-3">
-          <span className="truncate text-[10px] font-semibold uppercase tracking-[0.16em] text-[#737373]">
-            SKU {product.sku ?? "On request"}
+      {/* Information ------------------------------------------------------ */}
+      <div className={cn("flex flex-1 flex-col px-1 pb-1 pt-3.5", compact ? "px-0.5" : "px-1")}>
+        <div className="flex items-center justify-between gap-2">
+          <span className="truncate text-[12px] text-[#737373]">
+            SKU:{" "}
+            <span className="font-semibold text-brand">
+              {product.sku ?? "On request"}
+            </span>
           </span>
-          <span className="shrink-0 text-[10px] text-[#737373]">UK sizing</span>
+          <span className="shrink-0 rounded-md bg-[#F5F5F5] px-2 py-1 text-[10px] font-medium text-[#737373]">
+            UK Sizing
+          </span>
         </div>
 
         <h3
           className={cn(
-            "mt-2 line-clamp-2 font-semibold tracking-[-0.025em] text-charcoal",
-            compact ? "text-[15px] leading-5" : "text-[17px] leading-6",
+            "mt-2 line-clamp-2 font-bold tracking-[-0.03em] text-charcoal",
+            compact ? "text-base leading-6" : "text-[18px] leading-6",
           )}
         >
           <Link href={detailHref} className="transition-colors hover:text-brand">
@@ -162,93 +203,89 @@ export function ProductCard({
           </Link>
         </h3>
 
-        <p
-          className={cn(
-            "mt-1.5 line-clamp-2 text-[#737373]",
-            compact ? "text-xs leading-5" : "text-[13px] leading-[1.6]",
-          )}
-        >
+        <p className="mt-1 line-clamp-2 text-[12.5px] leading-[1.55] text-[#737373]">
           {description}
         </p>
 
         {safetyFeatures.length > 0 ? (
-          <ul className={cn("flex flex-wrap gap-1.5", compact ? "mt-3" : "mt-4")}>
+          <ul className="mt-3 flex flex-wrap gap-1.5">
             {safetyFeatures.slice(0, compact ? 3 : 4).map((feature) => (
               <li
                 key={feature}
-                className="border border-line bg-paper px-2 py-1 text-[10px] font-medium uppercase tracking-[0.06em] text-charcoal/80"
+                className="inline-flex items-center gap-1.5 rounded-md bg-[#F5F5F5] px-2 py-1.5 text-[11px] font-medium text-charcoal"
               >
+                <span className="text-brand">
+                  <FeatureIcon feature={feature} />
+                </span>
                 {feature}
               </li>
             ))}
           </ul>
         ) : null}
 
-        <div className={cn("mt-auto", compact ? "pt-4" : "pt-5")}>
-          <div className="flex items-baseline justify-between gap-2">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#737373]">
-              Select size
-            </span>
-            <span className="text-[10px] text-[#737373]" aria-live="polite">
-              {selectedSize
-                ? `UK ${selectedSize} selected`
-                : `${availableCount} of ${sizes.length} sizes`}
+        {product.certification ? (
+          <p className="mt-3 flex items-start gap-1.5 text-[11px] leading-4 text-[#737373]">
+            <ShieldCheck className="mt-px h-3.5 w-3.5 shrink-0 text-brand" aria-hidden="true" />
+            {product.certification}
+          </p>
+        ) : null}
+
+        <div className="mt-auto pt-4">
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-[13px] font-bold text-charcoal">Select Size</span>
+            <span className="text-[11px] text-[#737373]" aria-live="polite">
+              {availableCount} of {sizes.length} sizes
             </span>
           </div>
 
           <div
             role="group"
             aria-label={`Select size for ${product.name}`}
-            className="mt-2 flex flex-wrap gap-1.5"
+            className="mt-2 grid grid-cols-7 gap-1.5"
           >
             {sizes.map((size) => {
               const available = isAvailable(size);
               const selected = selectedSize === size;
               return (
-                <button
+                <motion.button
                   key={size}
                   type="button"
+                  whileTap={available ? { scale: 0.94 } : undefined}
                   disabled={!available}
                   aria-pressed={selected}
                   onClick={() =>
                     setSelectedSize((current) => (current === size ? null : size))
                   }
                   className={cn(
-                    "grid h-8 min-w-[32px] place-items-center border px-1.5 text-[11px] font-semibold transition-colors duration-200",
+                    "grid h-9 min-w-0 place-items-center rounded-md border text-[12px] font-semibold transition-colors duration-200",
                     selected
                       ? "border-brand bg-brand text-white"
                       : available
-                        ? "border-line bg-white text-charcoal hover:border-charcoal"
-                        : "cursor-not-allowed border-line bg-white text-[#B8B8B8] line-through",
+                        ? "border-line bg-white text-charcoal hover:border-brand hover:text-brand"
+                        : "cursor-not-allowed border-line bg-[#F7F7F7] text-[#B8B8B8]",
                   )}
                 >
                   {size}
-                </button>
+                </motion.button>
               );
             })}
           </div>
 
-          {product.certification ? (
-            <p className="mt-3 flex items-start gap-1.5 text-[11px] leading-4 text-[#737373]">
-              <ShieldCheck className="mt-px h-3.5 w-3.5 shrink-0 text-brand" aria-hidden="true" />
-              {product.certification}
-            </p>
-          ) : null}
-
           <Link
             href={quoteHref}
-            className="mt-4 flex min-h-11 w-full items-center justify-center gap-2 bg-brand px-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-white transition-[background-color,transform] duration-200 hover:bg-[#E0431F] motion-reduce:hover:transform-none sm:text-xs"
+            className="mt-4 flex h-11 w-full items-center justify-center gap-2 rounded-md bg-brand px-3 text-[12px] font-bold uppercase tracking-[0.08em] text-white transition-colors duration-200 hover:bg-[#FF6A3D]"
           >
+            <Package className="h-4 w-4" aria-hidden="true" />
             Request Bulk Quote
-            <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </Link>
 
           <Link
             href={detailHref}
-            className="mt-2.5 flex min-h-8 w-full items-center justify-center gap-1.5 text-[11px] font-semibold text-charcoal transition-colors duration-200 hover:text-brand"
+            className="mt-2 flex h-10 w-full items-center justify-center gap-1.5 rounded-md border border-line bg-white text-[13px] font-semibold text-charcoal transition-colors duration-200 hover:border-brand hover:text-brand"
           >
             View Details
-            <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
       </div>

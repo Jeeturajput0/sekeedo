@@ -429,7 +429,7 @@ export function ProductCatalog({
             </span>
           </div>
           {pageItems.length ? (
-            <div className="grid grid-cols-1 gap-x-5 gap-y-8 min-[420px]:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-x-5 gap-y-8 min-[420px]:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
               {pageItems.map((product, index) => (
                 <ProductCard
                   key={product.slug}
