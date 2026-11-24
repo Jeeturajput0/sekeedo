@@ -1,7 +1,9 @@
+
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, PackageCheck } from "lucide-react";
+
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { ProductCatalog } from "@/components/products/product-catalog";
 import { TextReveal } from "@/components/motion/reveal";
@@ -9,47 +11,210 @@ import { products } from "@/lib/data/products";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createMetadata({
-  title: "Safety Footwear Catalogue",
-  description: "Browse the SEKEEDO industrial safety footwear range and request a quote for your team or distribution business.",
+  title: "Safety Footwear Catalogue | SEKEEDO",
+  description:
+    "Explore SEKEEDO industrial safety shoes. Discover safety footwear for businesses, industries and bulk procurement.",
   path: "/products",
   image: "/images/clawz-shoes-sheet.png",
 });
 
-async function Catalogue({ searchParams }: { searchParams: Promise<{ category?: string }> }) {
+async function Catalogue({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string }>;
+}) {
   const { category } = await searchParams;
-  return <ProductCatalog key={category ?? "all"} initialCategory={category ?? "all"} />;
+
+  return (
+    <ProductCatalog
+      key={category ?? "all"}
+      initialCategory={category ?? "all"}
+    />
+  );
 }
 
-export default function ProductsPage({ searchParams }: { searchParams: Promise<{ category?: string }> }) {
-  return <main id="main-content">
-    <section className="border-b border-line bg-paper">
-      <div className="container-page pb-9 pt-7 sm:pb-12 sm:pt-9">
-        <Breadcrumb items={[{ label: "Products"}, { label: "Safety shoes" }]} />
-        <div className="mt-8 flex flex-col justify-between gap-5 sm:mt-10 sm:flex-row sm:items-end">
-          <div>
-            <p className="eyebrow text-brand">SEKEEDO / Product catalogue</p>
-            <TextReveal as="h1" text="SAFETY SHOES" immediate className="mt-4 text-[clamp(2.25rem,4.8vw,3.8rem)] font-semibold leading-[.98] tracking-[-.05em] text-charcoal" />
-            <p className="mt-4 max-w-xl text-sm leading-7 text-muted sm:text-base">Safety footwear built for the demands of work. Explore the range and tell us what your team needs.</p>
+export default function ProductsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string }>;
+}) {
+  return (
+    <main id="main-content" className="bg-white">
+
+      {/* PAGE HEADER */}
+      <section className="border-b border-gray-100 bg-[#FAFAFA]">
+        <div className="container-page pb-10 pt-7 sm:pb-14 sm:pt-10">
+
+          <Breadcrumb
+            items={[
+              { label: "Products" },
+              { label: "Safety Shoes" },
+            ]}
+          />
+
+          <div className="mt-9 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+
+            <div>
+              <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-[#F4512C]">
+                <span className="h-[2px] w-7 bg-[#F4512C]" />
+                SEKEEDO / Product Collection
+              </p>
+
+              <TextReveal
+                as="h1"
+                text="SAFETY FOOTWEAR"
+                immediate
+                className="mt-4 text-[clamp(2.3rem,5vw,4rem)] font-bold leading-[1] tracking-[-0.05em] text-[#171717]"
+              />
+
+              <p className="mt-5 max-w-xl text-sm leading-7 text-gray-500 sm:text-base">
+                Built for the work that matters. Explore our industrial
+                safety footwear collection designed for demanding
+                workplaces and professional workforces.
+              </p>
+            </div>
+
+            {/* PRODUCT COUNT */}
+            <div className="flex items-center gap-4 border-t border-gray-200 pt-4 sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
+              <span className="text-4xl font-bold tracking-tight text-[#171717]">
+                {products.length.toString().padStart(2, "0")}
+              </span>
+
+              <div className="text-xs leading-5 text-gray-500">
+                Product styles
+                <br />
+                in our collection
+              </div>
+            </div>
+
           </div>
-          <div className="flex items-center gap-3 border-t border-line pt-4 text-xs text-muted sm:border-l sm:border-t-0 sm:pb-1 sm:pl-5 sm:pt-0"><span className="text-2xl font-semibold tracking-tight text-charcoal">{products.length.toString().padStart(2, "0")}</span><span>styles<br />in the catalogue</span></div>
+
+          {/* TRUST STRIP */}
+          <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-gray-200 pt-5">
+
+            <div className="flex items-center gap-2 text-xs font-medium text-gray-600">
+              <ShieldCheck size={17} className="text-[#F4512C]" />
+              Safety-focused footwear
+            </div>
+
+            <div className="flex items-center gap-2 text-xs font-medium text-gray-600">
+              <PackageCheck size={17} className="text-[#F4512C]" />
+              Bulk procurement enquiries
+            </div>
+
+            <div className="flex items-center gap-2 text-xs font-medium text-gray-600">
+              <ShieldCheck size={17} className="text-[#F4512C]" />
+              Product-specific certification details
+            </div>
+
+          </div>
+
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section className="bg-white py-9 sm:py-12 lg:py-16">
-      <div className="container-page">
-        <div className="mb-8 flex gap-3 border-l-2 border-brand bg-paper px-4 py-3 text-xs leading-5 text-muted sm:mb-10 sm:max-w-4xl"><ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden="true" /><p>Product imagery and names are illustrative. Sizes, performance features, certifications and pricing are not published until confirmed against approved product data. Ask our team for current specifications.</p></div>
-        <Suspense fallback={<div className="py-20 text-sm text-muted">Loading catalogue…</div>}>
-          <Catalogue searchParams={searchParams} />
-        </Suspense>
-      </div>
-    </section>
+      {/* PRODUCT CATALOGUE */}
+      <section className="bg-white py-10 sm:py-14 lg:py-16">
+        <div className="container-page">
 
-    <section className="bg-charcoal text-white">
-      <div className="container-page flex flex-col gap-7 py-14 sm:py-16 lg:flex-row lg:items-center lg:justify-between lg:py-20">
-        <div className="max-w-2xl"><p className="text-[10px] font-semibold uppercase tracking-[.2em] text-brand">For teams and distributors</p><h2 className="mt-3 text-[clamp(2rem,4.4vw,3.5rem)] font-semibold leading-[1.05] tracking-[-.04em]">Looking for safety footwear in bulk?</h2><p className="mt-4 max-w-xl text-sm leading-7 text-white/65">Explore our industrial footwear range or connect with our team for bulk procurement and business enquiries.</p></div>
-        <div className="flex flex-wrap gap-3"><Link href="/contact?enquiry=bulk" className="btn-primary">Request Bulk Quote<ArrowUpRight className="h-4 w-4" /></Link><Link href="/become-a-distributor" className="inline-flex min-h-12 items-center gap-2 border border-white/30 px-5 text-sm font-semibold text-white transition-colors hover:border-white">Become a Distributor<ArrowUpRight className="h-4 w-4" /></Link></div>
-      </div>
-    </section>
-  </main>;
+          <div className="mb-8 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#F4512C]">
+                Find Your Footwear
+              </p>
+
+              <h2 className="mt-2 text-2xl font-bold tracking-tight text-[#171717] sm:text-3xl">
+                Explore Our Collection
+              </h2>
+
+              <p className="mt-2 text-sm text-gray-500">
+                Find the right footwear for your workplace requirements.
+              </p>
+            </div>
+
+            <span className="text-xs font-medium text-gray-400">
+              SEKEEDO INDUSTRIAL FOOTWEAR
+            </span>
+
+          </div>
+
+          <Suspense
+            fallback={
+              <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+                {Array.from({ length: 8 }).map((_, index) => (
+                  <div
+                    key={index}
+                    className="animate-pulse overflow-hidden border border-gray-100"
+                  >
+                    <div className="aspect-square bg-gray-100" />
+                    <div className="space-y-3 p-4">
+                      <div className="h-3 w-1/3 bg-gray-100" />
+                      <div className="h-5 w-3/4 bg-gray-100" />
+                      <div className="h-10 bg-gray-100" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            }
+          >
+            <Catalogue searchParams={searchParams} />
+          </Suspense>
+
+        </div>
+      </section>
+
+      {/* BULK ORDER CTA */}
+      <section className="bg-[#151A17] text-white">
+
+        <div className="container-page flex flex-col gap-8 py-14 sm:py-16 lg:flex-row lg:items-center lg:justify-between lg:py-20">
+
+          <div className="max-w-2xl">
+
+            <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#FF9A32]">
+              <span className="h-[2px] w-7 bg-[#FF9A32]" />
+              For Businesses & Distributors
+            </p>
+
+            <h2 className="mt-4 text-[clamp(2rem,4.4vw,3.5rem)] font-bold leading-[1.08] tracking-[-0.04em]">
+              Equip Your Workforce.
+              <br />
+              <span className="text-[#FF8A25]">
+                Choose SEKEEDO.
+              </span>
+            </h2>
+
+            <p className="mt-5 max-w-xl text-sm leading-7 text-white/65">
+              Looking for industrial safety footwear in bulk?
+              Connect with SEKEEDO for product enquiries,
+              wholesale procurement and distributor opportunities.
+            </p>
+
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+
+            <Link
+              href="/contact?enquiry=bulk"
+              className="inline-flex min-h-12 items-center gap-2 bg-[#F4512C] px-6 text-sm font-bold text-white transition-all duration-300 hover:bg-[#DC3E20]"
+            >
+              Request Bulk Quote
+              <ArrowUpRight size={17} />
+            </Link>
+
+            <Link
+              href="/become-a-distributor"
+              className="inline-flex min-h-12 items-center gap-2 border border-white/30 px-6 text-sm font-semibold text-white transition-colors hover:border-[#FF8A25] hover:text-[#FF8A25]"
+            >
+              Become a Distributor
+              <ArrowUpRight size={17} />
+            </Link>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+  );
 }

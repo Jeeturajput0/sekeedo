@@ -9,7 +9,7 @@ export function ShoeSprite({ position, className }: ShoeSpriteProps) {
   const row = Math.floor(cell / 4);
 
   return (
-    <div className={cn("relative overflow-hidden bg-white", className)} aria-hidden="true">
+    <div className={cn("overflow-hidden bg-white", className)} aria-hidden="true">
       <div className="absolute left-1/2 top-1/2 aspect-square h-full -translate-x-1/2 -translate-y-1/2 overflow-hidden bg-white">
         <Image
           src="/images/clawz-shoes-sheet.png"
@@ -18,7 +18,7 @@ export function ShoeSprite({ position, className }: ShoeSpriteProps) {
           height={886}
           sizes="100vw"
           className="absolute max-w-none"
-          style={{ width: "408%", height: "204%", left: `${column * -102}%`, top: `${row * -102}%` }}
+          style={{ width: "416%", height: "208%", left: `${column * -104}%`, top: `${row * -104}%` }}
         />
       </div>
     </div>

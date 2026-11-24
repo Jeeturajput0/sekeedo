@@ -2,9 +2,17 @@
  * Product catalogue data.
  *
  * IMPORTANT: These are illustrative placeholders for catalogue design.
- * Certifications, safety ratings and verified specifications must be
- * replaced with actual, approved product data before publication.
+ * Names, imagery, sizes, sample availability, badges and safety feature
+ * tags are demo values only. Certifications, safety ratings, licence
+ * numbers and verified specifications must be replaced with actual,
+ * approved product data before publication.
  */
+
+/** Standard UK sizing options used by the catalogue demo. */
+export const DEFAULT_PRODUCT_SIZES = ["6", "7", "8", "9", "10", "11", "12"] as const;
+
+/** Compact badges that are safe to show without a certification claim. */
+export type ProductBadge = "Bestseller" | "New Arrival" | "Lightweight" | "Steel Toe";
 
 export type ProductCategorySlug =
   | "steel-toe"
@@ -34,10 +42,18 @@ export type Product = {
   imagePosition?: number;
   tone: "light" | "dark";
   tagline: string;
+  /** Preferred short description. Falls back to `summary` when omitted. */
+  description?: string;
   summary: string;
   features: string[];
   verifiedFeatures?: boolean;
+  /** Short product labels such as "Steel Toe" or "Breathable". */
+  safetyFeatures?: string[];
+  /** Size options shown in the selector. Defaults to DEFAULT_PRODUCT_SIZES. */
+  sizes?: string[];
+  /** Demo availability: only these sizes are selectable when provided. */
   availableSizes?: string[];
+  badge?: ProductBadge;
   industries?: string[];
   certification?: string;
   priceRange?: { min: number; max: number; currency: string };
@@ -102,7 +118,10 @@ export const products: Product[] = [
     name: "SK-100 Steel Toe Classic",
     id: "sk-100",
     sku: "SK-100",
-    availableSizes: [],
+    badge: "Bestseller",
+    sizes: [...DEFAULT_PRODUCT_SIZES],
+    availableSizes: ["6", "7", "8", "9", "10", "11"],
+    safetyFeatures: ["Steel Toe"],
     industries: [],
     category: "steel-toe",
     image: "/images/clawz-shoes-sheet.png",
@@ -122,7 +141,9 @@ export const products: Product[] = [
     name: "SK-110 Composite Motion",
     id: "sk-110",
     sku: "SK-110",
-    availableSizes: [],
+    sizes: [...DEFAULT_PRODUCT_SIZES],
+    availableSizes: ["7", "8", "9", "10", "11", "12"],
+    safetyFeatures: ["Composite Toe"],
     industries: [],
     category: "composite-toe",
     image: "/images/clawz-shoes-sheet.png",
@@ -142,7 +163,10 @@ export const products: Product[] = [
     name: "SK-120 Lightweight Series",
     id: "sk-120",
     sku: "SK-120",
-    availableSizes: [],
+    badge: "Lightweight",
+    sizes: [...DEFAULT_PRODUCT_SIZES],
+    availableSizes: ["6", "7", "8", "9", "10", "11", "12"],
+    safetyFeatures: ["Lightweight", "Breathable"],
     industries: [],
     category: "lightweight",
     image: "/images/clawz-shoes-sheet.png",
@@ -162,7 +186,9 @@ export const products: Product[] = [
     name: "SK-200 Industrial Boot",
     id: "sk-200",
     sku: "SK-200",
-    availableSizes: [],
+    sizes: [...DEFAULT_PRODUCT_SIZES],
+    availableSizes: ["6", "7", "8", "9", "10", "11", "12"],
+    safetyFeatures: [],
     industries: [],
     category: "safety-boots",
     image: "/images/clawz-shoes-sheet.png",
@@ -182,7 +208,9 @@ export const products: Product[] = [
     name: "SK-210 High Ankle Pro",
     id: "sk-210",
     sku: "SK-210",
-    availableSizes: [],
+    sizes: [...DEFAULT_PRODUCT_SIZES],
+    availableSizes: ["7", "8", "9", "10", "11"],
+    safetyFeatures: ["High Ankle"],
     industries: [],
     category: "high-ankle",
     image: "/images/clawz-shoes-sheet.png",
@@ -201,7 +229,9 @@ export const products: Product[] = [
     name: "SK-300 Waterproof Guard",
     id: "sk-300",
     sku: "SK-300",
-    availableSizes: [],
+    sizes: [...DEFAULT_PRODUCT_SIZES],
+    availableSizes: ["6", "7", "8", "9", "10", "11"],
+    safetyFeatures: ["Water Resistant"],
     industries: [],
     category: "waterproof",
     image: "/images/clawz-shoes-sheet.png",
@@ -221,7 +251,9 @@ export const products: Product[] = [
     name: "SK-310 Grip Series",
     id: "sk-310",
     sku: "SK-310",
-    availableSizes: [],
+    sizes: [...DEFAULT_PRODUCT_SIZES],
+    availableSizes: ["6", "7", "8", "9", "10", "11", "12"],
+    safetyFeatures: ["Slip Resistant"],
     industries: [],
     category: "slip-resistant",
     image: "/images/clawz-shoes-sheet.png",
@@ -240,7 +272,9 @@ export const products: Product[] = [
     name: "SK-400 Industrial Sneaker",
     id: "sk-400",
     sku: "SK-400",
-    availableSizes: [],
+    sizes: [...DEFAULT_PRODUCT_SIZES],
+    availableSizes: ["8", "9", "10", "11", "12"],
+    safetyFeatures: ["Lightweight", "Breathable"],
     industries: [],
     category: "industrial-sneakers",
     image: "/images/clawz-shoes-sheet.png",
@@ -259,7 +293,11 @@ export const products: Product[] = [
     name: "SK-410 Site Runner",
     id: "sk-410",
     sku: "SK-410",
-    availableSizes: [],
+    badge: "New Arrival",
+    sizes: [...DEFAULT_PRODUCT_SIZES],
+    availableSizes: ["6", "7", "8", "9", "10"],
+    safetyFeatures: ["Breathable"],
+    newArrival: true,
     industries: [],
     category: "industrial-sneakers",
     image: "/images/clawz-shoes-sheet.png",
@@ -278,7 +316,9 @@ export const products: Product[] = [
     name: "SK-500 Specialized Duty",
     id: "sk-500",
     sku: "SK-500",
-    availableSizes: [],
+    sizes: [...DEFAULT_PRODUCT_SIZES],
+    availableSizes: ["6", "7", "8", "9", "10", "11", "12"],
+    safetyFeatures: [],
     industries: [],
     category: "specialized",
     image: "/images/clawz-shoes-sheet.png",
@@ -297,7 +337,9 @@ export const products: Product[] = [
     name: "SK-510 Puncture Guard",
     id: "sk-510",
     sku: "SK-510",
-    availableSizes: [],
+    sizes: [...DEFAULT_PRODUCT_SIZES],
+    availableSizes: ["7", "8", "9", "10", "11", "12"],
+    safetyFeatures: [],
     industries: [],
     category: "specialized",
     image: "/images/clawz-shoes-sheet.png",
@@ -316,7 +358,9 @@ export const products: Product[] = [
     name: "SK-520 Oil Shield",
     id: "sk-520",
     sku: "SK-520",
-    availableSizes: [],
+    sizes: [...DEFAULT_PRODUCT_SIZES],
+    availableSizes: ["6", "7", "8", "9", "10", "11"],
+    safetyFeatures: ["Slip Resistant"],
     industries: [],
     category: "slip-resistant",
     image: "/images/clawz-shoes-sheet.png",

@@ -166,9 +166,9 @@ export default async function ProductDetailPage({
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
-          <Stagger className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {related.map((item) => (
-              <ProductCard key={item.slug} product={item} compact />
+          <Stagger className="mt-10 grid grid-cols-1 gap-5 min-[420px]:grid-cols-2 lg:grid-cols-3">
+            {related.map((item, index) => (
+              <ProductCard key={item.slug} product={item} index={index} compact />
             ))}
           </Stagger>
         </div>

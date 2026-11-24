@@ -1,28 +1,157 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { featuredIndustries } from "@/lib/data/industries";
 
-export function IndustriesPreview() {
+"use client";
+
+import Link from "next/link";
+import {
+  ArrowRight,
+  Factory,
+  Construction,
+  Fuel,
+  Warehouse,
+  Pickaxe,
+  FlaskConical,
+  Zap,
+} from "lucide-react";
+
+const industries = [
+  {
+    title: "Manufacturing & Factories",
+    image: "/images/industries/manufacturing.jpg",
+    icon: Factory,
+  },
+  {
+    title: "Construction & Infrastructure",
+    image: "/images/industries/construction.jpg",
+    icon: Construction,
+  },
+  {
+    title: "Oil, Gas & Energy",
+    image: "/images/industries/oil-gas.jpg",
+    icon: Fuel,
+  },
+  {
+    title: "Warehousing & Logistics",
+    image: "/images/industries/warehouse.jpg",
+    icon: Warehouse,
+  },
+  {
+    title: "Mining & Heavy Industries",
+    image: "/images/industries/mining.jpg",
+    icon: Pickaxe,
+  },
+  {
+    title: "Chemical & Pharmaceutical",
+    image: "/images/industries/chemical.jpg",
+    icon: FlaskConical,
+  },
+  {
+    title: "Electrical & Utilities",
+    image: "/images/industries/electrical.jpg",
+    icon: Zap,
+  },
+];
+
+export default function IndustriesPreview() {
   return (
-    <section className="px-4 py-5 sm:px-6 lg:py-6">
-      <div className="mx-auto grid max-w-[1320px] gap-4 rounded-xl bg-[#f5f5f5] p-4 sm:p-5 lg:grid-cols-[250px_1fr] lg:items-center lg:gap-3">
-        <div className="px-1 lg:px-3">
-          <p className="text-[10px] font-bold uppercase tracking-wide text-brand">Industries we serve</p>
-          <h2 className="mt-1.5 text-xl font-bold leading-tight tracking-tight text-charcoal">Safety Footwear for <span className="text-brand">Every Industry</span></h2>
-          <p className="mt-2 text-xs leading-[1.45] text-charcoal/80">Trusted by a wide range of sectors for workplace safety and performance.</p>
-          <Link href="/industries" className="btn-primary mt-3 min-h-[36px] px-4 text-xs">Explore Industries <ArrowRight className="h-3.5 w-3.5" /></Link>
-        </div>
-        <div className="relative grid grid-cols-2 gap-2 sm:grid-cols-4">
-          {featuredIndustries.slice(0, 4).map((industry) => (
-            <Link key={industry.slug} href={`/industries/${industry.slug}`} className="group relative h-[150px] overflow-hidden rounded-md bg-charcoal sm:h-[168px]">
-              <Image src={industry.image} alt={industry.imageAlt} fill sizes="(max-width: 640px) 46vw, 20vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-              <span className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/15 to-transparent" />
-              <span className="absolute inset-x-2 bottom-2 text-[11px] font-semibold leading-tight text-white">{industry.name}</span>
+    <section className="px-4 py-12 md:px-6 lg:py-16">
+      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-xl bg-[#111B16]">
+
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('/images/industries/industrial-bg.jpg')",
+          }}
+        />
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/40" />
+
+        <div className="relative grid min-h-[340px] grid-cols-1 lg:grid-cols-[0.85fr_1.65fr]">
+
+          {/* Left Panel */}
+          <div className="relative z-10 flex flex-col justify-center bg-[#102019]/95 px-6 py-10 md:px-10 lg:px-12">
+
+            {/* Yellow Label */}
+            <div className="mb-4 flex items-center gap-3">
+              <span className="h-[3px] w-8 bg-[#FFC400]" />
+
+              <span className="text-sm font-semibold text-[#FFC400]">
+                Industries We Serve
+              </span>
+            </div>
+
+            {/* Heading */}
+            <h2 className="max-w-lg text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-[42px]">
+              Trusted Across
+              <br />
+              Diverse Industries
+            </h2>
+
+            {/* Description */}
+            <p className="mt-5 max-w-md text-sm leading-6 text-white/80 md:text-base">
+              From factories to construction sites, SEKEEDO
+              protects professionals across key sectors.
+            </p>
+
+            {/* Button */}
+            <Link
+              href="/industries"
+              className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-[#F58A00] px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#FF6B00] hover:shadow-lg hover:shadow-orange-500/20"
+            >
+              Explore Industries
+              <ArrowRight
+                size={16}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
             </Link>
-          ))}
-          <Link href="/industries" aria-label="Previous industries" className="absolute -left-3 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full bg-white text-charcoal shadow"><ChevronLeft className="h-4 w-4" /></Link>
-          <Link href="/industries" aria-label="More industries" className="absolute -right-3 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full bg-white text-charcoal shadow"><ChevronRight className="h-4 w-4" /></Link>
+          </div>
+
+          {/* Right Cards */}
+          <div className="relative z-10 flex items-center px-5 py-8 md:px-8 lg:px-6">
+            <div className="grid w-full grid-cols-2 gap-3 sm:grid-cols-4">
+
+              {industries.map((industry, index) => {
+                const Icon = industry.icon;
+
+                return (
+                  <Link
+                    href="/industries"
+                    key={industry.title}
+                    className={`group relative flex h-[145px] items-end overflow-hidden rounded-xl border border-white/30 bg-[#222] bg-cover bg-center shadow-lg transition-all duration-500 hover:-translate-y-1 hover:border-[#FFC400] sm:h-[155px] ${
+                      index >= 4
+                        ? "sm:col-span-1"
+                        : ""
+                    }`}
+                    style={{
+                      backgroundImage: `url('${industry.image}')`,
+                    }}
+                  >
+                    {/* Card Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10 transition duration-500 group-hover:from-black/90" />
+
+                    {/* Icon */}
+                    <div className="absolute inset-x-0 top-5 flex justify-center">
+                      <Icon
+                        size={38}
+                        strokeWidth={1.8}
+                        className="text-white drop-shadow-lg transition-transform duration-500 group-hover:scale-110 group-hover:text-[#FFC400]"
+                      />
+                    </div>
+
+                    {/* Card Title */}
+                    <div className="relative z-10 w-full px-2 pb-4 text-center">
+                      <h3 className="text-sm font-bold leading-tight text-white drop-shadow-md sm:text-base">
+                        {industry.title}
+                      </h3>
+                    </div>
+                  </Link>
+                );
+              })}
+
+            </div>
+          </div>
         </div>
       </div>
     </section>

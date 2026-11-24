@@ -1,7 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, ShieldCheck } from "lucide-react";
-import { FadeIn, ImageReveal, Parallax, TextReveal } from "@/components/motion/reveal";
+import {
+  FadeIn,
+  ImageReveal,
+  Parallax,
+  TextReveal,
+} from "@/components/motion/reveal";
 
 export function Hero() {
   return (
@@ -23,8 +28,9 @@ export function Hero() {
 
           <FadeIn delay={0.15}>
             <p className="mt-7 max-w-xl text-base leading-8 text-charcoal/65 sm:text-lg">
-              Reliable safety footwear engineered for demanding workplaces. Discover industrial
-              footwear solutions designed for protection, comfort and performance.
+              Reliable safety footwear engineered for demanding workplaces.
+              Discover industrial footwear solutions designed for protection,
+              comfort and performance.
             </p>
           </FadeIn>
 
@@ -44,23 +50,41 @@ export function Hero() {
           <FadeIn delay={0.3}>
             <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-line pt-6">
               <div className="flex items-center gap-2.5">
-                <ShieldCheck className="h-4 w-4 text-brand" aria-hidden="true" />
-                <span className="text-xs font-medium text-charcoal/70">Industrial-grade design</span>
+                <ShieldCheck
+                  className="h-4 w-4 text-brand"
+                  aria-hidden="true"
+                />
+                <span className="text-xs font-medium text-charcoal/70">
+                  Industrial-grade design
+                </span>
               </div>
               <div className="flex items-center gap-2.5">
-                <ShieldCheck className="h-4 w-4 text-brand" aria-hidden="true" />
-                <span className="text-xs font-medium text-charcoal/70">Bulk procurement support</span>
+                <ShieldCheck
+                  className="h-4 w-4 text-brand"
+                  aria-hidden="true"
+                />
+                <span className="text-xs font-medium text-charcoal/70">
+                  Bulk procurement support
+                </span>
               </div>
               <div className="flex items-center gap-2.5">
-                <ShieldCheck className="h-4 w-4 text-brand" aria-hidden="true" />
-                <span className="text-xs font-medium text-charcoal/70">Product-focused guidance</span>
+                <ShieldCheck
+                  className="h-4 w-4 text-brand"
+                  aria-hidden="true"
+                />
+                <span className="text-xs font-medium text-charcoal/70">
+                  Product-focused guidance
+                </span>
               </div>
             </div>
           </FadeIn>
         </div>
 
         <div className="relative">
-          <div className="absolute -right-10 -top-10 hidden h-48 w-48 border border-charcoal/10 lg:block" aria-hidden="true" />
+          <div
+            className="absolute -right-10 -top-10 hidden h-48 w-48 border border-charcoal/10 lg:block"
+            aria-hidden="true"
+          />
           <ImageReveal className="relative h-[400px] w-full sm:h-[500px] lg:h-[540px]">
             <Parallax className="h-[112%] w-full">
               <Image
@@ -72,10 +96,16 @@ export function Hero() {
                 className="object-cover object-center"
               />
             </Parallax>
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/35 via-transparent to-transparent" aria-hidden="true" />
+            <div
+              className="absolute inset-0 bg-gradient-to-t from-charcoal/35 via-transparent to-transparent"
+              aria-hidden="true"
+            />
           </ImageReveal>
 
-          <FadeIn delay={0.25} className="absolute -bottom-6 -left-2 hidden w-[210px] sm:block lg:-left-10 lg:w-[250px]">
+          <FadeIn
+            delay={0.25}
+            className="absolute -bottom-6 -left-2 hidden w-[210px] sm:block lg:-left-10 lg:w-[250px]"
+          >
             <div className="border border-line bg-white p-3 shadow-[0_20px_50px_rgba(22,27,25,0.14)]">
               <div className="relative aspect-[4/5] overflow-hidden bg-charcoal">
                 <Image
@@ -91,9 +121,14 @@ export function Hero() {
                   <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-brand">
                     Featured range
                   </p>
-                  <p className="mt-1 text-sm font-semibold text-charcoal">Industrial footwear</p>
+                  <p className="mt-1 text-sm font-semibold text-charcoal">
+                    Industrial footwear
+                  </p>
                 </div>
-                <ArrowUpRight className="h-4 w-4 text-charcoal" aria-hidden="true" />
+                <ArrowUpRight
+                  className="h-4 w-4 text-charcoal"
+                  aria-hidden="true"
+                />
               </div>
             </div>
           </FadeIn>
