@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/data/site";
 import { products } from "@/lib/data/products";
 import { industries } from "@/lib/data/industries";
+import { blogArticles } from "@/lib/data/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
@@ -14,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/become-a-distributor",
     "/contact",
     "/faq",
+    "/blog",
     "/privacy-policy",
     "/terms-conditions",
   ];
@@ -36,6 +38,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: "2026-01-01",
       changeFrequency: "monthly" as const,
       priority: 0.55,
+    })),
+    ...blogArticles.map((article) => ({
+      url: `${base}/blog/${article.slug}`,
+      lastModified: "2026-11-24",
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
     })),
   ];
 }

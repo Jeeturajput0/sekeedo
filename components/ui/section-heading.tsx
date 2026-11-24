@@ -29,7 +29,7 @@ export function SectionHeading({
         className,
       )}
     >
-      <div className={cn("max-w-3xl", align === "center" && "mx-auto")}>
+      <div className={cn("max-w-2xl", align === "center" && "mx-auto")}>
         {eyebrow ? (
           <FadeIn>
             <span className={cn("eyebrow", light && "eyebrow-light")}>{eyebrow}</span>

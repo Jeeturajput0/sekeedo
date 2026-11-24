@@ -1,14 +1,15 @@
+
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const slides = [
   {
-    image: "/images/hero-safety-shoe.jpg",
+    image: "/images/slider1.peg.jpeg",
     alt: "Premium industrial safety boots photographed in low light",
     eyebrow: "Industrial Safety Footwear",
     titleTop: "Built for the",
@@ -30,7 +31,7 @@ const slides = [
     secondary: { label: "Request Bulk Quote", href: "/contact?enquiry=bulk" },
   },
   {
-    image: "/images/cta-workforce.webp",
+    image: "/images/slider2jpeg.jpeg",
     alt: "Worker lacing up safety footwear before a shift",
     eyebrow: "Wholesale & Bulk Supply",
     titleTop: "Equip Your",
@@ -42,7 +43,7 @@ const slides = [
   },
 ];
 
-const SLIDE_DURATION = 2000;
+const SLIDE_DURATION = 5000;
 
 export function HeroSlider() {
   const [active, setActive] = useState(0);
@@ -51,10 +52,12 @@ export function HeroSlider() {
 
   useEffect(() => {
     if (paused) return;
+
     const timer = window.setTimeout(() => {
       setActive((current) => (current + 1) % slides.length);
       setRunId((current) => current + 1);
     }, SLIDE_DURATION);
+
     return () => window.clearTimeout(timer);
   }, [active, paused, runId]);
 
@@ -78,8 +81,10 @@ export function HeroSlider() {
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={resume}
     >
+      {/* Background Images */}
       {slides.map((slide, index) => {
         const isActive = index === active;
+
         return (
           <div
             key={slide.image}
@@ -99,27 +104,35 @@ export function HeroSlider() {
               priority={index === 0}
               sizes="100vw"
               className={cn(
-                "object-cover object-center image-graded-dark",
+                "object-cover object-center brightness-[1.12] contrast-[1.05]",
                 isActive && "hero-slide-zoom",
               )}
-              style={isActive ? { animationDuration: "2.6s" } : undefined}
+              style={
+                isActive
+                  ? { animationDuration: "5.6s" }
+                  : undefined
+              }
             />
           </div>
         );
       })}
 
+      {/* Reduced Dark Overlay */}
       <div
-        className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/15"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"
+        className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-transparent"
         aria-hidden="true"
       />
 
+      <div
+        className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"
+        aria-hidden="true"
+      />
+
+      {/* Slide Content */}
       <div className="absolute inset-0">
         {slides.map((slide, index) => {
           const isActive = index === active;
+
           return (
             <div
               key={slide.image}
@@ -140,20 +153,30 @@ export function HeroSlider() {
                     <span className="h-1 w-12 bg-brand" />
                     {slide.eyebrow}
                   </p>
+
                   <h1 className="mt-4 text-balance text-[clamp(2.5rem,5vw,3.6rem)] font-bold leading-[1.02] tracking-[-.045em]">
                     {slide.titleTop}
                     <br />
                     {slide.titleBottom.split(slide.highlight)[0]}
-                    <span className="text-brand">{slide.highlight}</span>
+                    <span className="text-brand">
+                      {slide.highlight}
+                    </span>
                     {slide.titleBottom.split(slide.highlight)[1] ?? ""}
                   </h1>
-                  <p className="mt-3 max-w-[420px] text-sm leading-[1.5] text-white/85 sm:text-base">
+
+                  <p className="mt-3 max-w-[420px] text-sm leading-[1.5] text-white/90 sm:text-base">
                     {slide.text}
                   </p>
+
                   <div className="mt-5 flex flex-wrap gap-3">
-                    <Link href={slide.primary.href} className="btn-primary min-h-[42px]">
-                      {slide.primary.label} <ArrowRight className="h-4 w-4" />
+                    <Link
+                      href={slide.primary.href}
+                      className="btn-primary min-h-[42px]"
+                    >
+                      {slide.primary.label}
+                      <ArrowRight className="h-4 w-4" />
                     </Link>
+
                     <Link
                       href={slide.secondary.href}
                       className="btn-ghost-light min-h-[42px]"
@@ -168,23 +191,8 @@ export function HeroSlider() {
         })}
       </div>
 
-      <button
-        type="button"
-        onClick={() => goTo(active - 1)}
-        aria-label="Previous slide"
-        className="absolute left-3 top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 place-items-center border border-white/30 bg-black/30 text-white opacity-0 backdrop-blur-sm transition duration-300 hover:border-brand hover:bg-brand group-hover:opacity-100 focus-visible:opacity-100 sm:grid"
-      >
-        <ChevronLeft className="h-4 w-4" aria-hidden="true" />
-      </button>
-      <button
-        type="button"
-        onClick={() => goTo(active + 1)}
-        aria-label="Next slide"
-        className="absolute right-3 top-1/2 z-20 hidden h-9 w-9 -translate-y-1/2 place-items-center border border-white/30 bg-black/30 text-white opacity-0 backdrop-blur-sm transition duration-300 hover:border-brand hover:bg-brand group-hover:opacity-100 focus-visible:opacity-100 sm:grid"
-      >
-        <ChevronRight className="h-4 w-4" aria-hidden="true" />
-      </button>
-
+   
+      {/* Slide Indicators */}
       <div className="absolute inset-x-0 bottom-7 z-20">
         <div className="container-page flex gap-1.5">
           {slides.map((slide, index) => (
@@ -196,7 +204,9 @@ export function HeroSlider() {
               aria-current={index === active}
               className={cn(
                 "relative h-1 overflow-hidden rounded-full transition-all duration-300",
-                index === active ? "w-9 bg-white/35" : "w-6 bg-white/70 hover:bg-white",
+                index === active
+                  ? "w-9 bg-white/35"
+                  : "w-6 bg-white/70 hover:bg-white",
               )}
             >
               {index === active && (
@@ -204,7 +214,7 @@ export function HeroSlider() {
                   key={runId}
                   className="hero-slide-progress absolute inset-y-0 left-0 bg-brand"
                   style={{
-                    animationDuration: "2s",
+                    animationDuration: `${SLIDE_DURATION / 1000}s`,
                     animationPlayState: paused ? "paused" : "running",
                   }}
                 />

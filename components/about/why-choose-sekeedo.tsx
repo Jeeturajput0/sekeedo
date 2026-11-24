@@ -1,75 +1,131 @@
-import { Feather, Layers, ShieldCheck, Users } from "lucide-react";
-import { FadeIn, TextReveal } from "@/components/motion/reveal";
+
+import {
+  Feather,
+  Layers,
+  ShieldCheck,
+  Users,
+  ArrowUpRight,
+} from "lucide-react";
+
+import {
+  FadeIn,
+  TextReveal,
+  Stagger,
+} from "@/components/motion/reveal";
 
 const features = [
   {
     icon: ShieldCheck,
+    number: "01",
     title: "Reliable Protection",
-    text: "Built to reduce workplace risks and keep your team safe.",
+    text: "Designed to support workplace safety across demanding industrial environments.",
   },
   {
     icon: Feather,
+    number: "02",
     title: "All-Day Comfort",
-    text: "Ergonomic design that supports long working hours with ease.",
+    text: "Comfort-focused footwear for professionals working long hours.",
   },
   {
     icon: Layers,
+    number: "03",
     title: "Durable & Long-Lasting",
-    text: "Made with quality materials for extended performance and value.",
+    text: "Quality materials and construction for dependable everyday performance.",
   },
   {
     icon: Users,
+    number: "04",
     title: "Business & Bulk Support",
-    text: "Flexible solutions for teams, projects and distribution partners.",
+    text: "Wholesale solutions for businesses, projects and distribution partners.",
   },
 ];
 
 export function WhyChooseSekeedo() {
   return (
-    <section className="bg-white py-16 lg:py-16">
+    <section className="overflow-hidden bg-white py-12 sm:py-14 lg:py-16">
       <div className="container-page">
-        <div className="max-w-2xl">
-          <FadeIn>
-            <span className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand">
-              <span className="h-px w-8 bg-brand" />
-              Why Choose SEKEEDO
-            </span>
-          </FadeIn>
-          <div className="mt-6">
-            <TextReveal
-              as="h2"
-              text="The Right Safety Footwear for Your Workplace"
-              highlight={["Your", "Workplace"]}
-              className="max-w-[16ch] text-[clamp(2rem,3.8vw,3.2rem)] font-semibold leading-[1.06] tracking-[-0.045em] text-charcoal"
-            />
+
+        {/* HEADER */}
+        <div className="grid gap-4 lg:grid-cols-[1fr_0.7fr] lg:items-end">
+
+          <div>
+            <FadeIn>
+              <span className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand">
+                <span className="h-[2px] w-7 bg-brand" />
+                Why Choose SEKEEDO
+              </span>
+            </FadeIn>
+
+            <div className="mt-4">
+              <TextReveal
+                as="h2"
+                text="The Right Safety Footwear for Your Workplace"
+                highlight={["Your", "Workplace"]}
+                className="max-w-[16ch] text-[clamp(2rem,3.5vw,3rem)] font-semibold leading-[1.05] tracking-[-0.05em] text-charcoal"
+              />
+            </div>
           </div>
-          <FadeIn delay={0.1}>
-            <p className="mt-5 text-base leading-8 text-muted">
-              Designed to meet the practical needs of modern industries.
+
+          <FadeIn delay={0.12}>
+            <p className="max-w-md text-sm leading-7 text-muted lg:ml-auto lg:pb-1">
+              Designed around the practical needs of modern industries,
+              with a focus on workplace protection, everyday comfort
+              and dependable business support.
             </p>
           </FadeIn>
+
         </div>
 
-        <div className="mt-12 grid gap-x-14 sm:grid-cols-2">
-          {features.map((feature, index) => {
+        {/* COMPACT FEATURE CARDS */}
+        <Stagger className="mt-8 grid gap-3 sm:grid-cols-2 lg:gap-4">
+
+          {features.map((feature) => {
             const Icon = feature.icon;
+
             return (
-              <FadeIn
-                key={feature.title}
-                delay={index * 0.06}
-                className="flex gap-5 border-t border-line py-7"
+              <article
+                key={feature.number}
+                data-stagger
+                className="group relative flex gap-4 overflow-hidden border border-line bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-[0_8px_28px_rgba(0,0,0,0.06)] sm:p-5"
               >
-                <Icon className="mt-0.5 h-6 w-6 shrink-0 text-brand" aria-hidden="true" />
-                <div>
-                  <h3 className="text-[15px] font-semibold text-charcoal">
-                    {feature.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-6 text-muted">{feature.text}</p>
+
+                {/* ICON */}
+                <div className="grid h-10 w-10 shrink-0 place-items-center border border-brand/20 bg-brand/[0.05] text-brand transition-all duration-300 group-hover:bg-brand group-hover:text-white">
+                  <Icon
+                    className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
+                    strokeWidth={1.7}
+                    aria-hidden="true"
+                  />
                 </div>
-              </FadeIn>
+
+                {/* CONTENT */}
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between gap-3">
+                    <h3 className="text-[15px] font-semibold tracking-[-0.02em] text-charcoal transition-colors duration-300 group-hover:text-brand">
+                      {feature.title}
+                    </h3>
+
+                    <span className="shrink-0 text-[10px] font-semibold tracking-widest text-muted/60">
+                      {feature.number}
+                    </span>
+                  </div>
+
+                  <p className="mt-1.5 max-w-md text-xs leading-6 text-muted sm:text-[13px]">
+                    {feature.text}
+                  </p>
+                </div>
+
+                {/* HOVER ACCENT */}
+                <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-brand transition-all duration-500 group-hover:w-full" />
+
+                <ArrowUpRight className="absolute bottom-3 right-3 h-3.5 w-3.5 text-brand opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+
+              </article>
             );
           })}
-        </div>
+
+        </Stagger>
+
       </div>
     </section>
   );

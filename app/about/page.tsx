@@ -25,16 +25,15 @@ export default function AboutPage() {
   return (
     <>
       <AboutHero />
+      <AboutStats />
       <AboutIntroduction />
       <AboutFeatureCards />
       <AboutFeaturedProducts />
-      <AboutCategoryStrip />
+      {/* <AboutCategoryStrip /> */}
       <WhyChooseSekeedo />
       <ResearchApproach />
       <CertificationsSection />
-      <AboutStats />
       <AboutTestimonials />
-      <AboutCta />
       <FaqPreview />
     </>
   );

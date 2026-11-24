@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/ui/page-hero";
-import { IndustryCard } from "@/components/industries/industry-card";
-import { Stagger } from "@/components/motion/reveal";
+import { IndustriesHub } from "@/components/industries/industries-hub";
 import { industries } from "@/lib/data/industries";
 import { createMetadata } from "@/lib/seo";
 
@@ -14,38 +12,5 @@ export const metadata: Metadata = createMetadata({
 });
 
 export default function IndustriesPage() {
-  return (
-    <>
-      <PageHero
-        eyebrow="Industries we serve"
-        title="Footwear considerations for every worksite."
-        description="Explore the sectors we support. Each industry overview highlights common workplace considerations and the footwear features worth reviewing—always against verified product specifications."
-        image="/images/ind-construction.webp"
-        imageAlt="Worker on a construction site"
-        breadcrumb="Industries"
-      />
-
-      <section className="bg-white py-16 lg:py-16">
-        <div className="container-page">
-          <div className="border-l-2 border-brand bg-paper px-5 py-4 text-xs leading-6 text-muted">
-            Guidance note: the considerations below are general and are not product suitability
-            claims. Confirm each recommendation against the verified specification for the exact
-            footwear model.
-          </div>
-
-          <Stagger className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {industries.map((industry, index) => (
-              <IndustryCard
-                key={industry.slug}
-                industry={industry}
-                index={index}
-                featured={Boolean(industry.featured)}
-              />
-            ))}
-          </Stagger>
-        </div>
-      </section>
-
-    </>
-  );
+  return <IndustriesHub industries={industries} />;
 }

@@ -16,12 +16,7 @@ export const navItems: NavItem[] = [
   {
     label: "Products",
     href: "/products",
-    children: [
-      { label: "All products", href: "/products", description: "Browse the full catalogue" },
-      { label: "Steel toe safety shoes", href: "/products?category=steel-toe" },
-      { label: "Safety boots", href: "/products?category=safety-boots" },
-      { label: "Waterproof footwear", href: "/products?category=waterproof" },
-    ],
+    
   },
   { label: "Technology & Safety", href: "/technology-safety" },
   {
@@ -32,9 +27,11 @@ export const navItems: NavItem[] = [
       { label: "Construction & Infrastructure", href: "/industries/construction-infrastructure" },
       { label: "Manufacturing & Factories", href: "/industries/manufacturing" },
       { label: "Logistics & Warehousing", href: "/industries/logistics-warehousing" },
+      { label: "Oil & Gas", href: "/industries/oil-gas" },
     ],
   },
-  { label: "Become a Distributor", href: "/become-a-distributor" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact Us", href: "/contact" },
 ];
 
@@ -70,6 +67,7 @@ export const footerGroups = [
       { label: "Technology & Safety", href: "/technology-safety" },
       { label: "Industries We Serve", href: "/industries" },
       { label: "FAQ", href: "/faq" },
+      { label: "Blog & Guides", href: "/blog" },
     ],
   },
   {

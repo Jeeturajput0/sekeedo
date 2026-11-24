@@ -45,16 +45,16 @@ export function Navbar() {
         <div
           className={cn(
             "flex items-center justify-between transition-all duration-300",
-            scrolled ? "h-[54px]" : "h-[60px]",
+            scrolled ? "h-[68px]" : "h-[74px]",
           )}
         >
           <Link href="/" aria-label="Home" className="flex items-center gap-2px-1">
-            <Image src="/images/logo/logo.png" alt="SEKEEDO Safety Footwear" width={2000} height={556} priority className="h-9 w-auto object-contain invert hue-rotate-180 sm:h-10" />
+            <Image src="/images/logo/logo.png" alt="SEKEEDO Safety Footwear" width={2000} height={596} priority className="h-14 w-auto object-contain invert hue-rotate-180 sm:h-16" />
           </Link>
 
-          <div className="hidden items-center gap-1 lg:flex">
+          <div className="hidden items-center gap-0 xl:flex">
             {navItems.map((item) => {
-              const active = isActive(pathname, item.href);
+              const active = isActive(pathname, item.href) || Boolean(item.children?.some((child) => isActive(pathname, child.href.split("?")[0])));
               if (item.children) {
                 return (
                   <div
@@ -71,7 +71,7 @@ export function Navbar() {
                         setOpenDropdown(openDropdown === item.label ? null : item.label)
                       }
                       className={cn(
-                        "flex items-center gap-1.5 px-3 py-2 text-[13px] font-medium transition-colors",
+                        "flex items-center gap-1.5 px-2 py-2 text-[13px] font-medium transition-colors",
                         active ? "text-brand" : "text-charcoal/75 hover:text-brand",
                       )}
                     >
@@ -122,7 +122,7 @@ export function Navbar() {
                   key={item.label}
                   href={item.href}
                   className={cn(
-                    "relative px-3 py-2 text-[13px] font-medium transition-colors",
+                    "relative px-2 py-2 text-[13px] font-medium transition-colors",
                     active ? "text-brand" : "text-charcoal/75 hover:text-brand",
                   )}
                 >
@@ -136,10 +136,7 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Link href="/products#product-search" aria-label="Search products" className="hidden h-10 items-center gap-2 px-2 text-sm text-charcoal/70 transition-colors hover:text-brand md:inline-flex">
-              <Search className="h-4 w-4" aria-hidden="true" />
-              <span className="sr-only xl:not-sr-only">Search</span>
-            </Link>
+            
             <Link href="/contact?enquiry=quote" className="btn-primary hidden min-h-[38px] px-3 text-xs sm:inline-flex">
               Request a Quote
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
@@ -150,7 +147,7 @@ export function Navbar() {
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
               onClick={() => setMobileOpen((value) => !value)}
-              className="grid h-10 w-10 place-items-center border border-line text-charcoal transition-colors hover:border-brand hover:text-brand lg:hidden"
+              className="grid h-10 w-10 place-items-center border border-line text-charcoal transition-colors hover:border-brand hover:text-brand xl:hidden"
             >
               {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -166,11 +163,11 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden border-t border-line bg-white lg:hidden"
+            className="overflow-hidden border-t border-line bg-white xl:hidden"
           >
-            <div className="container-page max-h-[calc(100vh-104px)] overflow-y-auto py-4">
+            <div className="container-page max-h-[calc(100vh-118px)] overflow-y-auto py-4">
               {navItems.map((item) => {
-                const active = isActive(pathname, item.href);
+                const active = isActive(pathname, item.href) || Boolean(item.children?.some((child) => isActive(pathname, child.href.split("?")[0])));
                 return (
                   <div key={item.label} className="border-b border-line last:border-0">
                     <div className="flex items-center justify-between">
@@ -228,9 +225,7 @@ export function Navbar() {
                   </div>
                 );
               })}
-              <Link href="/products#product-search" onClick={() => setMobileOpen(false)} className="mt-4 inline-flex items-center gap-2 py-2 text-sm font-semibold text-brand">
-                <Search className="h-4 w-4" aria-hidden="true" />Search products
-              </Link>
+           
               <Link href="/contact?enquiry=quote" className="btn-primary mt-5 w-full">
                 Request a Quote
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />

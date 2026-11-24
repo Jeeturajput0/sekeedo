@@ -36,48 +36,40 @@ export function WhySekeedo() {
     <section className="bg-white py-5 lg:py-10">
       <div className="container-page grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <FadeIn>
-            <span className="eyebrow">Why SEKEEDO</span>
-          </FadeIn>
-          <div className="mt-5">
-            <TextReveal
-              as="h2"
-              text="A partner your procurement team can rely on."
-              className="section-title"
-            />
-          </div>
-          <FadeIn delay={0.1}>
-            <p className="section-lead">
-              We keep the focus on practical value: dependable products, clear communication and a
-              wholesale process built around business buyers.
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.15}>
-            <Link href="/about" className="btn-link mt-8">
-              About SEKEEDO
-              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </FadeIn>
+         
+<FadeIn delay={0.2} className="mt-7">
+  <ImageReveal className="group relative h-[520px] w-full overflow-hidden rounded-lg bg-charcoal sm:h-[600px] lg:h-[680px]">
+    <Image
+      src="/images/ind-construction-wide.webp"
+      alt="Industrial safety footwear at a construction workplace"
+      fill
+      sizes="(max-width: 1024px) 100vw, 45vw"
+      className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+    />
 
-          <FadeIn delay={0.2} className="mt-7">
-            <ImageReveal className="relative aspect-[3/2] w-full rounded-md bg-paper">
-              <Image
-                src="/images/ind-construction-wide.webp"
-                alt="Safety footwear on an active construction site"
-                fill
-                sizes="(max-width: 1024px) 100vw, 38vw"
-                className="object-cover object-center"
-              />
-              <ShoeSprite
-                position={0}
-                className="absolute left-1/2 top-1/2 aspect-square h-[100%] -translate-x-1/2 -translate-y-1/2 mix-blend-multiply"
-              />
-              <div
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent"
-                aria-hidden="true"
-              />
-            </ImageReveal>
-          </FadeIn>
+    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+    <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-brand">
+        SEKEEDO / Our Commitment
+      </span>
+
+      <h3 className="mt-3 max-w-md text-3xl font-bold leading-tight text-white">
+        Supporting Every Step of Your Workforce.
+      </h3>
+
+      <p className="mt-3 max-w-sm text-sm leading-7 text-white/80">
+        Reliable industrial footwear solutions for businesses,
+        professionals and demanding workplaces.
+      </p>
+
+      <Link href="/industries" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-brand">
+        Explore Industries <ArrowUpRight className="h-4 w-4" />
+      </Link>
+    </div>
+  </ImageReveal>
+</FadeIn>
+
         </div>
 
         <Stagger className="border-t border-line">

@@ -28,6 +28,8 @@ type ProductCardProps = {
   index?: number;
   added?: boolean;
   onToggleEnquiry?: () => void;
+  /** Show the size selector. Hidden on home page cards by default caller. */
+  showSizeSelector?: boolean;
 };
 
 function FeatureIcon({ feature }: { feature: string }) {
@@ -47,6 +49,7 @@ export function ProductCard({
   index = 0,
   added = false,
   onToggleEnquiry,
+  showSizeSelector = true,
 }: ProductCardProps) {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [localWishlisted, setLocalWishlisted] = useState(false);
@@ -231,45 +234,49 @@ export function ProductCard({
         ) : null}
 
         <div className="mt-auto pt-4">
-          <div className="flex items-center justify-between gap-2">
-            <span className="text-[13px] font-bold text-charcoal">Select Size</span>
-            <span className="text-[11px] text-[#737373]" aria-live="polite">
-              {availableCount} of {sizes.length} sizes
-            </span>
-          </div>
+          {showSizeSelector ? (
+            <>
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-[13px] font-bold text-charcoal">Select Size</span>
+                <span className="text-[11px] text-[#737373]" aria-live="polite">
+                  {availableCount} of {sizes.length} sizes
+                </span>
+              </div>
 
-          <div
-            role="group"
-            aria-label={`Select size for ${product.name}`}
-            className="mt-2 grid grid-cols-7 gap-1.5"
-          >
-            {sizes.map((size) => {
-              const available = isAvailable(size);
-              const selected = selectedSize === size;
-              return (
-                <motion.button
-                  key={size}
-                  type="button"
-                  whileTap={available ? { scale: 0.94 } : undefined}
-                  disabled={!available}
-                  aria-pressed={selected}
-                  onClick={() =>
-                    setSelectedSize((current) => (current === size ? null : size))
-                  }
-                  className={cn(
-                    "grid h-9 min-w-0 place-items-center rounded-md border text-[12px] font-semibold transition-colors duration-200",
-                    selected
-                      ? "border-brand bg-brand text-white"
-                      : available
-                        ? "border-line bg-white text-charcoal hover:border-brand hover:text-brand"
-                        : "cursor-not-allowed border-line bg-[#F7F7F7] text-[#B8B8B8]",
-                  )}
-                >
-                  {size}
-                </motion.button>
-              );
-            })}
-          </div>
+              <div
+                role="group"
+                aria-label={`Select size for ${product.name}`}
+                className="mt-2 grid grid-cols-7 gap-1.5"
+              >
+                {sizes.map((size) => {
+                  const available = isAvailable(size);
+                  const selected = selectedSize === size;
+                  return (
+                    <motion.button
+                      key={size}
+                      type="button"
+                      whileTap={available ? { scale: 0.94 } : undefined}
+                      disabled={!available}
+                      aria-pressed={selected}
+                      onClick={() =>
+                        setSelectedSize((current) => (current === size ? null : size))
+                      }
+                      className={cn(
+                        "grid h-9 min-w-0 place-items-center rounded-md border text-[12px] font-semibold transition-colors duration-200",
+                        selected
+                          ? "border-brand bg-brand text-white"
+                          : available
+                            ? "border-line bg-white text-charcoal hover:border-brand hover:text-brand"
+                            : "cursor-not-allowed border-line bg-[#F7F7F7] text-[#B8B8B8]",
+                      )}
+                    >
+                      {size}
+                    </motion.button>
+                  );
+                })}
+              </div>
+            </>
+          ) : null}
 
           <Link
             href={quoteHref}
