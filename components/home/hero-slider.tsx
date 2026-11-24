@@ -3,10 +3,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { MagneticButton } from "@/components/animation/magnetic-button";
+
+const SafetyShoeScene = dynamic(() => import("@/components/three/safety-shoe-scene"), { ssr: false, loading: () => null });
 
 const slides = [
   {
@@ -141,11 +145,13 @@ export function HeroSlider() {
         aria-hidden="true"
       />
 
+      {active === 0 ? <div className="pointer-events-auto absolute inset-y-0 right-0 z-[1] hidden w-[74%] sm:block sm:w-[69%]" aria-hidden="true"><SafetyShoeScene interactive={!reduceMotion} /></div> : null}
+
       <button type="button" onClick={() => goTo(active - 1)} aria-label="Previous slide" className="absolute left-4 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/35 bg-black/30 text-white backdrop-blur-sm transition hover:border-brand hover:bg-brand focus-visible:opacity-100 sm:grid"><ChevronLeft className="h-5 w-5" /></button>
       <button type="button" onClick={() => goTo(active + 1)} aria-label="Next slide" className="absolute right-4 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/35 bg-black/30 text-white backdrop-blur-sm transition hover:border-brand hover:bg-brand focus-visible:opacity-100 sm:grid"><ChevronRight className="h-5 w-5" /></button>
 
       {/* Slide Content */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-10">
         {slides.map((slide, index) => {
           const isActive = index === active;
 
@@ -185,20 +191,8 @@ export function HeroSlider() {
                   </p>
 
                   <div className="mt-5 flex flex-wrap gap-3">
-                    <Link
-                      href={slide.primary.href}
-                      className="btn-primary min-h-[42px]"
-                    >
-                      {slide.primary.label}
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-
-                    <Link
-                      href={slide.secondary.href}
-                      className="btn-ghost-light min-h-[42px]"
-                    >
-                      {slide.secondary.label}
-                    </Link>
+                    <MagneticButton><Link href={slide.primary.href} className="btn-primary min-h-[42px]">{slide.primary.label}<ArrowRight className="h-4 w-4" /></Link></MagneticButton>
+                    <MagneticButton><Link href={slide.secondary.href} className="btn-ghost-light min-h-[42px]">{slide.secondary.label}</Link></MagneticButton>
                   </div>
                 </div>
               </div>

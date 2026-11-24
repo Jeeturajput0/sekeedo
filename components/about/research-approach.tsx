@@ -10,6 +10,7 @@ import {
 import {
   FadeIn,
   ImageReveal,
+  Parallax,
   TextReveal,
 } from "@/components/motion/reveal";
 
@@ -52,13 +53,15 @@ export function ResearchApproach() {
 
               {/* Image */}
               <ImageReveal className="relative aspect-[5/4] w-full overflow-hidden rounded-2xl bg-[#17221C] shadow-xl">
-                <Image
-                  src="/images/technology-detail.jpg"
-                  alt="Engineer reviewing product testing and development data"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 52vw"
-                  className="object-cover object-center transition-transform duration-700 hover:scale-105"
-                />
+                <Parallax className="absolute inset-[-7%]" strength={3}>
+                  <Image
+                    src="/images/technology-detail.jpg"
+                    alt="Engineer reviewing product testing and development data"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 52vw"
+                    className="object-cover object-center transition-transform duration-700 hover:scale-105"
+                  />
+                </Parallax>
               </ImageReveal>
 
               {/* Image Bottom Gradient */}

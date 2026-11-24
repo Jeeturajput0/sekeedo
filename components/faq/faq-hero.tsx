@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { SlideIn } from "@/components/motion/reveal";
 
 export function FaqHero() {
   return (
@@ -25,7 +26,10 @@ export function FaqHero() {
         aria-hidden="true"
       />
 
-      <div className="container-page relative flex min-h-[290px] flex-col justify-center py-8 lg:min-h-[215px] lg:py-6">
+      <SlideIn
+        direction="left"
+        className="container-page relative flex min-h-[290px] flex-col justify-center py-8 lg:min-h-[215px] lg:py-6"
+      >
         <nav aria-label="Breadcrumb" className="mb-5 flex items-center gap-2 text-[11px]">
           <Link href="/" className="text-white/55 transition-colors hover:text-brand">
             Home
@@ -46,7 +50,7 @@ export function FaqHero() {
           Get quick answers to common questions about our safety footwear,
           standards, workplace use, care and ordering process.
         </p>
-      </div>
+      </SlideIn>
     </section>
   );
 }

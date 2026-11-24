@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Quote, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { TiltCard } from "@/components/animation/tilt-card";
 
 const testimonials = [
   {
@@ -88,7 +89,8 @@ export function AboutTestimonials() {
               footwear.
             </p>
 
-          <article tabIndex={0} role="group" aria-roledescription="slide" aria-label={`Testimonial ${active + 1} of ${testimonials.length}`} onKeyDown={(event) => { if (event.key === "ArrowLeft") move(-1); if (event.key === "ArrowRight") move(1); }} onTouchStart={(event) => { touchStartX.current = event.touches[0]?.clientX ?? null; }} onTouchEnd={(event) => { const start = touchStartX.current; const end = event.changedTouches[0]?.clientX; if (start !== null && end !== undefined && Math.abs(end - start) > 48) move(end < start ? 1 : -1); touchStartX.current = null; }} className="mt-6 rounded-[1.4rem] bg-white p-5 text-charcoal shadow-[0_20px_55px_rgba(0,0,0,0.22)] outline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ff8500] sm:mt-8 sm:p-7 lg:p-8">
+          <TiltCard className="mt-6 rounded-[1.4rem] sm:mt-8" tilt={2}>
+          <article tabIndex={0} role="group" aria-roledescription="slide" aria-label={`Testimonial ${active + 1} of ${testimonials.length}`} onKeyDown={(event) => { if (event.key === "ArrowLeft") move(-1); if (event.key === "ArrowRight") move(1); }} onTouchStart={(event) => { touchStartX.current = event.touches[0]?.clientX ?? null; }} onTouchEnd={(event) => { const start = touchStartX.current; const end = event.changedTouches[0]?.clientX; if (start !== null && end !== undefined && Math.abs(end - start) > 48) move(end < start ? 1 : -1); touchStartX.current = null; }} className="rounded-[1.4rem] bg-white p-5 text-charcoal shadow-[0_20px_55px_rgba(0,0,0,0.22)] outline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#ff8500] sm:p-7 lg:p-8">
               <div className="flex items-center justify-between gap-3">
                 <Quote
                   className="h-10 w-10 fill-[#ffb17c] text-[#ffb17c] sm:h-12 sm:w-12"
@@ -162,6 +164,7 @@ export function AboutTestimonials() {
                 ))}
               </div>
             </article>
+          </TiltCard>
             <p className="mt-3 text-center text-[10px] text-white/55">
               Customer feedback shown is illustrative. Replace with verified
               testimonials before publication.

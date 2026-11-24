@@ -26,20 +26,7 @@ export default function TechnologyPage() {
       <SelectionGuide />
       <TechnologyCompliance />
 
-      <CtaSection
-        title={
-          <>
-            Looking for Safety Footwear <span className="text-[#ff6a00]">in Bulk?</span>
-          </>
-        }
-        text="Share your requirement, expected quantity and location. Our team will respond with the right product details and commercial proposal."
-        primaryLabel="Request a Quote"
-        primaryHref="/contact?enquiry=bulk"
-        secondaryLabel="Contact Our Team"
-        secondaryHref="/contact"
-        image="/images/hero-safety-shoe.jpg"
-        imageAlt="Premium industrial safety footwear"
-      />
+   
     </>
   );
 }

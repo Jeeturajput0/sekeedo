@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import type { BlogArticle, BlogCategory } from "@/lib/data/blog";
 import { TiltCard } from "@/components/animation/tilt-card";
+import { SlideIn } from "@/components/motion/reveal";
 
 const pillars = [
   {
@@ -111,6 +112,7 @@ export function BlogHub({
       <section className="bg-white pb-5 pt-5">
         <div className="container-page">
          
+          <SlideIn direction="left">
           <div className="grid items-center gap-7 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12 lg:pb-9">
             <div>
               <span className="eyebrow text-charcoal">SEKEEDO Insights</span>
@@ -140,8 +142,10 @@ export function BlogHub({
               </div>
             </div>
           </div>
+          </SlideIn>
         </div>
         <div className="container-page mt-7 lg:pb-9">
+          <SlideIn direction="right">
           <div className="grid gap-1 rounded-xl bg-[#f7f7f7] px-2 py-2 sm:grid-cols-2 lg:grid-cols-4 lg:px-3">
             {pillars.map(({ title, text, Icon }, index) => (
               <div
@@ -160,6 +164,7 @@ export function BlogHub({
               </div>
             ))}
           </div>
+          </SlideIn>
         </div>
       </section>
 
@@ -214,6 +219,7 @@ export function BlogHub({
           </div>
 
           {featuredMatches ? (
+            <SlideIn direction="left">
             <article className="mt-4 grid overflow-hidden rounded-xl border border-line bg-[#fff7f2] shadow-[0_3px_12px_rgba(0,0,0,0.04)] md:grid-cols-[1.2fr_0.9fr]">
               <Link
                 href={`/blog/${featured.slug}`}
@@ -265,12 +271,19 @@ export function BlogHub({
                 </Link>
               </div>
             </article>
+            </SlideIn>
           ) : null}
 
           {visibleArticles.length ? (
             <div className="my-5 grid gap-5 pt-2 sm:grid-cols-2 lg:grid-cols-3">
-              {visibleArticles.map((article) => (
-                <TiltCard key={article.slug} className="h-full">
+              {visibleArticles.map((article, index) => (
+                <SlideIn
+                  key={article.slug}
+                  direction="right"
+                  delay={index * 0.06}
+                  className="h-full"
+                >
+                <TiltCard className="h-full">
                 <article className="group h-full overflow-hidden rounded-xl border border-[#e9e9e9] bg-white shadow-[0_3px_12px_rgba(0,0,0,0.045)] transition-all hover:shadow-[0_12px_25px_rgba(0,0,0,0.09)]">
                   <Link
                     href={`/blog/${article.slug}`}
@@ -320,6 +333,7 @@ export function BlogHub({
                   </div>
                 </article>
                 </TiltCard>
+                </SlideIn>
               ))}
             </div>
           ) : !featuredMatches ? (
@@ -335,6 +349,7 @@ export function BlogHub({
           ) : null}
 
           {pageCount > 1 ? (
+            <SlideIn direction="left">
             <nav
               aria-label="Blog pages"
               className="mt-7 flex items-center justify-center gap-2"
@@ -373,6 +388,7 @@ export function BlogHub({
                 <ArrowRight className="h-4 w-4" />
               </button>
             </nav>
+            </SlideIn>
           ) : null}
         </div>
       </section>

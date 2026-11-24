@@ -130,6 +130,52 @@ export function FadeIn({ children, className, delay = 0, y = 26 }: FadeInProps) 
   );
 }
 
+type SlideInProps = {
+  children: ReactNode;
+  /** "left" enters from the left and moves right; "right" enters from the right and moves left. */
+  direction?: "left" | "right";
+  className?: string;
+  delay?: number;
+  distance?: number;
+};
+
+/** Horizontal reveal used for alternating section entrances. */
+export function SlideIn({
+  children,
+  direction = "left",
+  className,
+  delay = 0,
+  distance = 60,
+}: SlideInProps) {
+  const root = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (!root.current || prefersReducedMotion()) return;
+    const { gsap } = getGsap();
+    const context = gsap.context(() => {
+      gsap.fromTo(
+        root.current,
+        { opacity: 0, x: direction === "left" ? -distance : distance },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.9,
+          delay,
+          ease: "power3.out",
+          scrollTrigger: { trigger: root.current, start: "top 90%", once: true },
+        },
+      );
+    }, root);
+    return () => context.revert();
+  }, [direction, delay, distance]);
+
+  return (
+    <div ref={root} className={cn("relative", className)}>
+      {children}
+    </div>
+  );
+}
+
 type StaggerProps = {
   children: ReactNode;
   className?: string;

@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 
 import { FadeIn } from "@/components/motion/reveal";
+import { useReducedMotion } from "framer-motion";
 
 const stats = [
   { icon: Factory, value: 10, suffix: "+", label: "Industries Served" },
@@ -28,13 +29,16 @@ function CountUp({
   active: boolean;
 }) {
   const [count, setCount] = useState(0);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (!active) return;
+    if (reduceMotion) return;
 
     const duration = 1800;
     const startTime = performance.now();
 
+    let animationFrame = 0;
     const animate = (currentTime: number) => {
       const progress = Math.min(
         (currentTime - startTime) / duration,
@@ -47,20 +51,20 @@ function CountUp({
       setCount(Math.floor(easedProgress * value));
 
       if (progress < 1) {
-        requestAnimationFrame(animate);
+        animationFrame = requestAnimationFrame(animate);
       } else {
         setCount(value);
       }
     };
 
-    const animationFrame = requestAnimationFrame(animate);
+    animationFrame = requestAnimationFrame(animate);
 
     return () => cancelAnimationFrame(animationFrame);
-  }, [active, value]);
+  }, [active, value, reduceMotion]);
 
   return (
     <>
-      {count}
+      {reduceMotion && active ? value : count}
       {suffix}
     </>
   );

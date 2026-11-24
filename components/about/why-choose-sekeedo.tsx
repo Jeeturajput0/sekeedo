@@ -12,6 +12,7 @@ import {
   TextReveal,
   Stagger,
 } from "@/components/motion/reveal";
+import { TiltCard } from "@/components/animation/tilt-card";
 
 const features = [
   {
@@ -83,10 +84,10 @@ export function WhyChooseSekeedo() {
             const Icon = feature.icon;
 
             return (
+              <TiltCard key={feature.number} className="h-full">
               <article
-                key={feature.number}
                 data-stagger
-                className="group relative flex gap-4 overflow-hidden border border-line bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-[0_8px_28px_rgba(0,0,0,0.06)] sm:p-5"
+                className="group relative flex h-full gap-4 overflow-hidden border border-line bg-white p-4 transition-all duration-300 hover:border-brand/40 hover:shadow-[0_8px_28px_rgba(0,0,0,0.06)] sm:p-5"
               >
 
                 {/* ICON */}
@@ -121,6 +122,7 @@ export function WhyChooseSekeedo() {
                 <ArrowUpRight className="absolute bottom-3 right-3 h-3.5 w-3.5 text-brand opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
 
               </article>
+              </TiltCard>
             );
           })}
 
