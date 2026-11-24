@@ -1,6 +1,8 @@
+
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+
 import { FadeIn, ImageReveal } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
 import { ShoeSprite } from "@/components/products/shoe-sprite";
@@ -28,48 +30,126 @@ export function CtaSection({
   imageAlt,
   className,
 }: CtaSectionProps) {
+  const isShoeSprite = image === "/images/cta-workforce.webp";
+
   return (
-    <section className={cn("bg-forest text-white", className)}>
-      <div className="container-page grid items-center gap-10 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:py-24">
+    <section
+      className={cn(
+        "relative isolate overflow-hidden bg-[#111] text-white",
+        className
+      )}
+    >
+      {/* Background lighting */}
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_45%,rgba(255,255,255,0.11),transparent_40%),linear-gradient(110deg,#111,#1d1d1d_58%,#101010)]"
+        aria-hidden="true"
+      />
+
+      {/* Orange decorative stripe */}
+      <div
+        className="absolute right-[12%] top-0 hidden h-full w-20 skew-x-[-28deg] bg-[#ff6a00] lg:block"
+        aria-hidden="true"
+      />
+
+      {/* Main Content */}
+      <div className="container-page relative grid items-center gap-7 py-12 sm:py-16 lg:min-h-[310px] lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
+
+        {/* Left Content */}
         <div className="relative z-10">
           <FadeIn>
-            <span className="eyebrow">Let&apos;s talk business</span>
+            <span className="eyebrow text-[#ff6a00]">
+              Let&apos;s Talk Business
+            </span>
           </FadeIn>
+
           <FadeIn delay={0.05}>
-            <h2 className="mt-5 max-w-2xl text-[clamp(2.1rem,4.4vw,3.6rem)] font-semibold leading-[1.08] tracking-[-0.045em]">
+            <h2 className="mt-4 max-w-xl text-[clamp(2.2rem,4.2vw,3.4rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-white">
               {title}
             </h2>
           </FadeIn>
+
           <FadeIn delay={0.1}>
-            <p className="mt-6 max-w-xl text-base leading-8 text-white/65">{text}</p>
+            <p className="mt-4 max-w-lg text-sm leading-6 text-white/80 sm:text-base">
+              {text}
+            </p>
           </FadeIn>
+
+          {/* CTA Buttons */}
           <FadeIn delay={0.15}>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Link href={primaryHref} className="btn-primary">
+            <div className="mt-6 flex flex-wrap gap-3">
+
+              <Link
+                href={primaryHref}
+                className="inline-flex min-h-12 items-center justify-center gap-2 bg-[#F4512C] px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#df3e1e] hover:shadow-lg hover:shadow-orange-500/20"
+              >
                 {primaryLabel}
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                <ArrowUpRight
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
               </Link>
-              <Link href={secondaryHref} className="btn-light">
+
+              <Link
+                href={secondaryHref}
+                className="inline-flex min-h-12 items-center justify-center gap-2 border border-white/40 bg-white px-5 py-3 text-sm font-semibold text-[#171717] transition-all duration-300 hover:border-white hover:bg-[#F4512C] hover:text-white"
+              >
                 {secondaryLabel}
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                <ArrowUpRight
+                  className="h-4 w-4"
+                  aria-hidden="true"
+                />
               </Link>
+
             </div>
           </FadeIn>
         </div>
-        {image ? (
-          <ImageReveal className="relative h-[280px] w-full lg:h-[380px]" delay={0.1}>
-            {image === "/images/cta-workforce.webp" ? <ShoeSprite position={3} className="absolute inset-0" /> : <Image src={image} alt={imageAlt ?? "Industrial workforce"} fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover" />}
-            <div className="absolute inset-0 bg-forest/25" aria-hidden="true" />
-          </ImageReveal>
-        ) : (
-          <div className="hidden lg:block" aria-hidden="true">
-            <div className="ml-auto grid h-64 w-64 grid-cols-3 gap-2 opacity-25">
-              {Array.from({ length: 9 }).map((_, index) => (
-                <span key={index} className="border border-white/40" />
-              ))}
+
+        {/* Right Product Image */}
+        <div className="relative h-[200px] sm:h-[290px] lg:absolute lg:inset-y-0 lg:right-8 lg:h-auto lg:w-[48%]">
+
+          {image ? (
+            <ImageReveal
+              className="relative h-full w-full"
+              delay={0.1}
+            >
+              {isShoeSprite ? (
+                <ShoeSprite
+                  position={3}
+                  className="absolute inset-0"
+                />
+              ) : (
+                <Image
+                  src={image}
+                  alt={imageAlt ?? "SEKEEDO industrial safety footwear"}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 48vw"
+                  className="object-contain object-center mix-blend-lighten"
+                />
+              )}
+
+              {/* Bottom Image Gradient */}
+              <div
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#111] to-transparent"
+                aria-hidden="true"
+              />
+            </ImageReveal>
+          ) : (
+            <div
+              className="hidden h-full items-center justify-end lg:flex"
+              aria-hidden="true"
+            >
+              <div className="grid h-64 w-64 grid-cols-3 gap-2 opacity-25">
+                {Array.from({ length: 9 }).map((_, index) => (
+                  <span
+                    key={index}
+                    className="border border-white/40"
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+
+        </div>
       </div>
     </section>
   );

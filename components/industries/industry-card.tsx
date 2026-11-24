@@ -10,7 +10,11 @@ type IndustryCardProps = {
   featured?: boolean;
 };
 
-export function IndustryCard({ industry, index, featured = false }: IndustryCardProps) {
+export function IndustryCard({
+  industry,
+  index,
+  featured = false,
+}: IndustryCardProps) {
   return (
     <article
       data-stagger
@@ -21,17 +25,27 @@ export function IndustryCard({ industry, index, featured = false }: IndustryCard
     >
       <Link
         href={`/industries/${industry.slug}`}
-        className={cn("relative block overflow-hidden", featured ? "aspect-[16/9]" : "aspect-[16/10]")}
+        className={cn(
+          "relative block overflow-hidden",
+          featured ? "aspect-[16/9]" : "aspect-[16/10]",
+        )}
         aria-label={`Explore ${industry.name}`}
       >
         <Image
           src={industry.image}
           alt={industry.imageAlt}
           fill
-          sizes={featured ? "(max-width: 1024px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
+          sizes={
+            featured
+              ? "(max-width: 1024px) 100vw, 66vw"
+              : "(max-width: 768px) 100vw, 33vw"
+          }
           className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" aria-hidden="true" />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent"
+          aria-hidden="true"
+        />
         <span className="absolute left-4 top-4 bg-white/90 px-2.5 py-1.5 text-[10px] font-semibold tracking-[0.14em] text-charcoal">
           {String(index + 1).padStart(2, "0")} / Sector
         </span>
@@ -39,11 +53,16 @@ export function IndustryCard({ industry, index, featured = false }: IndustryCard
 
       <div className="flex flex-1 flex-col p-6">
         <h3 className="text-lg font-semibold tracking-[-0.02em] text-charcoal">
-          <Link href={`/industries/${industry.slug}`} className="transition-colors hover:text-brand">
+          <Link
+            href={`/industries/${industry.slug}`}
+            className="transition-colors hover:text-brand"
+          >
             {industry.name}
           </Link>
         </h3>
-        <p className="mt-2 text-sm leading-6 text-muted">{industry.description}</p>
+        <p className="mt-2 text-sm leading-6 text-muted">
+          {industry.description}
+        </p>
 
         <dl className="mt-5 space-y-4">
           <div>
@@ -52,7 +71,10 @@ export function IndustryCard({ industry, index, featured = false }: IndustryCard
             </dt>
             <dd className="mt-2 flex flex-wrap gap-1.5">
               {industry.hazards.map((hazard) => (
-                <span key={hazard} className="bg-paper px-2.5 py-1 text-[11px] text-charcoal/70">
+                <span
+                  key={hazard}
+                  className="bg-paper px-2.5 py-1 text-[11px] text-charcoal/70"
+                >
                   {hazard}
                 </span>
               ))}

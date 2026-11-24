@@ -49,7 +49,7 @@ export function Navbar() {
           )}
         >
           <Link href="/" aria-label="Home" className="flex items-center gap-2px-1">
-            <Image src="/images/logo/logo.png" alt="SEKEEDO Safety Footwear" width={2000} height={556} priority className=" h-45 w-43 object-contain invert hue-rotate-180" />
+            <Image src="/images/logo/logo.png" alt="SEKEEDO Safety Footwear" width={2000} height={556} priority className="h-9 w-auto object-contain invert hue-rotate-180 sm:h-10" />
           </Link>
 
           <div className="hidden items-center gap-1 lg:flex">

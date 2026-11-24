@@ -83,8 +83,8 @@ export function DistributorForm() {
           Partnership enquiry received
         </h3>
         <p className="mt-3 max-w-lg text-sm leading-7 text-muted">
-          Your demo reference is <span className="font-semibold text-charcoal">{reference}</span>.
-          Connect the backend integration to deliver distributor enquiries to the SEKEEDO team.
+          Your enquiry reference is <span className="font-semibold text-charcoal">{reference}</span>.
+          Our team has received your partnership enquiry and will follow up using your contact details.
         </p>
         <button type="button" onClick={() => setReference(null)} className="btn-outline mt-7">
           Submit another enquiry

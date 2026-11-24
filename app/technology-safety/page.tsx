@@ -215,12 +215,15 @@ export default function TechnologyPage() {
       </section>
 
       <CtaSection
-        title="Need help specifying footwear?"
-        text="Share your workplace hazards and requirements with the SEKEEDO team. We can help you shortlist options and request verified documentation."
-        primaryLabel="Request Guidance"
-        image="/images/about-factory.webp"
-        imageAlt="Manufacturing team on a production floor"
-      />
+  title="Need help specifying footwear?"
+  text="Share your workplace hazards and requirements with the SEKEEDO team. We can help you shortlist options and request verified documentation."
+  primaryLabel="Request Guidance"
+  primaryHref="/contact?enquiry=technical"
+  secondaryLabel="Explore Products"
+  secondaryHref="/products"
+  image="/images/cta-workforce.webp"
+  imageAlt="SEKEEDO industrial safety footwear"
+/>
     </>
   );
 }

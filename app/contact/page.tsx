@@ -1,114 +1,32 @@
 import { Suspense } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowUpRight, Clock3, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
-import { PageHero } from "@/components/ui/page-hero";
-import { SectionHeading } from "@/components/ui/section-heading";
+import {
+  ArrowRight, Box, Clock3, FileText, Handshake, Headphones,
+  Mail, MapPin, MessageCircle, Phone, Users,
+} from "lucide-react";
 import { ContactForm } from "@/components/forms/contact-form";
-import { CtaSection } from "@/components/ui/cta-section";
 import { FadeIn, Stagger } from "@/components/motion/reveal";
 import { siteConfig } from "@/lib/data/site";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createMetadata({
   title: "Contact Us",
-  description:
-    "Contact SEKEEDO for bulk orders, wholesale supply, distributor partnerships and general business enquiries.",
+  description: "Contact SEKEEDO for bulk orders, wholesale supply, distributor partnerships and general business enquiries.",
   path: "/contact",
-  image: "/images/cta-workforce.webp",
+  image: "/images/hero-worker.webp",
 });
 
 const enquiryCards = [
-  {
-    title: "Bulk enquiries",
-    text: "Share quantities, categories and delivery details for a workforce quotation.",
-    href: "/contact?enquiry=bulk",
-    label: "Start bulk enquiry",
-  },
-  {
-    title: "Distributor enquiries",
-    text: "Explore a partnership with SEKEEDO and request current information.",
-    href: "/become-a-distributor",
-    label: "Partnership details",
-  },
-  {
-    title: "General enquiries",
-    text: "Ask about products, documentation, availability or company information.",
-    href: "/contact?enquiry=general",
-    label: "Send a message",
-  },
+  { title: "Bulk Enquiries", text: "Need safety footwear for your team, site or multiple locations?", href: "/contact?enquiry=bulk", label: "Enquire for Bulk Supply", Icon: Box },
+  { title: "Distributor Enquiries", text: "Interested in partnering with SEKEEDO as a distributor or reseller?", href: "/become-a-distributor", label: "Partner with Us", Icon: Users },
+  { title: "General Enquiries", text: "For product details, documentation, certification or any other information.", href: "#contact-form", label: "Send a Message", Icon: Headphones },
 ];
 
-async function ContactFormSection({
-  searchParams,
-}: {
-  searchParams: Promise<{ enquiry?: string; products?: string }>;
-}) {
+async function ContactFormFields({ searchParams }: { searchParams: Promise<{ enquiry?: string; products?: string }> }) {
   const { enquiry, products } = await searchParams;
-
-  return (
-    <section className="bg-paper py-20 lg:py-28" id="contact-form">
-      <div className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-        <div>
-          <FadeIn>
-            <span className="eyebrow">Business contact</span>
-          </FadeIn>
-          <div className="mt-5">
-            <h1 className="text-[clamp(2rem,4vw,3.5rem)] font-semibold leading-[1.08] tracking-[-0.045em] text-charcoal">
-              Send us an enquiry.
-            </h1>
-          </div>
-          <FadeIn delay={0.1}>
-            <p className="section-lead">
-              Fill in the form and our team will respond with the relevant next steps. For faster
-              assistance, include quantities, product categories and your location.
-            </p>
-          </FadeIn>
-
-          <FadeIn delay={0.15}>
-            <div className="mt-9 space-y-5 border-t border-line pt-7">
-              <a
-                href={`mailto:${siteConfig.contact.email}`}
-                className="flex items-start gap-3 text-sm text-charcoal/75 transition-colors hover:text-brand"
-              >
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
-                {siteConfig.contact.email}
-              </a>
-              <p className="flex items-start gap-3 text-sm text-charcoal/75">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
-                {siteConfig.contact.phone}
-              </p>
-              <p className="flex items-start gap-3 text-sm text-charcoal/75">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
-                {siteConfig.contact.address}, {siteConfig.contact.city}
-              </p>
-              <p className="flex items-start gap-3 text-sm text-charcoal/75">
-                <Clock3 className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
-                {siteConfig.contact.hours}
-              </p>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.2}>
-            <a
-              href={siteConfig.contact.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary mt-8"
-            >
-              <MessageCircle className="h-4 w-4" aria-hidden="true" />
-              Chat on WhatsApp
-            </a>
-          </FadeIn>
-        </div>
-
-        <FadeIn delay={0.1}>
-          <div className="border border-line bg-white p-6 sm:p-9">
-            <ContactForm initialEnquiry={enquiry} initialProducts={products} />
-          </div>
-        </FadeIn>
-      </div>
-    </section>
-  );
+  return <ContactForm initialEnquiry={enquiry} initialProducts={products} />;
 }
 
 export default function ContactPage({
@@ -118,82 +36,115 @@ export default function ContactPage({
 }) {
   return (
     <>
-      <PageHero
-        eyebrow="Contact Us"
-        title="Let's discuss your requirement."
-        description="Reach the SEKEEDO team for business enquiries, wholesale supply, certification documentation and distributor opportunities."
-        image="/images/cta-workforce.webp"
-        imageAlt="Worker tying safety footwear before a shift"
-        breadcrumb="Contact"
-      />
-
-      <section className="bg-white py-16 lg:py-20">
-        <div className="container-page">
-          <Stagger className="grid gap-px bg-line sm:grid-cols-3">
-            {enquiryCards.map((card) => (
-              <div key={card.title} data-stagger className="bg-white p-7 sm:p-8">
-                <h2 className="text-base font-semibold text-charcoal">{card.title}</h2>
-                <p className="mt-3 text-sm leading-6 text-muted">{card.text}</p>
-                <a href={card.href} className="btn-link mt-5">
-                  {card.label}
-                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                </a>
+      <section className="bg-white">
+        <div className="container-page grid items-center gap-8 py-8 sm:py-10 lg:grid-cols-[0.94fr_1.06fr] lg:gap-12 lg:py-12">
+          <div className="order-2 lg:order-1">
+            <nav aria-label="Breadcrumb" className="mb-7 flex items-center gap-2 text-xs text-muted">
+              <Link href="/" className="hover:text-brand">Home</Link><span aria-hidden="true">›</span><span className="text-charcoal">Contact</span>
+            </nav>
+            <FadeIn>
+              <span className="eyebrow text-charcoal">Contact Us</span>
+              <h1 className="mt-5 max-w-xl text-[clamp(2.6rem,5vw,4.25rem)] font-semibold leading-[1.02] tracking-[-0.055em] text-charcoal">
+                Let&apos;s discuss<br />your <span className="text-brand">requirement.</span>
+              </h1>
+              <p className="mt-5 max-w-xl text-sm leading-6 text-muted sm:text-base sm:leading-7">
+                Reach the SEKEEDO team for product enquiries, wholesale supply, distribution opportunities and other business requirements.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link href="#contact-form" className="btn-primary"><MessageCircle className="h-4 w-4" />Start an Enquiry<ArrowRight className="h-4 w-4" /></Link>
+                <Link href="/products" className="btn-outline"><FileText className="h-4 w-4" />Explore Catalogue</Link>
               </div>
+            </FadeIn>
+          </div>
+          <FadeIn className="order-1 lg:order-2" y={18}>
+            <div className="relative mx-2 mb-2 mt-1 sm:mx-4 lg:mx-0">
+              <div className="absolute -bottom-2 -right-2 h-full w-full rounded-[1.25rem] bg-brand" aria-hidden="true" />
+              <div className="relative h-[250px] overflow-hidden rounded-[1.25rem] sm:h-[350px] lg:h-[330px] xl:h-[390px]">
+                <Image src="/images/hero-worker.webp" alt="Worker preparing industrial safety footwear before a shift" fill priority sizes="(max-width: 1024px) 100vw, 52vw" className="object-cover object-[center_57%]" />
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      <section className="bg-white pb-8 sm:pb-12">
+        <div className="container-page">
+          <Stagger className="grid rounded-2xl bg-[#f8f8f9] px-2 py-3 sm:grid-cols-3 sm:px-3 sm:py-5">
+            {enquiryCards.map(({ title, text, href, label, Icon }, index) => (
+              <article key={title} data-stagger className={`flex gap-4 px-4 py-4 sm:px-5 lg:px-7 ${index ? "sm:border-l sm:border-[#d9dadd]" : ""}`}>
+                <Icon className="mt-1 h-8 w-8 shrink-0 stroke-[1.55] text-brand" aria-hidden="true" />
+                <div>
+                  <h2 className="text-sm font-bold tracking-tight text-charcoal sm:text-base">{title}</h2>
+                  <p className="mt-2 text-xs leading-5 text-charcoal/85 sm:text-[13px]">{text}</p>
+                  <Link href={href} className="btn-link mt-3">{label}<ArrowRight className="h-4 w-4" /></Link>
+                </div>
+              </article>
             ))}
           </Stagger>
         </div>
       </section>
 
-      <Suspense
-        fallback={
-          <div className="container-page py-20 text-sm text-muted">Loading contact form…</div>
-        }
-      >
-        <ContactFormSection searchParams={searchParams} />
-      </Suspense>
-
-      <section className="bg-white py-20 lg:py-28">
-        <div className="container-page grid gap-10 lg:grid-cols-3 lg:gap-16">
-          <SectionHeading
-            eyebrow="Enquiry routes"
-            title="Reach the right team."
-            lead="Use the dedicated address relevant to your requirement."
-          />
-          <FadeIn delay={0.05}>
-            <div className="border-t-2 border-brand pt-6">
-              <h2 className="text-base font-semibold text-charcoal">Wholesale & bulk</h2>
-              <a
-                href={`mailto:${siteConfig.contact.wholesaleEmail}`}
-                className="mt-3 inline-flex items-center gap-2 text-sm text-brand hover:text-forest"
-              >
-                {siteConfig.contact.wholesaleEmail}
-                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-              </a>
-            </div>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <div className="border-t-2 border-brand pt-6">
-              <h2 className="text-base font-semibold text-charcoal">Distributor partnerships</h2>
-              <a
-                href={`mailto:${siteConfig.contact.distributorEmail}`}
-                className="mt-3 inline-flex items-center gap-2 text-sm text-brand hover:text-forest"
-              >
-                {siteConfig.contact.distributorEmail}
-                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-              </a>
+      <section className="bg-white py-10 sm:py-14 lg:py-12" id="contact-form">
+        <div className="container-page grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start lg:gap-14">
+          <div className="lg:pt-2">
+            <FadeIn>
+              <span className="eyebrow text-charcoal">Speak with our team</span>
+              <h2 className="mt-5 text-[clamp(2.5rem,4.6vw,3.8rem)] font-semibold leading-[1.02] tracking-[-0.055em]">Send us an<br /><span className="text-brand">enquiry.</span></h2>
+              <p className="mt-5 max-w-md text-sm leading-6 text-charcoal/85 sm:text-base sm:leading-7">Have a query, need more information, require a quotation, product catalogue or support for your location?</p>
+              <div className="mt-7 space-y-4">
+                <p className="flex items-center gap-4 text-sm font-medium text-charcoal"><Phone className="h-5 w-5 text-brand" />{siteConfig.contact.phone}</p>
+                <p className="flex items-center gap-4 text-sm font-medium text-charcoal"><Mail className="h-5 w-5 text-brand" />{siteConfig.contact.email}</p>
+                <p className="flex items-start gap-4 text-sm font-medium text-charcoal"><MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand" />{siteConfig.contact.address}, {siteConfig.contact.city}</p>
+                <p className="flex items-start gap-4 text-sm font-medium leading-6 text-charcoal"><Clock3 className="mt-0.5 h-5 w-5 shrink-0 text-brand" />{siteConfig.contact.hours}</p>
+              </div>
+            </FadeIn>
+          </div>
+          <FadeIn delay={0.08}>
+            <div className="rounded-[1.15rem] border border-[#e8e8e8] bg-white p-5 shadow-[0_5px_24px_rgba(0,0,0,0.055)] sm:p-7 lg:p-8">
+              <Suspense fallback={<div className="py-10 text-sm text-muted">Loading enquiry form…</div>}>
+                <ContactFormFields searchParams={searchParams} />
+              </Suspense>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      <CtaSection
-        title="Ready to request a quotation?"
-        text="Explore the catalogue, shortlist products and send your requirements to our team for a tailored response."
-        primaryLabel="Explore Products"
-        primaryHref="/products"
-        secondaryLabel="View FAQ"
-        secondaryHref="/faq"
-      />
+      <section className="bg-white py-10 sm:py-14">
+        <div className="container-page grid gap-5 sm:grid-cols-[0.8fr_1fr_1fr] sm:items-center sm:gap-7">
+          <div>
+            <span className="eyebrow text-charcoal">Quick support</span>
+            <p className="mt-4 max-w-xs text-sm leading-6 text-charcoal/85">Get the right information faster for your requirement.</p>
+          </div>
+          <Link href="/contact?enquiry=bulk" className="group flex items-center gap-4 border-t border-[#dedede] py-4 sm:border-l sm:border-t-0 sm:pl-7">
+            <FileText className="h-8 w-8 shrink-0 stroke-[1.6] text-brand" />
+            <span className="flex-1"><strong className="block text-sm font-bold text-charcoal">Wholesale &amp; Bulk</strong><span className="mt-1 block text-xs text-charcoal/80">Pricing, supply and lead time details.</span></span><ArrowRight className="h-4 w-4 text-brand transition-transform group-hover:translate-x-1" />
+          </Link>
+          <Link href="/become-a-distributor" className="group flex items-center gap-4 border-t border-[#dedede] py-4 sm:border-l sm:border-t-0 sm:pl-7">
+            <Handshake className="h-8 w-8 shrink-0 stroke-[1.6] text-brand" />
+            <span className="flex-1"><strong className="block text-sm font-bold text-charcoal">Distributor Partnerships</strong><span className="mt-1 block text-xs text-charcoal/80">Join our distribution network.</span></span><ArrowRight className="h-4 w-4 text-brand transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
+      </section>
+
+      <section className="relative isolate overflow-hidden bg-[#111] text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_45%,rgba(255,255,255,0.11),transparent_40%),linear-gradient(110deg,#111,#1d1d1d_58%,#101010)]" aria-hidden="true" />
+        <div className="absolute right-[12%] top-0 hidden h-full w-20 skew-x-[-28deg] bg-[#ff6a00] lg:block" aria-hidden="true" />
+        <div className="container-page relative grid items-center gap-7 py-12 sm:py-16 lg:min-h-[310px] lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
+          <div className="relative z-10">
+            <span className="eyebrow text-[#ff6a00]">Get a quotation</span>
+            <h2 className="mt-4 max-w-xl text-[clamp(2.2rem,4.2vw,3.4rem)] font-semibold leading-[1.02] tracking-[-0.05em]">Ready to request<br />a <span className="text-[#ff6a00]">quotation?</span></h2>
+            <p className="mt-4 max-w-lg text-sm leading-6 text-white/80">Share your requirement, expected quantity and location. Our team will get back to you with the best suitable solution.</p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href="/contact?enquiry=quote" className="btn-primary">Request a Quote<ArrowRight className="h-4 w-4" /></Link>
+              <Link href="/faq" className="btn-ghost-light">View FAQ<ArrowRight className="h-4 w-4" /></Link>
+            </div>
+          </div>
+          <div className="relative h-[200px] sm:h-[290px] lg:absolute lg:inset-y-0 lg:right-8 lg:h-auto lg:w-[48%]">
+            <Image src="/images/hero-safety-shoe.jpg" alt="Black industrial safety boots" fill sizes="(max-width: 1024px) 100vw, 48vw" className="object-contain object-center mix-blend-lighten" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#111] to-transparent" aria-hidden="true" />
+          </div>
+        </div>
+      </section>
     </>
   );
 }

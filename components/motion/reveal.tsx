@@ -10,6 +10,8 @@ type TextRevealProps = {
   className?: string;
   delay?: number;
   immediate?: boolean;
+  /** Word(s) to render in the brand orange. */
+  highlight?: string | string[];
 };
 
 export function TextReveal({
@@ -18,10 +20,16 @@ export function TextReveal({
   className,
   delay = 0,
   immediate = false,
+  highlight,
 }: TextRevealProps) {
   const root = useRef<HTMLDivElement>(null);
   const Tag = as;
   const words = text.split(" ");
+  const highlights = Array.isArray(highlight)
+    ? highlight
+    : highlight
+      ? [highlight]
+      : [];
 
   useLayoutEffect(() => {
     if (!root.current) return;
@@ -32,19 +40,28 @@ export function TextReveal({
       const targets = root.current?.querySelectorAll("[data-word]");
       if (!targets?.length) return;
 
-      gsap.set(targets, { yPercent: 115, opacity: 0, filter: "blur(6px)" });
-      gsap.to(targets, {
-        yPercent: 0,
-        opacity: 1,
-        filter: "blur(0px)",
-        duration: 0.95,
-        ease: "power3.out",
-        stagger: 0.045,
-        delay,
-        scrollTrigger: immediate
-          ? undefined
-          : { trigger: root.current, start: "top 88%", once: true },
-      });
+      gsap.fromTo(
+        targets,
+        { yPercent: 115, opacity: 0, filter: "blur(6px)" },
+        {
+          yPercent: 0,
+          opacity: 1,
+          filter: "blur(0px)",
+          duration: 0.95,
+          ease: "power3.out",
+          stagger: 0.045,
+          delay,
+          ...(immediate
+            ? {}
+            : {
+                scrollTrigger: {
+                  trigger: root.current,
+                  start: "top 88%",
+                  once: true,
+                },
+              }),
+        },
+      );
     }, root);
 
     return () => context.revert();
@@ -59,7 +76,13 @@ export function TextReveal({
             aria-hidden="true"
             className="inline-block overflow-hidden align-bottom pb-[0.16em] -mb-[0.16em]"
           >
-            <span data-word className="inline-block will-change-transform">
+            <span
+              data-word
+              className={cn(
+                "inline-block will-change-transform",
+                highlights.some((item) => word.includes(item)) && "text-brand",
+              )}
+            >
               {word}
               {index < words.length - 1 ? "\u00A0" : ""}
             </span>
