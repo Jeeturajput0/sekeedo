@@ -5,7 +5,6 @@ import { ArrowUpRight, Building2, Check, Handshake, PackageSearch, Route } from 
 import { PageHero } from "@/components/ui/page-hero";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Accordion } from "@/components/ui/accordion";
-import { CtaSection } from "@/components/ui/cta-section";
 import { DistributorForm } from "@/components/forms/distributor-form";
 import { FadeIn, ImageReveal, Stagger, TextReveal } from "@/components/motion/reveal";
 import { faqCategories } from "@/lib/data/faqs";
@@ -69,8 +68,8 @@ export default function DistributorPage() {
         tone="dark"
       />
 
-      <section className="bg-white py-20 lg:py-28">
-        <div className="container-page grid gap-12 lg:grid-cols-2 lg:gap-20">
+      <section className="bg-white py-16 lg:py-20">
+        <div className="container-page grid gap-10 lg:grid-cols-2 lg:gap-14">
           <div>
             <FadeIn>
               <span className="eyebrow">Who can partner</span>
@@ -114,7 +113,7 @@ export default function DistributorPage() {
         </div>
       </section>
 
-      <section className="bg-paper py-20 lg:py-28">
+      <section className="bg-paper py-16 lg:py-20">
         <div className="container-page">
           <SectionHeading
             eyebrow="Benefits of partnership"
@@ -138,8 +137,8 @@ export default function DistributorPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20 lg:py-28">
-        <div className="container-page grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+      <section className="bg-white py-16 lg:py-20">
+        <div className="container-page grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           <div>
             <FadeIn>
               <span className="eyebrow">Product portfolio</span>
@@ -181,7 +180,7 @@ export default function DistributorPage() {
         </div>
       </section>
 
-      <section className="bg-paper py-20 lg:py-28">
+      <section className="bg-paper py-16 lg:py-20">
         <div className="container-page">
           <SectionHeading
             eyebrow="Partnership process"
@@ -203,8 +202,8 @@ export default function DistributorPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20 lg:py-28">
-        <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+      <section className="bg-white py-16 lg:py-20">
+        <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
           <SectionHeading
             eyebrow="Distributor FAQ"
             title="Common partnership questions."
@@ -214,8 +213,8 @@ export default function DistributorPage() {
         </div>
       </section>
 
-      <section className="bg-paper py-20 lg:py-28" id="distributor-enquiry">
-        <div className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+      <section className="bg-paper py-16 lg:py-20" id="distributor-enquiry">
+        <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
           <div>
             <FadeIn>
               <span className="eyebrow">Distributor enquiry</span>
@@ -252,13 +251,6 @@ export default function DistributorPage() {
         </div>
       </section>
 
-      <CtaSection
-        title="Questions before you apply?"
-        text="Our team can answer questions about the enquiry process, catalogue and documentation requirements."
-        primaryLabel="Contact Our Team"
-        secondaryLabel="View All FAQs"
-        secondaryHref="/faq"
-      />
     </>
   );
 }

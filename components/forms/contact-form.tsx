@@ -15,6 +15,8 @@ const contactSchema = z.object({
   enquiryType: z.enum(["quote", "bulk", "product", "distributor", "technical", "certification", "general"]),
   message: z.string().min(10, "Please provide a little more detail"),
   consent: z.boolean().refine((value) => value, "Please agree to be contacted about your enquiry"),
+  productId: z.string().optional(),
+  sku: z.string().optional(),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -31,13 +33,14 @@ const enquiryOptions: { value: ContactFormValues["enquiryType"]; label: string }
 const labelClass = "field-label !mb-1 !text-xs !font-semibold !tracking-normal !normal-case !text-charcoal";
 const inputClass = "field-control rounded-md !py-2.5";
 
-export function ContactForm({ initialEnquiry = "quote", initialProducts }: { initialEnquiry?: string; initialProducts?: string }) {
+export function ContactForm({ initialEnquiry = "quote", initialProducts, initialProductId, initialSku }: { initialEnquiry?: string; initialProducts?: string; initialProductId?: string; initialSku?: string }) {
   const [reference, setReference] = useState<string | null>(null);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const { register, handleSubmit, setValue, reset, formState: { errors, isSubmitting } } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
       name: "", company: "", email: "", phone: "", consent: false,
+      productId: initialProductId, sku: initialSku,
       enquiryType: enquiryOptions.find((option) => option.value === initialEnquiry)?.value ?? "quote",
       message: initialProducts ? `I'm interested in these products: ${initialProducts}. Please share availability and a bulk quote.` : "",
     },
@@ -73,6 +76,8 @@ export function ContactForm({ initialEnquiry = "quote", initialProducts }: { ini
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
+      <input type="hidden" {...register("productId")} />
+      <input type="hidden" {...register("sku")} />
       <div className="grid gap-x-5 gap-y-4 sm:grid-cols-2">
         <div><label htmlFor="contact-name" className={labelClass}>Full Name *</label><input id="contact-name" className={inputClass} placeholder="Enter your name" autoComplete="name" aria-invalid={Boolean(errors.name)} {...register("name")} />{errors.name && <p className="field-error">{errors.name.message}</p>}</div>
         <div><label htmlFor="contact-company" className={labelClass}>Company *</label><input id="contact-company" className={inputClass} placeholder="Enter company name" autoComplete="organization" aria-invalid={Boolean(errors.company)} {...register("company")} />{errors.company && <p className="field-error">{errors.company.message}</p>}</div>

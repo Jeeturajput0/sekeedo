@@ -6,7 +6,6 @@ import { ArrowUpRight, Check, ShieldAlert, Sparkles } from "lucide-react";
 import { PageHero } from "@/components/ui/page-hero";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { IndustryCard } from "@/components/industries/industry-card";
-import { CtaSection } from "@/components/ui/cta-section";
 import { FadeIn, ImageReveal, Stagger, TextReveal } from "@/components/motion/reveal";
 import { getIndustryBySlug, industries } from "@/lib/data/industries";
 import { createMetadata } from "@/lib/seo";
@@ -53,13 +52,13 @@ export default async function IndustryDetailPage({
         breadcrumb={industry.name}
       />
 
-      <section className="bg-white py-14 lg:py-20">
+      <section className="bg-white py-14 lg:py-16">
         <div className="container-page">
           <Breadcrumb
             items={[{ label: "Industries", href: "/industries" }, { label: industry.name }]}
           />
 
-          <div className="mt-10 grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+          <div className="mt-10 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
             <div>
               <FadeIn>
                 <span className="eyebrow">Workplace overview</span>
@@ -114,8 +113,8 @@ export default async function IndustryDetailPage({
         </div>
       </section>
 
-      <section className="bg-paper py-20 lg:py-28">
-        <div className="container-page grid gap-10 lg:grid-cols-2 lg:gap-16">
+      <section className="bg-paper py-16 lg:py-20">
+        <div className="container-page grid gap-10 lg:grid-cols-2 lg:gap-12">
           <FadeIn>
             <div className="h-full border border-line bg-white p-8 sm:p-10">
               <ShieldAlert className="h-5 w-5 text-brand" aria-hidden="true" />
@@ -151,7 +150,7 @@ export default async function IndustryDetailPage({
         </div>
       </section>
 
-      <section className="bg-white py-20 lg:py-28">
+      <section className="bg-white py-16 lg:py-20">
         <div className="container-page">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
@@ -173,13 +172,6 @@ export default async function IndustryDetailPage({
         </div>
       </section>
 
-      <CtaSection
-        title="Explore suitable footwear with our team."
-        text={`Tell us about your ${industry.shortName.toLowerCase()} environment, roles and requirements. We will shortlist options and share verified specifications.`}
-        primaryLabel="Request Guidance"
-        image="/images/cta-workforce.webp"
-        imageAlt="Worker preparing for a shift"
-      />
     </>
   );
 }

@@ -11,7 +11,7 @@ import {
 export function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-line bg-white">
-      <div className="container-page grid items-center gap-10 py-12 lg:min-h-[640px] lg:grid-cols-[1.06fr_0.94fr] lg:gap-14 lg:py-16">
+      <div className="container-page grid items-center gap-10 py-12 lg:min-h-[560px] lg:grid-cols-[1.06fr_0.94fr] lg:gap-14 lg:py-16">
         <div className="relative z-10">
           <FadeIn>
             <span className="eyebrow">Wholesale Safety Footwear</span>

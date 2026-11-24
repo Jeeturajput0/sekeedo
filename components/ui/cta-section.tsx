@@ -1,6 +1,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 
 import { FadeIn, ImageReveal } from "@/components/motion/reveal";
@@ -8,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { ShoeSprite } from "@/components/products/shoe-sprite";
 
 type CtaSectionProps = {
-  title: string;
+  title: ReactNode;
   text: string;
   primaryLabel?: string;
   primaryHref?: string;

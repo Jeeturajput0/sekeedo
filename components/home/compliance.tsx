@@ -11,8 +11,8 @@ const fields = [
 
 export function Compliance() {
   return (
-    <section className="bg-charcoal py-20 text-white lg:py-28">
-      <div className="container-page grid gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-20">
+    <section className="bg-charcoal py-16 text-white lg:py-20">
+      <div className="container-page grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:gap-14">
         <div>
           <FadeIn>
             <span className="eyebrow">Certification & compliance</span>

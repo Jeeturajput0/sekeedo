@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/page-hero";
 import { IndustryCard } from "@/components/industries/industry-card";
 import { Stagger } from "@/components/motion/reveal";
-import { CtaSection } from "@/components/ui/cta-section";
 import { industries } from "@/lib/data/industries";
 import { createMetadata } from "@/lib/seo";
 
@@ -26,7 +25,7 @@ export default function IndustriesPage() {
         breadcrumb="Industries"
       />
 
-      <section className="bg-white py-16 lg:py-20">
+      <section className="bg-white py-16 lg:py-16">
         <div className="container-page">
           <div className="border-l-2 border-brand bg-paper px-5 py-4 text-xs leading-6 text-muted">
             Guidance note: the considerations below are general and are not product suitability
@@ -47,13 +46,6 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      <CtaSection
-        title="Talk through your industry requirements."
-        text="Share details of your workplace, roles and volumes. We can help you shortlist footwear options and request the relevant verification documents."
-        primaryLabel="Discuss Your Requirements"
-        image="/images/ind-manufacturing.webp"
-        imageAlt="Industrial manufacturing environment"
-      />
     </>
   );
 }

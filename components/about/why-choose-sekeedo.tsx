@@ -26,7 +26,7 @@ const features = [
 
 export function WhyChooseSekeedo() {
   return (
-    <section className="bg-white py-16 lg:py-24">
+    <section className="bg-white py-16 lg:py-16">
       <div className="container-page">
         <div className="max-w-2xl">
           <FadeIn>

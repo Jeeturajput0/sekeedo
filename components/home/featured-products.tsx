@@ -5,7 +5,7 @@ import { featuredProducts } from "@/lib/data/products";
 
 export function FeaturedProducts() {
   return (
-    <section className="bg-white py-12 sm:py-16">
+    <section className="bg-white py-12 sm:py-8">
       <div className="container-page">
         <div className="mb-6 flex items-end justify-between gap-4">
           <h2 className="text-xl font-bold tracking-tight text-charcoal sm:text-2xl">

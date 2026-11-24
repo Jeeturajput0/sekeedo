@@ -5,9 +5,9 @@ import { FadeIn, ImageReveal, TextReveal } from "@/components/motion/reveal";
 
 export function DistributorPreview() {
   return (
-    <section className="bg-offwhite py-20 lg:py-28">
+    <section className="bg-offwhite py-16 lg:py-20">
       <div className="container-page">
-        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
           <div>
             <FadeIn>
               <span className="eyebrow">Partner with SEKEEDO</span>

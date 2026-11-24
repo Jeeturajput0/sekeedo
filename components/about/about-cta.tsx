@@ -21,7 +21,7 @@ export function AboutCta() {
         aria-hidden="true"
       />
 
-      <div className="container-page relative grid items-center gap-10 py-16 lg:min-h-[420px] lg:grid-cols-[1.1fr_0.9fr] lg:py-20">
+      <div className="container-page relative grid items-center gap-10 py-16 lg:min-h-[420px] lg:grid-cols-[1.1fr_0.9fr] lg:py-16">
         <div className="relative z-10">
           <FadeIn>
             <span className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand">

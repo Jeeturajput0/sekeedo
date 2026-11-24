@@ -17,7 +17,7 @@ export function Footer() {
   return (
     <footer className="border-t border-white/15 bg-[#111111] text-white">
       <div className="container-page py-8 lg:py-9">
-        <div className="grid gap-8 lg:grid-cols-[1.15fr_2fr] lg:gap-12">
+        <div className="grid gap-8 lg:grid-cols-[1.15fr_2fr] lg:gap-10">
           <div>
             <Logo showTagline />
             <p className="mt-3 max-w-sm text-[11px] leading-5 text-white/65">

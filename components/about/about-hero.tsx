@@ -34,7 +34,7 @@ export function AboutHero() {
 
   return (
     <section className="relative overflow-hidden border-b border-line bg-white">
-      <div className="container-page grid items-center gap-12 py-14 lg:min-h-[620px] lg:grid-cols-[1fr_1.02fr] lg:gap-16 lg:py-16">
+      <div className="container-page grid items-center gap-10 py-14 lg:min-h-[560px] lg:grid-cols-[1fr_1.02fr] lg:gap-12 lg:py-16">
         <div className="relative z-10">
           <span className="eyebrow">SEKEEDO</span>
 

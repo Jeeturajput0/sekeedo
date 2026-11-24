@@ -4,7 +4,6 @@ import { ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/ui/page-hero";
 import { Accordion } from "@/components/ui/accordion";
 import { FadeIn } from "@/components/motion/reveal";
-import { CtaSection } from "@/components/ui/cta-section";
 import { faqCategories } from "@/lib/data/faqs";
 import { createMetadata } from "@/lib/seo";
 
@@ -29,7 +28,7 @@ export default function FaqPage() {
         breadcrumb="FAQ"
       />
 
-      <section className="bg-white py-16 lg:py-24">
+      <section className="bg-white py-16 lg:py-16">
         <div className="container-page">
           <nav aria-label="FAQ categories" className="mb-14 flex flex-wrap gap-2">
             {faqCategories.map((category) => (
@@ -43,11 +42,11 @@ export default function FaqPage() {
             ))}
           </nav>
 
-          <div className="space-y-20">
+          <div className="space-y-14">
             {faqCategories.map((category, index) => (
-              <section key={category.slug} id={category.slug} className="scroll-mt-28">
+              <section key={category.slug} id={category.slug} className="scroll-mt-20">
                 <FadeIn>
-                  <div className="grid gap-6 border-b border-line pb-7 lg:grid-cols-[0.55fr_1.45fr] lg:gap-16">
+                  <div className="grid gap-6 border-b border-line pb-7 lg:grid-cols-[0.55fr_1.45fr] lg:gap-12">
                     <div>
                       <span className="text-[10px] font-semibold tracking-[0.18em] text-brand">
                         {String(index + 1).padStart(2, "0")}
@@ -72,7 +71,7 @@ export default function FaqPage() {
           </div>
 
           <FadeIn>
-            <div className="mt-20 flex flex-wrap items-center justify-between gap-5 border border-line bg-paper p-7 sm:p-9">
+            <div className="mt-14 flex flex-wrap items-center justify-between gap-5 border border-line bg-paper p-7 sm:p-9">
               <div>
                 <h2 className="text-lg font-semibold text-charcoal">Still have a question?</h2>
                 <p className="mt-2 text-sm text-muted">
@@ -88,13 +87,6 @@ export default function FaqPage() {
         </div>
       </section>
 
-      <CtaSection
-        title="Need a product recommendation?"
-        text="Share your workplace hazards and requirements. We'll help you identify the right questions to ask before specifying footwear."
-        primaryLabel="Request Guidance"
-        image="/images/about-factory.webp"
-        imageAlt="Industrial production environment"
-      />
     </>
   );
 }

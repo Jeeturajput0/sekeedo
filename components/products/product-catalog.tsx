@@ -297,7 +297,7 @@ export function ProductCatalog({
   const quoteHref = `/contact?enquiry=quote&products=${encodeURIComponent(selectedProducts.map((item) => item.name).join(", "))}`;
 
   return (
-    <div className={enquiry.length > 0 ? "pb-20" : undefined}>
+    <div className={enquiry.length > 0 ? "pb-16" : undefined}>
       <section aria-labelledby="category-heading" className="mb-12">
         <div className="mb-5 flex items-end justify-between">
           <div>

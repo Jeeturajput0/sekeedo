@@ -24,6 +24,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
 }
 
 body {
@@ -71,28 +72,28 @@ body {
 }
 
 .section-shell {
-  padding-block: 4.5rem;
+  padding-block: 3.5rem;
 }
 
 @media (min-width: 768px) {
   .section-shell {
-    padding-block: 7rem;
+    padding-block: 4.5rem;
   }
 }
 
 @media (min-width: 1280px) {
   .section-shell {
-    padding-block: 8.5rem;
+    padding-block: 5rem;
   }
 }
 
 .section-shell-sm {
-  padding-block: 3.5rem;
+  padding-block: 2.75rem;
 }
 
 @media (min-width: 768px) {
   .section-shell-sm {
-    padding-block: 5rem;
+    padding-block: 3.5rem;
   }
 }
 
@@ -351,13 +352,13 @@ body {
 
 @media (min-width: 1024px) {
   .container-page {
-    padding-inline: 3rem;
+    padding-inline: 3.5rem;
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1536px) {
   .container-page {
-    padding-inline: 4rem;
+    padding-inline: 5rem;
   }
 }
 

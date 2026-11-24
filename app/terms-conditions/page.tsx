@@ -41,7 +41,7 @@ export default function TermsPage() {
         description="This page is a template placeholder. Replace it with reviewed terms before publishing the website."
         breadcrumb="Terms & Conditions"
       />
-      <section className="bg-white py-16 lg:py-24">
+      <section className="bg-white py-16 lg:py-16">
         <div className="container-page max-w-4xl space-y-8">
           {sections.map((section, index) => (
             <FadeIn key={section.title} delay={index * 0.03}>

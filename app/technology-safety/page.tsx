@@ -15,7 +15,6 @@ import {
 import { PageHero } from "@/components/ui/page-hero";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { CertificationPanel } from "@/components/ui/certification-panel";
-import { CtaSection } from "@/components/ui/cta-section";
 import { FadeIn, ImageReveal, Stagger, TextReveal } from "@/components/motion/reveal";
 import { technologies, type TechnologyIcon } from "@/lib/data/technologies";
 import { createMetadata } from "@/lib/seo";
@@ -63,8 +62,8 @@ export default function TechnologyPage() {
         breadcrumb="Technology & Safety"
       />
 
-      <section className="bg-white py-20 lg:py-28">
-        <div className="container-page grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+      <section className="bg-white py-16 lg:py-20">
+        <div className="container-page grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           <div>
             <FadeIn>
               <span className="eyebrow">Safety footwear overview</span>
@@ -103,7 +102,7 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      <section className="bg-paper py-20 lg:py-28">
+      <section className="bg-paper py-16 lg:py-20">
         <div className="container-page">
           <SectionHeading
             eyebrow="Technology index"
@@ -140,8 +139,8 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20 lg:py-28">
-        <div className="container-page grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+      <section className="bg-white py-16 lg:py-20">
+        <div className="container-page grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <FadeIn>
             <ImageReveal className="h-[360px] w-full sm:h-[500px]">
               <ShoeSprite position={5} className="absolute inset-0" />
@@ -184,7 +183,7 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      <section className="bg-paper py-20 lg:py-28">
+      <section className="bg-paper py-16 lg:py-20">
         <div className="container-page">
           <SectionHeading
             eyebrow="Selection guide"
@@ -203,7 +202,7 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20 lg:py-28">
+      <section className="bg-white py-16 lg:py-20">
         <div className="container-page space-y-10">
           <SectionHeading
             eyebrow="BIS standards & compliance"
@@ -214,16 +213,6 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      <CtaSection
-  title="Need help specifying footwear?"
-  text="Share your workplace hazards and requirements with the SEKEEDO team. We can help you shortlist options and request verified documentation."
-  primaryLabel="Request Guidance"
-  primaryHref="/contact?enquiry=technical"
-  secondaryLabel="Explore Products"
-  secondaryHref="/products"
-  image="/images/cta-workforce.webp"
-  imageAlt="SEKEEDO industrial safety footwear"
-/>
     </>
   );
 }

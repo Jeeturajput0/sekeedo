@@ -10,7 +10,7 @@ const stats = [
 
 export function AboutStats() {
   return (
-    <section className="border-y border-line bg-white py-12">
+    <section className="border-y border-line bg-white py-5">
       <div className="container-page">
         <div className="grid grid-cols-2 gap-y-8 lg:grid-cols-4">
           {stats.map((stat, index) => {
@@ -32,9 +32,7 @@ export function AboutStats() {
             );
           })}
         </div>
-        <p className="mt-8 text-center text-[11px] text-muted/80">
-          Figures shown are illustrative placeholders — replace with verified company data.
-        </p>
+      
       </div>
     </section>
   );

@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import {
-  ArrowRight, Box, Clock3, FileText, Handshake, Headphones,
-  Mail, MapPin, MessageCircle, Phone, Users,
+  ArrowRight, Box, Clock3, FileText, Handshake, Headphones, MessageCircle,
+  Mail, MapPin, Phone, Users,
 } from "lucide-react";
 import { ContactForm } from "@/components/forms/contact-form";
 import { FadeIn, Stagger } from "@/components/motion/reveal";
@@ -24,20 +24,20 @@ const enquiryCards = [
   { title: "General Enquiries", text: "For product details, documentation, certification or any other information.", href: "#contact-form", label: "Send a Message", Icon: Headphones },
 ];
 
-async function ContactFormFields({ searchParams }: { searchParams: Promise<{ enquiry?: string; products?: string }> }) {
-  const { enquiry, products } = await searchParams;
-  return <ContactForm initialEnquiry={enquiry} initialProducts={products} />;
+async function ContactFormFields({ searchParams }: { searchParams: Promise<{ enquiry?: string; products?: string; productId?: string; sku?: string }> }) {
+  const { enquiry, products, productId, sku } = await searchParams;
+  return <ContactForm initialEnquiry={enquiry} initialProducts={products} initialProductId={productId} initialSku={sku} />;
 }
 
 export default function ContactPage({
   searchParams,
 }: {
-  searchParams: Promise<{ enquiry?: string; products?: string }>;
+  searchParams: Promise<{ enquiry?: string; products?: string; productId?: string; sku?: string }>;
 }) {
   return (
     <>
       <section className="bg-white">
-        <div className="container-page grid items-center gap-8 py-8 sm:py-10 lg:grid-cols-[0.94fr_1.06fr] lg:gap-12 lg:py-12">
+        <div className="container-page grid items-center gap-8 py-8 sm:py-10 lg:grid-cols-[0.94fr_1.06fr] lg:gap-10 lg:py-12">
           <div className="order-2 lg:order-1">
             <nav aria-label="Breadcrumb" className="mb-7 flex items-center gap-2 text-xs text-muted">
               <Link href="/" className="hover:text-brand">Home</Link><span aria-hidden="true">›</span><span className="text-charcoal">Contact</span>
@@ -126,25 +126,6 @@ export default function ContactPage({
         </div>
       </section>
 
-      <section className="relative isolate overflow-hidden bg-[#111] text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_45%,rgba(255,255,255,0.11),transparent_40%),linear-gradient(110deg,#111,#1d1d1d_58%,#101010)]" aria-hidden="true" />
-        <div className="absolute right-[12%] top-0 hidden h-full w-20 skew-x-[-28deg] bg-[#ff6a00] lg:block" aria-hidden="true" />
-        <div className="container-page relative grid items-center gap-7 py-12 sm:py-16 lg:min-h-[310px] lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
-          <div className="relative z-10">
-            <span className="eyebrow text-[#ff6a00]">Get a quotation</span>
-            <h2 className="mt-4 max-w-xl text-[clamp(2.2rem,4.2vw,3.4rem)] font-semibold leading-[1.02] tracking-[-0.05em]">Ready to request<br />a <span className="text-[#ff6a00]">quotation?</span></h2>
-            <p className="mt-4 max-w-lg text-sm leading-6 text-white/80">Share your requirement, expected quantity and location. Our team will get back to you with the best suitable solution.</p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/contact?enquiry=quote" className="btn-primary">Request a Quote<ArrowRight className="h-4 w-4" /></Link>
-              <Link href="/faq" className="btn-ghost-light">View FAQ<ArrowRight className="h-4 w-4" /></Link>
-            </div>
-          </div>
-          <div className="relative h-[200px] sm:h-[290px] lg:absolute lg:inset-y-0 lg:right-8 lg:h-auto lg:w-[48%]">
-            <Image src="/images/hero-safety-shoe.jpg" alt="Black industrial safety boots" fill sizes="(max-width: 1024px) 100vw, 48vw" className="object-contain object-center mix-blend-lighten" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#111] to-transparent" aria-hidden="true" />
-          </div>
-        </div>
-      </section>
     </>
   );
 }

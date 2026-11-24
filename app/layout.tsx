@@ -4,6 +4,7 @@ import "./globals.css";
 import { AnnouncementBar } from "@/components/layout/announcement-bar";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { FooterQuotationBanner } from "@/components/layout/footer-quotation-banner";
 import { siteConfig } from "@/lib/data/site";
 
 const geistSans = Geist({
@@ -79,6 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main-content" className="flex-1">
           {children}
         </main>
+        <FooterQuotationBanner />
         <Footer />
       </body>
     </html>

@@ -1,6 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { FadeIn, Stagger, TextReveal } from "@/components/motion/reveal";
+import { FadeIn, ImageReveal, Stagger, TextReveal } from "@/components/motion/reveal";
+import { ShoeSprite } from "@/components/products/shoe-sprite";
 
 const reasons = [
   {
@@ -31,8 +33,8 @@ const reasons = [
 
 export function WhySekeedo() {
   return (
-    <section className="bg-white py-20 lg:py-28">
-      <div className="container-page grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+    <section className="bg-white py-5 lg:py-10">
+      <div className="container-page grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <FadeIn>
             <span className="eyebrow">Why SEKEEDO</span>
@@ -55,6 +57,26 @@ export function WhySekeedo() {
               About SEKEEDO
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </Link>
+          </FadeIn>
+
+          <FadeIn delay={0.2} className="mt-7">
+            <ImageReveal className="relative aspect-[3/2] w-full rounded-md bg-paper">
+              <Image
+                src="/images/ind-construction-wide.webp"
+                alt="Safety footwear on an active construction site"
+                fill
+                sizes="(max-width: 1024px) 100vw, 38vw"
+                className="object-cover object-center"
+              />
+              <ShoeSprite
+                position={0}
+                className="absolute left-1/2 top-1/2 aspect-square h-[100%] -translate-x-1/2 -translate-y-1/2 mix-blend-multiply"
+              />
+              <div
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-charcoal/20 via-transparent to-transparent"
+                aria-hidden="true"
+              />
+            </ImageReveal>
           </FadeIn>
         </div>
 

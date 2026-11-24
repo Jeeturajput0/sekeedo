@@ -22,7 +22,7 @@ const preview = technologies.filter((item) =>
 
 export function TechnologyPreview() {
   return (
-    <section className="bg-offwhite py-20 lg:py-28">
+    <section className="bg-offwhite py-16 lg:py-20">
       <div className="container-page">
         <SectionHeading
           eyebrow="Technology & safety"
@@ -36,7 +36,7 @@ export function TechnologyPreview() {
           }
         />
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_0.95fr] lg:gap-16">
+        <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_0.95fr] lg:gap-12">
           <div className="border-t border-line">
             {preview.map((item, index) => {
               const Icon = iconMap[item.icon as keyof typeof iconMap] ?? Shield;
@@ -60,7 +60,7 @@ export function TechnologyPreview() {
 
           <FadeIn delay={0.1}>
             <div className="relative">
-              <ImageReveal className="h-[420px] w-full lg:h-full lg:min-h-[560px]">
+              <ImageReveal className="h-[420px] w-full lg:h-full lg:min-h-[500px]">
                 <Image
                   src="/images/ind-chemical.webp"
                   alt="Industrial process environment with stainless steel piping"

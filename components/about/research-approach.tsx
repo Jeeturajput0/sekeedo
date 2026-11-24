@@ -5,8 +5,8 @@ import { FadeIn, ImageReveal, TextReveal } from "@/components/motion/reveal";
 
 export function ResearchApproach() {
   return (
-    <section className="bg-paper py-16 lg:py-24">
-      <div className="container-page grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+    <section className="bg-paper py-16 lg:py-16">
+      <div className="container-page grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
         <FadeIn className="relative">
           <div className="absolute -bottom-4 -left-4 h-[65%] w-[70%] border-2 border-brand" aria-hidden="true" />
           <ImageReveal className="relative aspect-[4/3] w-full border border-line bg-white">

@@ -1,8 +1,7 @@
 
 import { Suspense } from "react";
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowUpRight, ShieldCheck, PackageCheck } from "lucide-react";
+import { ShieldCheck, PackageCheck } from "lucide-react";
 
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { ProductCatalog } from "@/components/products/product-catalog";
@@ -161,58 +160,6 @@ export default function ProductsPage({
           </Suspense>
 
         </div>
-      </section>
-
-      {/* BULK ORDER CTA */}
-      <section className="bg-[#151A17] text-white">
-
-        <div className="container-page flex flex-col gap-8 py-14 sm:py-16 lg:flex-row lg:items-center lg:justify-between lg:py-20">
-
-          <div className="max-w-2xl">
-
-            <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#FF9A32]">
-              <span className="h-[2px] w-7 bg-[#FF9A32]" />
-              For Businesses & Distributors
-            </p>
-
-            <h2 className="mt-4 text-[clamp(2rem,4.4vw,3.5rem)] font-bold leading-[1.08] tracking-[-0.04em]">
-              Equip Your Workforce.
-              <br />
-              <span className="text-[#FF8A25]">
-                Choose SEKEEDO.
-              </span>
-            </h2>
-
-            <p className="mt-5 max-w-xl text-sm leading-7 text-white/65">
-              Looking for industrial safety footwear in bulk?
-              Connect with SEKEEDO for product enquiries,
-              wholesale procurement and distributor opportunities.
-            </p>
-
-          </div>
-
-          <div className="flex flex-wrap gap-3">
-
-            <Link
-              href="/contact?enquiry=bulk"
-              className="inline-flex min-h-12 items-center gap-2 bg-[#F4512C] px-6 text-sm font-bold text-white transition-all duration-300 hover:bg-[#DC3E20]"
-            >
-              Request Bulk Quote
-              <ArrowUpRight size={17} />
-            </Link>
-
-            <Link
-              href="/become-a-distributor"
-              className="inline-flex min-h-12 items-center gap-2 border border-white/30 px-6 text-sm font-semibold text-white transition-colors hover:border-[#FF8A25] hover:text-[#FF8A25]"
-            >
-              Become a Distributor
-              <ArrowUpRight size={17} />
-            </Link>
-
-          </div>
-
-        </div>
-
       </section>
 
     </main>

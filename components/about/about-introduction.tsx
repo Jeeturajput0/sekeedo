@@ -21,8 +21,8 @@ const values = [
 
 export function AboutIntroduction() {
   return (
-    <section className="bg-white py-16 lg:py-24">
-      <div className="container-page grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+    <section className="bg-white py-16 lg:py-16">
+      <div className="container-page grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
         <div>
           <FadeIn>
             <span className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand">

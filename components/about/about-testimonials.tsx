@@ -35,13 +35,13 @@ export function AboutTestimonials() {
     setActive((current) => (current + direction + testimonials.length) % testimonials.length);
 
   return (
-    <section className="relative isolate overflow-hidden bg-[#151515] py-16 lg:py-20">
+    <section className="relative isolate overflow-hidden bg-[#151515] py-16 lg:py-16">
       <div className="absolute inset-0" aria-hidden="true">
         <Image src="/images/ind-manufacturing.webp" alt="" fill sizes="100vw" className="object-cover opacity-20" />
         <div className="absolute inset-0 bg-[#151515]/85" />
       </div>
 
-      <div className="container-page relative grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+      <div className="container-page relative grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
         <FadeIn>
           <div>
             <span className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand">

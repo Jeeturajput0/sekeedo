@@ -8,6 +8,8 @@ const contactEnquirySchema = z.object({
   enquiryType: z.enum(["quote", "bulk", "product", "distributor", "technical", "certification", "general"]),
   message: z.string().trim().min(10).max(5000),
   consent: z.boolean().refine((value) => value),
+  productId: z.string().max(160).optional(),
+  sku: z.string().max(80).optional(),
 });
 
 const distributorEnquirySchema = z.object({

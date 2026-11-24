@@ -14,8 +14,8 @@ const benefits = [
 
 export function Wholesale() {
   return (
-    <section className="bg-white py-20 lg:py-28">
-      <div className="container-page grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+    <section className="bg-white py-16 lg:py-20">
+      <div className="container-page grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
         <FadeIn>
           <div className="relative">
             <ImageReveal className="h-[360px] w-full sm:h-[480px]">

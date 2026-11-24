@@ -13,7 +13,7 @@ const categories = [
   { label: "Electrical Safety Shoes", slug: "specialized", position: 7 },
 ];
 
-export function CategoryPreview() {
+export function   CategoryPreview() {
   return (
     <section className="bg-white py-4 sm:py-5">
       <div className="container-page">

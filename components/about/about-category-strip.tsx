@@ -21,7 +21,7 @@ export function AboutCategoryStrip() {
   };
 
   return (
-    <section className="bg-white py-14 lg:py-20">
+    <section className="bg-white py-14 lg:py-16">
       <div className="container-page">
         <FadeIn>
           <div className="flex flex-wrap items-end justify-between gap-4">

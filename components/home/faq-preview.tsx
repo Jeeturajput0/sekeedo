@@ -4,8 +4,8 @@ import { homeFaqs } from "@/lib/data/faqs";
 
 export function FaqPreview() {
   return (
-    <section className="bg-white py-20 lg:py-28">
-      <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+    <section className="bg-white py-16 lg:py-20">
+      <div className="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
         <SectionHeading
           eyebrow="Frequently asked questions"
           title="Answers before you enquire."

@@ -4,9 +4,9 @@ import { ValueStrip } from "@/components/home/value-strip";
 import { CategoryPreview } from "@/components/home/category-preview";
 import { FeaturedProducts } from "@/components/home/featured-products";
 import { WhySekeedo } from "@/components/home/why-sekeedo";
-import { BulkCta } from "@/components/home/bulk-cta";
 import { createMetadata } from "@/lib/seo";
 import IndustriesPreview from "@/components/home/industries-preview";
+import { AboutStats } from "@/components/about/about-stats";
 
 export const metadata: Metadata = createMetadata({
   title: "SEKEEDO — Built for the Work That Matters",
@@ -20,12 +20,12 @@ export default function HomePage() {
   return (
     <>
       <HeroSlider />
-      <ValueStrip />
+      <AboutStats/>
       <CategoryPreview />
+      <ValueStrip />
       <FeaturedProducts />
       <IndustriesPreview/>
       <WhySekeedo />
-      <BulkCta />
     </>
   );
 }

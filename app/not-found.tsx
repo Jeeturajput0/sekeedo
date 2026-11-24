@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <section className="bg-paper py-28">
+    <section className="bg-paper py-20">
       <div className="container-page max-w-2xl">
         <span className="eyebrow">404</span>
         <h1 className="mt-6 text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-[1.05] tracking-[-0.05em] text-charcoal">
