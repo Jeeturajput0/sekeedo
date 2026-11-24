@@ -34,7 +34,7 @@ export default function AboutPage() {
       <ResearchApproach />
       <CertificationsSection />
       <AboutTestimonials />
-      <FaqPreview />
+      {/* <FaqPreview /> */}
     </>
   );
 }

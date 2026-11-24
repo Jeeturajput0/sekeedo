@@ -54,7 +54,9 @@ const process = [
 
 export default function DistributorPage() {
   const distributorFaqs =
-    faqCategories.find((category) => category.slug === "distributors")?.faqs ?? [];
+    faqCategories
+      .find((category) => category.slug === "ordering-delivery")
+      ?.faqs.filter((faq) => /distributor|channel partner/i.test(faq.question)) ?? [];
 
   return (
     <>

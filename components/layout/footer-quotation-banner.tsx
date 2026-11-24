@@ -7,7 +7,7 @@ export function FooterQuotationBanner() {
   return (
     <section
       aria-labelledby="footer-quotation-title"
-      className="relative isolate overflow-hidden bg-[#111] text-white"
+      className="relative isolate overflow-hidden bg-[#111] text-white mt-2"
     >
       <Image
         src="/images/footer-quotation-banner.png"

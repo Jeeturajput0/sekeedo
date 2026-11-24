@@ -3,133 +3,153 @@ export type Faq = {
   answer: string;
 };
 
+export type FaqCategoryIcon =
+  | "product"
+  | "shield"
+  | "workplace"
+  | "maintenance"
+  | "ordering"
+  | "general";
+
 export type FaqCategory = {
   slug: string;
   title: string;
   description: string;
+  icon: FaqCategoryIcon;
   faqs: Faq[];
 };
 
 export const faqCategories: FaqCategory[] = [
   {
     slug: "products",
-    title: "Products",
-    description: "Catalogue, specifications and availability.",
+    title: "Product",
+    description: "FAQs about our products & range",
+    icon: "product",
     faqs: [
       {
-        question: "How do I choose the right safety footwear?",
+        question: "What types of safety shoes does SEKEEDO offer?",
         answer:
-          "Start with a hazard assessment of your workplace. Identify risks such as impact, compression, slips, punctures, wet conditions or electrical exposure, then compare those needs with verified product specifications. Our team can help shortlist options once we understand your environment.",
+          "We offer a wide range of industrial safety footwear including steel toe, composite toe, waterproof, slip-resistant, anti-static and other application-specific models for different workplace needs.",
       },
       {
-        question: "What product specifications are available?",
+        question: "What materials are used in SEKEEDO safety footwear?",
         answer:
-          "Specifications are published only when they have been verified. The online catalogue shows general product information and placeholder fields; request the current technical data sheet for confirmed construction, sizing and performance details.",
+          "Our footwear is made with carefully selected leather and synthetic uppers, reinforced toe caps and slip-resistant soles. Materials vary by model, so request the technical data sheet for confirmed specifications.",
       },
       {
-        question: "Can I request a product catalogue?",
+        question: "Do you offer customised footwear?",
         answer:
-          "Yes. Send a catalogue request through the contact form or business email. Include your company name, industry and approximate requirement so we can share the most relevant range.",
+          "Yes. For bulk and corporate requirements we can discuss customisation options such as branding, colour and packaging, subject to minimum quantities and feasibility.",
       },
       {
-        question: "How can I enquire about product availability?",
+        question: "Are your safety shoes suitable for all industries?",
         answer:
-          "Share the product names or categories you are interested in, along with sizes and quantities, through the enquiry form. Our team will confirm current availability with verified information.",
+          "Our range is designed for a wide variety of industrial environments. Suitability depends on the hazards present at your workplace, so we recommend sharing your requirements with our team before selecting a model.",
       },
     ],
   },
   {
-    slug: "safety-certifications",
-    title: "Safety & Certifications",
-    description: "Standards, documentation and verification.",
+    slug: "safety-certification",
+    title: "Safety & Certification",
+    description: "Standards, testing & compliance",
+    icon: "shield",
     faqs: [
       {
-        question: "Are SEKEEDO safety shoes BIS-certified?",
+        question: "Are SEKEEDO safety shoes BIS or ISI certified?",
         answer:
-          "BIS certification details, applicable IS standards, licence numbers and validity will be published here only after verification. Please request current certification documents directly from SEKEEDO before making a purchasing decision.",
+          "Yes, our safety footwear is designed and tested as per applicable Bureau of Indian Standards (BIS) / ISI requirements and other relevant safety standards, as mentioned on the product documentation.",
       },
       {
-        question: "Do you provide test reports or certificates?",
+        question: "Do you provide test reports or certification?",
         answer:
-          "Certification and test documentation can be shared for verified products. Specify the product and standard you require when submitting your enquiry.",
+          "Yes. Test reports and relevant certification documents can be shared on request for the specific product and standard you require.",
       },
       {
-        question: "Are all safety footwear features suitable for every industry?",
+        question: "Is toe protection mandatory in industrial safety footwear?",
         answer:
-          "No. Footwear selection depends on the specific hazards present at your workplace and on product-specific verified specifications. General guidance on this website is not a suitability claim.",
+          "Toe protection is essential wherever impact and compression hazards are present. The right type of toe cap depends on your workplace risk assessment and the applicable standard.",
       },
     ],
   },
   {
-    slug: "wholesale-orders",
-    title: "Wholesale Orders",
-    description: "Bulk purchasing and procurement support.",
+    slug: "workplace-use",
+    title: "Workplace Use",
+    description: "Suitability for different work environments",
+    icon: "workplace",
     faqs: [
       {
-        question: "How can I purchase safety shoes in bulk?",
+        question: "Which safety footwear is right for me?",
         answer:
-          "Submit a bulk enquiry with your quantity, preferred categories, size breakdown and delivery location. We will respond with available options and next steps.",
+          "The right choice depends on your workplace hazards, such as impact, compression, slipping, chemicals, or electrical risks. Our team can help you select the most suitable model based on your work environment.",
       },
       {
-        question: "How can I request a wholesale quotation?",
+        question: "Can I use these shoes for outdoor work?",
         answer:
-          "Use the Request a Quote form or email the wholesale team. Include your company details, estimated volumes and any product references to help us prepare an accurate response.",
+          "Yes, many of our models are suited to outdoor use. Share the surfaces, weather conditions and tasks involved so we can recommend a suitable option.",
       },
       {
-        question: "What information is needed for a bulk quotation?",
+        question: "Are they suitable for long working hours?",
         answer:
-          "Company name, contact details, industry, required product categories, approximate quantities, size distribution, target delivery location and any verification documentation you require.",
+          "Comfort and support vary by model. For long shifts, we recommend footwear with cushioned insoles, breathable lining and lightweight construction — our team can suggest suitable options.",
       },
     ],
   },
   {
-    slug: "distributors",
-    title: "Distributors",
-    description: "Partnership and dealer enquiries.",
+    slug: "maintenance",
+    title: "Maintenance",
+    description: "Care & longevity",
+    icon: "maintenance",
     faqs: [
       {
-        question: "How can I become a distributor?",
+        question: "How do I clean and maintain safety shoes?",
         answer:
-          "Complete the distributor enquiry form with your business details, location and product interests. Our team will review your enquiry and share the current partnership process.",
+          "Clean the shoes with a soft brush or damp cloth, remove dirt after use, allow them to air dry and avoid direct high heat. Regular care helps maintain performance and extends the product life.",
       },
       {
-        question: "Who can partner with SEKEEDO?",
+        question: "How do I know when to replace my safety shoes?",
         answer:
-          "Footwear dealers, industrial suppliers, safety equipment distributors and procurement businesses with relevant market reach can submit a partnership enquiry.",
+          "Replace them when the outsole is badly worn, the upper is damaged, the toe cap is compromised, or the recommended service life has been reached. Inspect your footwear regularly.",
       },
     ],
   },
   {
-    slug: "shipping-delivery",
-    title: "Shipping & Delivery",
-    description: "Fulfilment and logistics information.",
+    slug: "ordering-delivery",
+    title: "Ordering & Delivery",
+    description: "Orders, bulk supply & shipping",
+    icon: "ordering",
     faqs: [
       {
-        question: "How are bulk orders delivered?",
+        question: "Do you supply in bulk quantities?",
         answer:
-          "Delivery options and timelines depend on order size, location and product availability. Confirm requirements in your enquiry so the team can outline available options.",
+          "Yes. We specialise in bulk and corporate orders for factories, contractors, distributors and large teams. You can request a quote with your quantity and location.",
       },
       {
-        question: "Can we request a specific delivery schedule?",
+        question: "What is the typical delivery time?",
         answer:
-          "Include any scheduling requirements in your enquiry. They will be reviewed against current availability and logistics options.",
+          "Delivery timelines depend on the product, quantity and destination. Share your requirements with our team and we will confirm the estimated schedule with your quote.",
+      },
+      {
+        question: "Can I become a distributor or channel partner?",
+        answer:
+          "Yes. We work with distributors and channel partners across industries. Submit a distributor enquiry with your business details and location to start the conversation.",
       },
     ],
   },
   {
-    slug: "general",
+    slug: "general-enquiries",
     title: "General Enquiries",
-    description: "Business, media and other questions.",
+    description: "Other common questions",
+    icon: "general",
     faqs: [
       {
-        question: "How do I contact the SEKEEDO team?",
+        question: "How can I get a quote for my requirement?",
         answer:
-          "Use the contact form, email the relevant business address listed on our Contact page, or reach out through the WhatsApp link provided there.",
+          "You can request a quote directly through our website, contact our sales team or share your requirements (quantity, industry and location) for a prompt response.",
       },
       {
-        question: "Where can I find verified company information?",
+        question: "Where can I get more information about SEKEEDO?",
         answer:
-          "Company registration, address and contact details will be published on this site once verified. Until then, please request them directly from our team.",
+          "Visit our About and Technology & Safety pages, or contact our team directly for product details, documentation and business enquiries.",
       },
     ],
   },

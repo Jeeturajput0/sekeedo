@@ -15,6 +15,7 @@ import {
   Users,
 } from "lucide-react";
 import type { BlogArticle, BlogCategory } from "@/lib/data/blog";
+import { TiltCard } from "@/components/animation/tilt-card";
 
 const pillars = [
   {
@@ -269,10 +270,8 @@ export function BlogHub({
           {visibleArticles.length ? (
             <div className="my-5 grid gap-5 pt-2 sm:grid-cols-2 lg:grid-cols-3">
               {visibleArticles.map((article) => (
-                <article
-                  key={article.slug}
-                  className="group overflow-hidden rounded-xl border border-[#e9e9e9] bg-white shadow-[0_3px_12px_rgba(0,0,0,0.045)] transition-all hover:-translate-y-1 hover:shadow-[0_12px_25px_rgba(0,0,0,0.09)]"
-                >
+                <TiltCard key={article.slug} className="h-full">
+                <article className="group h-full overflow-hidden rounded-xl border border-[#e9e9e9] bg-white shadow-[0_3px_12px_rgba(0,0,0,0.045)] transition-all hover:shadow-[0_12px_25px_rgba(0,0,0,0.09)]">
                   <Link
                     href={`/blog/${article.slug}`}
                     aria-label={`Read ${article.title}`}
@@ -320,6 +319,7 @@ export function BlogHub({
                     </div>
                   </div>
                 </article>
+                </TiltCard>
               ))}
             </div>
           ) : !featuredMatches ? (

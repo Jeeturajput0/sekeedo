@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, ChevronDown, Menu, Search, X } from "lucide-react";
 import { navItems } from "@/lib/data/site";
 import { cn } from "@/lib/utils";
@@ -16,6 +16,7 @@ function isActive(pathname: string, href: string): boolean {
 
 export function Navbar() {
   const pathname = usePathname();
+  const reduceMotion = useReducedMotion();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -87,10 +88,10 @@ export function Navbar() {
                     <AnimatePresence>
                       {openDropdown === item.label ? (
                         <motion.div
-                          initial={{ opacity: 0, y: 8 }}
+                          initial={reduceMotion ? false : { opacity: 0, y: 8 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 8 }}
-                          transition={{ duration: 0.18, ease: "easeOut" }}
+                          exit={reduceMotion ? undefined : { opacity: 0, y: 8 }}
+                          transition={{ duration: reduceMotion ? 0 : 0.18, ease: "easeOut" }}
                           className="absolute left-0 top-full w-[290px] border border-line bg-white p-2 shadow-[0_24px_50px_rgba(22,27,25,0.12)]"
                         >
                           {item.children.map((child) => (
@@ -159,10 +160,10 @@ export function Navbar() {
         {mobileOpen ? (
           <motion.div
             id="mobile-menu"
-            initial={{ opacity: 0, height: 0 }}
+            initial={reduceMotion ? false : { opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            exit={reduceMotion ? undefined : { opacity: 0, height: 0 }}
+            transition={{ duration: reduceMotion ? 0 : 0.28, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden border-t border-line bg-white xl:hidden"
           >
             <div className="container-page max-h-[calc(100vh-118px)] overflow-y-auto py-4">

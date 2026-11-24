@@ -1,52 +1,184 @@
+
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { FadeIn, ImageReveal, TextReveal } from "@/components/motion/reveal";
+import {
+  ArrowUpRight,
+  Microscope,
+  ShieldCheck,
+  Layers3,
+} from "lucide-react";
+import {
+  FadeIn,
+  ImageReveal,
+  TextReveal,
+} from "@/components/motion/reveal";
+
+const researchPoints = [
+  {
+    icon: Layers3,
+    title: "Material Evaluation",
+    description: "Exploring materials for workplace performance.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Product Durability",
+    description: "Evaluating construction and long-term usability.",
+  },
+  {
+    icon: Microscope,
+    title: "Design & Development",
+    description: "Refining footwear design for industrial needs.",
+  },
+];
 
 export function ResearchApproach() {
   return (
-    <section className="bg-paper py-16 lg:py-16">
-      <div className="container-page grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-        <FadeIn className="relative">
-          <div className="absolute -bottom-4 -left-4 h-[65%] w-[70%] border-2 border-brand" aria-hidden="true" />
-          <ImageReveal className="relative aspect-[4/3] w-full border border-line bg-white">
-            <Image
-              src="/images/technology-detail.jpg"
-              alt="Engineer reviewing product testing and development data"
-              fill
-              sizes="(max-width: 1024px) 100vw, 48vw"
-              className="object-cover object-center"
-            />
-          </ImageReveal>
-        </FadeIn>
+    <section className="relative overflow-hidden bg-[#F6F6F4] py-16 sm:py-20 lg:py-24">
 
-        <div>
-          <FadeIn>
-            <span className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand">
-              <span className="h-px w-8 bg-brand" />
-              Our R&D Approach
-            </span>
+      {/* Subtle Background Accent */}
+      <div
+        className="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-brand/[0.05] blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div className="container-page relative">
+
+        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+
+          {/* LEFT IMAGE SECTION */}
+          <FadeIn className="relative">
+
+            <div className="relative">
+
+              {/* Image */}
+              <ImageReveal className="relative aspect-[5/4] w-full overflow-hidden rounded-2xl bg-[#17221C] shadow-xl">
+                <Image
+                  src="/images/technology-detail.jpg"
+                  alt="Engineer reviewing product testing and development data"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 52vw"
+                  className="object-cover object-center transition-transform duration-700 hover:scale-105"
+                />
+              </ImageReveal>
+
+              {/* Image Bottom Gradient */}
+              <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+
+              {/* Image Label */}
+              <div className="absolute bottom-5 left-5 z-10 flex items-center gap-3 rounded-xl border border-white/20 bg-black/40 px-4 py-3 backdrop-blur-md sm:bottom-7 sm:left-7">
+                <span className="grid h-10 w-10 place-items-center rounded-lg bg-brand text-white">
+                  <Microscope size={20} />
+                </span>
+
+                <div>
+                  <p className="text-xs font-bold text-white">
+                    Research & Development
+                  </p>
+                  <p className="mt-1 text-[10px] text-white/70">
+                    Design • Materials • Performance
+                  </p>
+                </div>
+              </div>
+
+              {/* Orange Decorative Shape */}
+              <div
+                className="absolute -bottom-3 -right-3 -z-10 h-32 w-32 rounded-br-2xl border-b-4 border-r-4 border-brand sm:-bottom-5 sm:-right-5 sm:h-44 sm:w-44"
+                aria-hidden="true"
+              />
+
+            </div>
+
+            {/* Floating Corner Detail */}
+            <div className="absolute -right-3 -top-5 hidden rounded-xl border border-white bg-white px-5 py-4 shadow-lg sm:block lg:-right-5">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-muted">
+                Our Focus
+              </p>
+              <p className="mt-1 text-lg font-bold text-charcoal">
+                Better Footwear
+              </p>
+              <span className="mt-1 block h-1 w-10 rounded-full bg-brand" />
+            </div>
+
           </FadeIn>
-          <div className="mt-6">
-            <TextReveal
-              as="h2"
-              text="Thoughtful Design, Real-World Testing"
-              highlight={["Real-World", "Testing"]}
-              className="max-w-[13ch] text-[clamp(2rem,3.8vw,3.2rem)] font-semibold leading-[1.06] tracking-[-0.045em] text-charcoal"
-            />
+
+          {/* RIGHT CONTENT SECTION */}
+          <div className="relative">
+
+            <FadeIn>
+              <div className="flex items-center gap-3">
+                <span className="h-[3px] w-10 bg-brand" />
+
+                <span className="text-xs font-bold uppercase tracking-[0.17em] text-brand">
+                  Our R&D Approach
+                </span>
+              </div>
+            </FadeIn>
+
+            <div className="mt-6">
+              <TextReveal
+                as="h2"
+                text="Thoughtful Design, Real-World Testing"
+                highlight={["Real-World", "Testing"]}
+                className="max-w-[15ch] text-[clamp(2.2rem,4vw,3.5rem)] font-bold leading-[1.08] tracking-[-0.045em] text-charcoal"
+              />
+            </div>
+
+            <FadeIn delay={0.1}>
+              <p className="mt-6 max-w-xl text-sm leading-7 text-muted sm:text-base sm:leading-8">
+                We continuously evaluate materials, design and durability
+                to create safety footwear that performs in real industrial
+                conditions.
+              </p>
+            </FadeIn>
+
+            {/* Research Highlights */}
+            <div className="mt-8 space-y-5 border-t border-[#DDDEDA] pt-7">
+
+              {researchPoints.map((point, index) => {
+                const Icon = point.icon;
+
+                return (
+                  <FadeIn key={point.title} delay={0.12 + index * 0.08}>
+                    <div className="group flex items-start gap-4">
+
+                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/10 text-brand transition-all duration-300 group-hover:bg-brand group-hover:text-white">
+                        <Icon size={20} />
+                      </div>
+
+                      <div className="pt-0.5">
+                        <h3 className="text-sm font-bold text-charcoal sm:text-base">
+                          {point.title}
+                        </h3>
+
+                        <p className="mt-1 text-xs leading-6 text-muted sm:text-sm">
+                          {point.description}
+                        </p>
+                      </div>
+
+                    </div>
+                  </FadeIn>
+                );
+              })}
+
+            </div>
+
+            {/* CTA */}
+            <FadeIn delay={0.3}>
+              <Link
+                href="/technology-safety"
+                className="group mt-9 inline-flex min-h-12 items-center gap-3 rounded-lg bg-brand px-6 py-3 text-sm font-bold text-white shadow-md shadow-brand/15 transition-all duration-300 hover:-translate-y-1 hover:bg-[#FF6A00] hover:shadow-lg"
+              >
+                Explore Our Technology
+
+                <ArrowUpRight
+                  size={18}
+                  className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                  aria-hidden="true"
+                />
+              </Link>
+            </FadeIn>
+
           </div>
-          <FadeIn delay={0.1}>
-            <p className="mt-6 max-w-xl text-base leading-8 text-muted">
-              We continuously evaluate materials, design and durability to create
-              safety footwear that performs in real industrial conditions.
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.15}>
-            <Link href="/technology-safety" className="btn-link mt-8">
-              Know More
-              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
-          </FadeIn>
         </div>
       </div>
     </section>

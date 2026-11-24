@@ -153,12 +153,24 @@ export function Stagger({
     const context = gsap.context(() => {
       const targets = root.current?.querySelectorAll(selector);
       if (!targets?.length) return;
+      const isMobile = window.matchMedia("(max-width: 767px)").matches;
       gsap.fromTo(
         targets,
-        { opacity: 0, y: 30 },
+        {
+          opacity: 0,
+          x: isMobile ? 0 : (index) => ([ -24, 0, 24, 0 ][index % 4] ?? 0),
+          y: (index) => ([ 12, 24, 12, -18 ][index % 4] ?? 20),
+          rotationX: isMobile ? 0 : (index) => (index % 2 ? -2.5 : 2.5),
+          rotationY: isMobile ? 0 : (index) => ([ -3, 0, 3, 0 ][index % 4] ?? 0),
+          transformPerspective: 1000,
+          transformOrigin: "center center",
+        },
         {
           opacity: 1,
+          x: 0,
           y: 0,
+          rotationX: 0,
+          rotationY: 0,
           duration: 0.85,
           ease: "power3.out",
           stagger: amount,

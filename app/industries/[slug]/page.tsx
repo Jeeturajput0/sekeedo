@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowUpRight, Check, ShieldAlert, Sparkles } from "lucide-react";
-import { PageHero } from "@/components/ui/page-hero";
-import { Breadcrumb } from "@/components/ui/breadcrumb";
-import { IndustryCard } from "@/components/industries/industry-card";
-import { FadeIn, ImageReveal, Stagger, TextReveal } from "@/components/motion/reveal";
-import { getIndustryBySlug, industries } from "@/lib/data/industries";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  Settings2,
+  ShieldAlert,
+} from "lucide-react";
+import { industries, getIndustryBySlug } from "@/lib/data/industries";
 import { createMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -21,12 +23,20 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const industry = getIndustryBySlug(slug);
-  if (!industry) return createMetadata({ title: "Industry not found", description: "", path: "/industries" });
+  if (!industry)
+    return createMetadata({
+      title: "Industry not found",
+      description: "",
+      path: "/industries",
+    });
   return createMetadata({
     title: `${industry.name} Safety Footwear`,
     description: industry.description,
     path: `/industries/${industry.slug}`,
-    image: industry.image,
+    image:
+      industry.slug === "oil-gas"
+        ? "/images/oil-gas-hero-generated.png"
+        : industry.image,
   });
 }
 
@@ -38,140 +48,250 @@ export default async function IndustryDetailPage({
   const { slug } = await params;
   const industry = getIndustryBySlug(slug);
   if (!industry) notFound();
-
-  const related = industries.filter((item) => item.slug !== industry.slug).slice(0, 3);
+  const heroImage =
+    industry.slug === "oil-gas"
+      ? "/images/oil-gas-hero-generated.png"
+      : industry.image;
+  const related = [
+    "construction-infrastructure",
+    "manufacturing",
+    "logistics-warehousing",
+  ]
+    .filter((key) => key !== industry.slug)
+    .map((key) => industries.find((item) => item.slug === key))
+    .filter((item) => item !== undefined);
+  const titleParts = industry.name.split(" & ");
 
   return (
     <>
-      <PageHero
-        eyebrow="Industry overview"
-        title={industry.name}
-        description={industry.description}
-        image={industry.image}
-        imageAlt={industry.imageAlt}
-        breadcrumb={industry.name}
-      />
-
-      <section className="bg-white py-14 lg:py-16">
-        <div className="container-page">
-          <Breadcrumb
-            items={[{ label: "Industries", href: "/industries" }, { label: industry.name }]}
-          />
-
-          <div className="mt-10 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-            <div>
-              <FadeIn>
-                <span className="eyebrow">Workplace overview</span>
-              </FadeIn>
-              <div className="mt-5">
-                <TextReveal
-                  as="h2"
-                  text="Understand the environment before specifying footwear."
-                  className="section-title"
-                />
-              </div>
-              <FadeIn delay={0.1}>
-                <p className="section-lead">{industry.description}</p>
-              </FadeIn>
-              <FadeIn delay={0.15}>
-                <p className="mt-6 text-sm leading-8 text-muted">
-                  The considerations listed here are general. They are intended to start a
-                  conversation about requirements, not to declare any SEKEEDO product suitable for
-                  this industry without verified evidence.
-                </p>
-              </FadeIn>
-              <FadeIn delay={0.2}>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <Link
-                    href={`/contact?enquiry=industry&industry=${encodeURIComponent(industry.name)}`}
-                    className="btn-primary"
-                  >
-                    Discuss footwear options
-                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                  <Link href="/products" className="btn-outline">
-                    Explore full catalogue
-                    <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                  </Link>
-                </div>
-              </FadeIn>
-            </div>
-
-            <FadeIn delay={0.1}>
-              <ImageReveal className="h-[340px] w-full sm:h-[460px]">
-                <Image
-                  src={industry.image}
-                  alt={industry.imageAlt}
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 48vw"
-                  className="object-cover"
-                />
-              </ImageReveal>
-            </FadeIn>
+      <section className="relative isolate overflow-hidden bg-[#06291d] text-white">
+        <Image
+          src={heroImage}
+          alt={industry.imageAlt}
+          fill
+          priority
+          sizes="100vw"
+          className="-z-20 object-cover object-center"
+        />
+        <div
+          className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,#06291d_0%,rgba(6,41,29,0.98)_30%,rgba(6,41,29,0.60)_52%,rgba(6,41,29,0.03)_78%)]"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-y-0 left-0 -z-[5] hidden w-[52%] bg-[#06291d]/75 [clip-path:polygon(0_0,74%_0,100%_100%,0_100%)] lg:block"
+          aria-hidden="true"
+        />
+        <div className="container-page relative flex min-h-[300px] items-center py-9 sm:min-h-[340px] lg:min-h-[265px] lg:py-8">
+          <div className="max-w-xl">
+            <nav
+              aria-label="Breadcrumb"
+              className="mb-7 flex items-center gap-2 text-[11px] text-white/80"
+            >
+              <Link href="/" className="hover:text-brand">
+                Home
+              </Link>
+              <span aria-hidden="true">›</span>
+              <Link href="/industries" className="hover:text-brand">
+                Industries
+              </Link>
+              <span aria-hidden="true">›</span>
+              <span aria-current="page" className="text-white">
+                {industry.shortName}
+              </span>
+            </nav>
+            <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.12em] text-[#ff6a00]">
+              <span className="h-[3px] w-8 bg-[#ff6a00]" />
+              Industry Overview
+            </p>
+            <h1 className="mt-3 text-[clamp(2.6rem,5vw,3.5rem)] font-bold leading-[0.98] tracking-[-0.05em] text-white">
+              {titleParts.length > 1 ? (
+                <>
+                  {titleParts[0]} &{" "}
+                  <span className="text-[#ff8a00]">
+                    {titleParts.slice(1).join(" & ")}
+                  </span>
+                </>
+              ) : (
+                industry.name
+              )}
+            </h1>
+            <p className="mt-3 max-w-md text-sm leading-6 text-white/85">
+              {industry.description}
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="bg-paper py-16 lg:py-20">
-        <div className="container-page grid gap-10 lg:grid-cols-2 lg:gap-12">
-          <FadeIn>
-            <div className="h-full border border-line bg-white p-8 sm:p-10">
-              <ShieldAlert className="h-5 w-5 text-brand" aria-hidden="true" />
-              <h2 className="mt-6 text-xl font-semibold tracking-[-0.03em] text-charcoal sm:text-2xl">
-                Relevant workplace considerations
-              </h2>
-              <ul className="mt-7 space-y-4">
-                {industry.hazards.map((hazard) => (
-                  <li key={hazard} className="flex gap-3 text-sm leading-7 text-charcoal/70">
-                    <Check className="mt-1 h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
-                    {hazard}
-                  </li>
-                ))}
-              </ul>
+      <section className="bg-white py-9 sm:py-11 lg:py-12">
+        <div className="container-page grid items-center gap-7 lg:grid-cols-[0.95fr_1.05fr] lg:gap-10">
+          <div>
+            <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.1em] text-charcoal">
+              <span className="h-[3px] w-8 bg-brand" />
+              Workplace Overview
+            </p>
+            <h2 className="mt-4 max-w-xl text-[clamp(2rem,3.6vw,2.8rem)] font-bold leading-[1.02] tracking-[-0.045em] text-charcoal">
+              Understand the environment before{" "}
+              <span className="text-brand">specifying footwear.</span>
+            </h2>
+            <p className="mt-4 max-w-xl text-sm leading-6 text-charcoal/80">
+              {industry.description}
+            </p>
+            <p className="mt-3 max-w-xl text-xs leading-5 text-charcoal/75">
+              These considerations are general guidance to help start a
+              conversation about workplace requirements. They do not confirm a
+              product’s suitability without verified evidence.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <Link
+                href={`/contact?enquiry=industry&industry=${encodeURIComponent(industry.name)}`}
+                className="btn-primary min-h-10 px-4 text-xs"
+              >
+                Discuss footwear options
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/products"
+                className="btn-outline min-h-10 px-4 text-xs"
+              >
+                Explore full catalogue
+                <ArrowUpRight className="h-4 w-4" />
+              </Link>
             </div>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <div className="h-full border border-line bg-white p-8 sm:p-10">
-              <Sparkles className="h-5 w-5 text-brand" aria-hidden="true" />
-              <h2 className="mt-6 text-xl font-semibold tracking-[-0.03em] text-charcoal sm:text-2xl">
-                Footwear features to review
-              </h2>
-              <ul className="mt-7 space-y-4">
-                {industry.considerations.map((item) => (
-                  <li key={item} className="flex gap-3 text-sm leading-7 text-charcoal/70">
-                    <Check className="mt-1 h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </FadeIn>
+          </div>
+          <div className="relative h-[230px] overflow-hidden rounded-xl sm:h-[300px] lg:h-[280px]">
+            <Image
+              src={industry.image}
+              alt={industry.imageAlt}
+              fill
+              sizes="(max-width: 1024px) 100vw, 52vw"
+              className="object-cover"
+            />
+          </div>
         </div>
       </section>
 
-      <section className="bg-white py-16 lg:py-20">
+      <section className="bg-[#f6f6f6] py-6 sm:py-8">
+        <div className="container-page grid gap-4 md:grid-cols-2">
+          <article className="rounded-xl border border-[#ededed] bg-white p-5 shadow-[0_3px_12px_rgba(0,0,0,0.035)] sm:p-6">
+            <span className="grid h-9 w-9 place-items-center rounded-lg bg-[#fff0e8] text-brand">
+              <ShieldAlert className="h-5 w-5" />
+            </span>
+            <h2 className="mt-2 text-lg font-bold tracking-tight text-charcoal">
+              Relevant workplace considerations
+            </h2>
+            <ul className="mt-3 space-y-2">
+              {industry.hazards.map((hazard) => (
+                <li
+                  key={hazard}
+                  className="flex items-start gap-2.5 text-xs leading-5 text-charcoal/85"
+                >
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand" />
+                  {hazard}
+                </li>
+              ))}
+            </ul>
+          </article>
+          <article className="rounded-xl border border-[#ededed] bg-white p-5 shadow-[0_3px_12px_rgba(0,0,0,0.035)] sm:p-6">
+            <span className="grid h-9 w-9 place-items-center rounded-lg bg-[#fff0e8] text-brand">
+              <Settings2 className="h-5 w-5" />
+            </span>
+            <h2 className="mt-2 text-lg font-bold tracking-tight text-charcoal">
+              Footwear features to review
+            </h2>
+            <ul className="mt-3 space-y-2">
+              {industry.considerations.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-2.5 text-xs leading-5 text-charcoal/85"
+                >
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section className="bg-white py-8 sm:py-10">
         <div className="container-page">
-          <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <span className="eyebrow">Keep exploring</span>
-              <h2 className="mt-4 text-2xl font-semibold tracking-[-0.03em] text-charcoal sm:text-3xl">
+              <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.1em] text-charcoal">
+                <span className="h-[3px] w-8 bg-brand" />
+                Keep Exploring
+              </p>
+              <h2 className="mt-2 text-2xl font-bold tracking-tight text-charcoal sm:text-3xl">
                 Other industries we support
               </h2>
             </div>
-            <Link href="/industries" className="btn-outline">
+            <Link
+              href="/industries"
+              className="btn-outline min-h-9 px-3 text-xs"
+            >
               All industries
-              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
-          <Stagger className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((item, index) => (
-              <IndustryCard key={item.slug} industry={item} index={index} />
+              <article
+                key={item.slug}
+                className="group overflow-hidden rounded-xl border border-[#e9e9e9] bg-white shadow-[0_3px_12px_rgba(0,0,0,0.04)]"
+              >
+                <Link
+                  href={`/industries/${item.slug}`}
+                  className="relative block aspect-[1.9/1] overflow-hidden"
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.imageAlt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <span className="absolute left-3 top-3 rounded bg-white/95 px-2 py-1 text-[9px] font-bold text-charcoal">
+                    {String(index + 1).padStart(2, "0")} / Sector
+                  </span>
+                </Link>
+                <div className="p-4">
+                  <h3 className="text-sm font-bold text-charcoal">
+                    <Link
+                      href={`/industries/${item.slug}`}
+                      className="hover:text-brand"
+                    >
+                      {item.name}
+                    </Link>
+                  </h3>
+                  <p className="mt-1 line-clamp-2 text-[11px] leading-4 text-charcoal/75">
+                    {item.description}
+                  </p>
+                  <p className="mt-2 text-[9px] font-bold uppercase tracking-wide text-brand">
+                    Common considerations
+                  </p>
+                  <div className="mt-1 flex flex-wrap gap-1">
+                    {item.hazards.slice(0, 2).map((hazard) => (
+                      <span
+                        key={hazard}
+                        className="rounded bg-[#f4f4f4] px-2 py-1 text-[9px] text-charcoal/80"
+                      >
+                        {hazard}
+                      </span>
+                    ))}
+                  </div>
+                  <Link
+                    href={`/industries/${item.slug}`}
+                    className="mt-2 inline-flex items-center gap-1 text-[10px] font-bold text-brand"
+                  >
+                    Explore industry
+                    <ArrowRight className="h-3 w-3" />
+                  </Link>
+                </div>
+              </article>
             ))}
-          </Stagger>
+          </div>
         </div>
       </section>
-
     </>
   );
 }

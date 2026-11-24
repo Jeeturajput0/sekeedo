@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowUpRight,
   Droplet,
@@ -20,6 +20,7 @@ import {
 import { DEFAULT_PRODUCT_SIZES, type Product } from "@/lib/data/products";
 import { cn } from "@/lib/utils";
 import { ShoeSprite } from "@/components/products/shoe-sprite";
+import { TiltCard } from "@/components/animation/tilt-card";
 
 type ProductCardProps = {
   product: Product;
@@ -53,6 +54,7 @@ export function ProductCard({
 }: ProductCardProps) {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [localWishlisted, setLocalWishlisted] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   const sizes = product.sizes?.length ? product.sizes : DEFAULT_PRODUCT_SIZES;
   const hasPublishedAvailability = Array.isArray(product.availableSizes);
@@ -94,16 +96,17 @@ export function ProductCard({
   const detailHref = `/products/${product.slug}`;
 
   return (
+    <TiltCard className="h-full">
     <motion.article
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
-      transition={{
+      transition={reduceMotion ? { duration: 0 } : {
         duration: 0.5,
         delay: Math.min(index, 7) * 0.06,
         ease: [0.22, 1, 0.36, 1],
       }}
-      whileHover={{ y: -4 }}
+      whileHover={reduceMotion ? undefined : { y: -2 }}
       className={cn(
         "group relative flex h-full flex-col rounded-xl border border-line bg-white",
         compact ? "p-3" : "p-3.5 sm:p-4",
@@ -297,5 +300,6 @@ export function ProductCard({
         </div>
       </div>
     </motion.article>
+    </TiltCard>
   );
 }

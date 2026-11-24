@@ -15,6 +15,7 @@ import {
   Users,
 } from "lucide-react";
 import type { Industry } from "@/lib/data/industries";
+import { TiltCard } from "@/components/animation/tilt-card";
 
 const filters = [
   "All Industries",
@@ -287,10 +288,8 @@ export function IndustriesHub({ industries }: { industries: Industry[] }) {
           {pageItems.length ? (
             <div className="mt-15  grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {pageItems.map((industry) => (
-                <article
-                  key={industry.slug}
-                  className="group overflow-hidden rounded-xl border border-[#e9e9e9] bg-white shadow-[0_3px_12px_rgba(0,0,0,0.045)] transition-all hover:-translate-y-1 hover:shadow-[0_12px_25px_rgba(0,0,0,0.09)]"
-                >
+                <TiltCard key={industry.slug} className="h-full">
+                <article className="group h-full overflow-hidden rounded-xl border border-[#e9e9e9] bg-white shadow-[0_3px_12px_rgba(0,0,0,0.045)] transition-shadow hover:shadow-[0_12px_25px_rgba(0,0,0,0.09)]">
                   <Link
                     href={`/industries/${industry.slug}`}
                     aria-label={`Explore ${industry.name}`}
@@ -333,6 +332,7 @@ export function IndustriesHub({ industries }: { industries: Industry[] }) {
                     </div>
                   </div>
                 </article>
+                </TiltCard>
               ))}
             </div>
           ) : !featuredMatches ? (

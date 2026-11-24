@@ -3,8 +3,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const slides = [
@@ -49,9 +50,11 @@ export function HeroSlider() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const [runId, setRunId] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    if (paused) return;
+    if (paused || reduceMotion) return;
 
     const timer = window.setTimeout(() => {
       setActive((current) => (current + 1) % slides.length);
@@ -59,7 +62,7 @@ export function HeroSlider() {
     }, SLIDE_DURATION);
 
     return () => window.clearTimeout(timer);
-  }, [active, paused, runId]);
+  }, [active, paused, reduceMotion, runId]);
 
   const resume = () => {
     setPaused(false);
@@ -71,15 +74,25 @@ export function HeroSlider() {
     setRunId((current) => current + 1);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (event.key === "ArrowLeft") { event.preventDefault(); goTo(active - 1); }
+    if (event.key === "ArrowRight") { event.preventDefault(); goTo(active + 1); }
+  };
+
   return (
     <section
       className="group relative isolate h-[540px] overflow-hidden bg-charcoal sm:h-[600px] lg:h-[620px]"
       aria-label="Built for the Work That Matters"
       aria-roledescription="carousel"
+      aria-live="off"
+      tabIndex={0}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={resume}
       onFocusCapture={() => setPaused(true)}
-      onBlurCapture={resume}
+      onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) resume(); }}
+      onKeyDown={handleKeyDown}
+      onTouchStart={(event) => { touchStartX.current = event.touches[0]?.clientX ?? null; }}
+      onTouchEnd={(event) => { const start = touchStartX.current; const end = event.changedTouches[0]?.clientX; if (start !== null && end !== undefined && Math.abs(end - start) > 48) goTo(active + (end < start ? 1 : -1)); touchStartX.current = null; }}
     >
       {/* Background Images */}
       {slides.map((slide, index) => {
@@ -127,6 +140,9 @@ export function HeroSlider() {
         className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"
         aria-hidden="true"
       />
+
+      <button type="button" onClick={() => goTo(active - 1)} aria-label="Previous slide" className="absolute left-4 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/35 bg-black/30 text-white backdrop-blur-sm transition hover:border-brand hover:bg-brand focus-visible:opacity-100 sm:grid"><ChevronLeft className="h-5 w-5" /></button>
+      <button type="button" onClick={() => goTo(active + 1)} aria-label="Next slide" className="absolute right-4 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-white/35 bg-black/30 text-white backdrop-blur-sm transition hover:border-brand hover:bg-brand focus-visible:opacity-100 sm:grid"><ChevronRight className="h-5 w-5" /></button>
 
       {/* Slide Content */}
       <div className="absolute inset-0">

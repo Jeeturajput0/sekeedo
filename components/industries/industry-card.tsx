@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { Industry } from "@/lib/data/industries";
 import { cn } from "@/lib/utils";
+import { TiltCard } from "@/components/animation/tilt-card";
 
 type IndustryCardProps = {
   industry: Industry;
@@ -16,6 +17,7 @@ export function IndustryCard({
   featured = false,
 }: IndustryCardProps) {
   return (
+    <TiltCard className="h-full">
     <article
       data-stagger
       className={cn(
@@ -108,5 +110,6 @@ export function IndustryCard({
         </div>
       </div>
     </article>
+    </TiltCard>
   );
 }
