@@ -25,8 +25,8 @@ export default function HomePage() {
     <>
       <HeroSlider />
       <AboutStats/>
-      <CategoryPreview />
       <AboutIntroduction />
+      <CategoryPreview />
       <ValueStrip />
       <FeaturedProducts />
       <IndustriesPreview/>

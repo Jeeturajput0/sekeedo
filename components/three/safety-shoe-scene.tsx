@@ -70,7 +70,7 @@ function Lace({ start, end, height }: { start: number; end: number; height: numb
   return <mesh geometry={geometry} castShadow><meshStandardMaterial color="#d0c5b6" roughness={0.68} /></mesh>;
 }
 
-function SafetyShoe() {
+export function SafetyShoe() {
   const sole = useMemo(() => extrudeCentered(soleShape(), 0.56, 0.025), []);
   const upper = useMemo(() => extrudeCentered(upperShape(), 0.43, 0.022), []);
   const tongue = useMemo(() => extrudeCentered(tongueShape(), 0.27, 0.018), []);

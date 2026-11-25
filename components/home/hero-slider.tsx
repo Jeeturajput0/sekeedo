@@ -49,13 +49,12 @@ const SLIDE_DURATION = 5000;
 
 export function HeroSlider() {
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
   const [runId, setRunId] = useState(0);
   const touchStartX = useRef<number | null>(null);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    if (paused || reduceMotion) return;
+    if (reduceMotion) return;
 
     const timer = window.setTimeout(() => {
       setActive((current) => (current + 1) % slides.length);
@@ -63,12 +62,7 @@ export function HeroSlider() {
     }, SLIDE_DURATION);
 
     return () => window.clearTimeout(timer);
-  }, [active, paused, reduceMotion, runId]);
-
-  const resume = () => {
-    setPaused(false);
-    setRunId((current) => current + 1);
-  };
+  }, [active, reduceMotion, runId]);
 
   const goTo = (index: number) => {
     setActive((index + slides.length) % slides.length);
@@ -87,10 +81,6 @@ export function HeroSlider() {
       aria-roledescription="carousel"
       aria-live="off"
       tabIndex={0}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={resume}
-      onFocusCapture={() => setPaused(true)}
-      onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget as Node | null)) resume(); }}
       onKeyDown={handleKeyDown}
       onTouchStart={(event) => { touchStartX.current = event.touches[0]?.clientX ?? null; }}
       onTouchEnd={(event) => { const start = touchStartX.current; const end = event.changedTouches[0]?.clientX; if (start !== null && end !== undefined && Math.abs(end - start) > 48) goTo(active + (end < start ? 1 : -1)); touchStartX.current = null; }}
@@ -220,7 +210,6 @@ export function HeroSlider() {
                   className="hero-slide-progress absolute inset-y-0 left-0 bg-brand"
                   style={{
                     animationDuration: `${SLIDE_DURATION / 1000}s`,
-                    animationPlayState: paused ? "paused" : "running",
                   }}
                 />
               )}

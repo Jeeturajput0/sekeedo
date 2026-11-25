@@ -5,7 +5,7 @@ import { testimonialRows, type Testimonial } from "@/lib/data/testimonials";
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <article className="flex h-full min-h-[160px] flex-col rounded-xl border border-[#ff8500]/35 bg-white p-4 shadow-[0_10px_30px_rgba(0,0,0,0.18)]">
+    <article className="flex h-full min-h-[160px] flex-col rounded-xl border border-[#ff8500]/35 bg-white p-4 shadow-none">
             <div
         className="mt-2 flex gap-0.5 text-[#ff8500]"
         aria-label={`${testimonial.rating} out of 5 stars (demo rating)`}
@@ -95,11 +95,11 @@ export function AboutTestimonials() {
             reviews before publication.
           </p>
         </div>
+      </div>
 
-        <div className="space-y-3 sm:space-y-4">
-          <TestimonialRow items={testimonialRows[0]} direction="ltr" />
-          <TestimonialRow items={testimonialRows[1]} direction="rtl" />
-        </div>
+      <div className="space-y-3 sm:space-y-4">
+        <TestimonialRow items={testimonialRows[0]} direction="ltr" />
+        <TestimonialRow items={testimonialRows[1]} direction="rtl" />
       </div>
     </section>
   );
