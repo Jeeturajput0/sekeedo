@@ -38,7 +38,7 @@ export function PageHero({
       )}
     >
       {!dark ? <div className="grid-lines absolute inset-0 opacity-60" aria-hidden="true" /> : null}
-      <div className="container-shell relative grid gap-10 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12 lg:py-16">
+      <div className="container-page relative grid gap-10 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12 lg:py-16">
         <div className="relative z-10">
           {breadcrumb ? (
             <nav aria-label="Breadcrumb" className="mb-8 flex items-center gap-2 text-xs">

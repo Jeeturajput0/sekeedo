@@ -24,7 +24,7 @@ export const metadata: Metadata = createMetadata({
 export default function HomePage() {
   return (
     <>
-       <FooterQuotationBanner/>
+      <HeroSlider />
       <AboutStats/>
       <AboutIntroduction />
       <CategoryPreview />

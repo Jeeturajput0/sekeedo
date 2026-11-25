@@ -29,7 +29,7 @@ const values = [
 export function AboutIntroduction() {
   return (
     <section className="overflow-hidden bg-white py-16 lg:py-5 ">
-     <div className="container-page grid items-center gap-10 rounded-2xl border-1 border-[#F4512C] p-2 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14 lg:p-5">
+     <div className="container-page grid items-center gap-10  p-2 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14 lg:p-5">
         {/* LEFT SIDE - IMAGE */}
         <FadeIn className="relative">
          
@@ -102,7 +102,7 @@ export function AboutIntroduction() {
           </FadeIn>
 
           {/* Heading */}
-          <div className="mt-6">
+          <div className="mt-4">
             <TextReveal
               as="h2"
               text="Built for People Who Build the World"
@@ -113,7 +113,7 @@ export function AboutIntroduction() {
 
           {/* Description */}
           <FadeIn delay={0.1}>
-            <p className="mt-6 text-base leading-7 text-charcoal/75 sm:text-lg sm:leading-8">
+            <p className="mt-4 text-base leading-5 text-charcoal/75 sm:text-lg sm:leading-7">
               SEKEEDO is an industrial safety footwear brand committed
               to protecting professionals across demanding work
               environments. Our focus is simple — reliable protection,
@@ -123,7 +123,7 @@ export function AboutIntroduction() {
           </FadeIn>
 
           {/* VALUES */}
-          <div className="mt-9 grid gap-6 sm:grid-cols-3 sm:gap-5">
+          <div className="mt-5 grid gap-6 sm:grid-cols-3 sm:gap-5">
 
             {values.map((value, index) => {
               const Icon = value.icon;

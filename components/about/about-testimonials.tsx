@@ -80,7 +80,7 @@ export function AboutTestimonials() {
   return (
     <section
       aria-labelledby="testimonials-title"
-      className="relative isolate overflow-hidden bg-white py-14 sm:py-16 lg:py-9"
+      className="relative isolate overflow-hidden bg-white py-14 sm:py-16 lg:py-4"
     >
       <div className="container-page">
         <div className="mb-8 max-w-2xl">
@@ -97,7 +97,7 @@ export function AboutTestimonials() {
         </div>
       </div>
 
-      <div className="space-y-3 sm:space-y-4">
+      <div className="container-page space-y-3 sm:space-y-4">
         <TestimonialRow items={testimonialRows[0]} direction="ltr" />
         <TestimonialRow items={testimonialRows[1]} direction="rtl" />
       </div>

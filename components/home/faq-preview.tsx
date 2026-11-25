@@ -97,7 +97,7 @@ export function FaqPreviewAccordion({
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className="relative overflow-hidden bg-white px-4 py-16 md:px-6 lg:py-6">
+    <section className="container-page relative overflow-hidden bg-white py-16 lg:py-6">
 
       {/* Decorative Background */}
       <div
@@ -109,7 +109,7 @@ export function FaqPreviewAccordion({
         className="pointer-events-none absolute -bottom-32 -right-20 h-80 w-80 rounded-full bg-[#F4512C]/[0.06] blur-3xl"
       />
 
-      <div className="relative mx-auto max-w-[1440px]">
+      <div className="relative">
 
         {/* SECTION HEADING - bottom to top */}
         <Reveal direction="up" className="mb-10 lg:mb-12">

@@ -55,7 +55,7 @@ const reasons = [
 
 export function WhySekeedo() {
   return (
-    <section className="relative bg-white py-16 sm:py-20 lg:py-24">
+    <section className="relative bg-white py-16 sm:py-20 lg:py-5">
 
       <div className="container-page grid items-start gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-16">
 

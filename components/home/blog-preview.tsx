@@ -7,7 +7,7 @@ export function BlogPreview() {
   const articles = blogArticles.slice(0, 3);
 
   return (
-    <section className="bg-white py-9 sm:py-9" aria-labelledby="home-blog-title">
+    <section className="bg-white  sm:py-4" aria-labelledby="home-blog-title">
       <div className="container-page">
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>

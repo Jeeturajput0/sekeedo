@@ -59,8 +59,8 @@ const industries = [
 
 export default function IndustriesPreview() {
   return (
-    <section className="px-4 py-5 md:px-6 lg:py-6">
-      <div className="relative mx-auto max-w-[1440px] overflow-hidden rounded-xl bg-[#111B16]">
+    <section className="container-page py-5 lg:py-6">
+      <div className="relative overflow-hidden rounded-xl bg-[#111B16]">
 
         {/* Full Width Industrial Background */}
         <div className="absolute inset-0" aria-hidden="true">

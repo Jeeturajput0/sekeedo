@@ -42,7 +42,7 @@ export default function PrivacyPolicyPage() {
         breadcrumb="Privacy Policy"
       />
       <section className="bg-white py-16 lg:py-16">
-        <div className="container-page max-w-4xl space-y-8">
+        <div className="container-page space-y-8">
           {sections.map((section, index) => (
             <FadeIn key={section.title} delay={index * 0.03}>
               <div className="border-b border-line pb-7">
