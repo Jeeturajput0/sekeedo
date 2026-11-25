@@ -13,6 +13,34 @@
 # testing
 /coverage
 
+
+
+
+# Chrome temporary process files
+.chrome-process-check/
+
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build files
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+
+
 # next.js
 /.next/
 /out/
