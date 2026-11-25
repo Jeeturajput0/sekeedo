@@ -355,6 +355,36 @@ body {
   animation-play-state: paused;
 }
 
+/* Testimonial marquee ---------------------------------------------------- */
+/* Row 1: left -> right. Row 2: right -> left. */
+@keyframes testimonial-ltr {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes testimonial-rtl {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.testimonial-track-ltr {
+  animation: testimonial-ltr 34s linear infinite;
+}
+
+.testimonial-track-rtl {
+  animation: testimonial-rtl 34s linear infinite;
+}
+
+/* Kept running continuously - hover/focus does not pause the marquee. */
+
 /* Component primitives --------------------------------------------------- */
 .container-page {
   width: 100%;

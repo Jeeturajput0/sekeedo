@@ -7,6 +7,10 @@ import { WhySekeedo } from "@/components/home/why-sekeedo";
 import { createMetadata } from "@/lib/seo";
 import IndustriesPreview from "@/components/home/industries-preview";
 import { AboutStats } from "@/components/about/about-stats";
+import { AboutIntroduction } from "@/components/about/about-introduction";
+import { AboutTestimonials } from "@/components/about/about-testimonials";
+import { BlogPreview } from "@/components/home/blog-preview";
+import { FaqPreview } from "@/components/home/faq-preview";
 
 export const metadata: Metadata = createMetadata({
   title: "SEKEEDO — Built for the Work That Matters",
@@ -22,10 +26,14 @@ export default function HomePage() {
       <HeroSlider />
       <AboutStats/>
       <CategoryPreview />
+      <AboutIntroduction />
       <ValueStrip />
       <FeaturedProducts />
       <IndustriesPreview/>
       <WhySekeedo />
+      <BlogPreview />
+      <AboutTestimonials />
+      <FaqPreview />
     </>
   );
 }
