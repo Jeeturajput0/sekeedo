@@ -35,7 +35,7 @@ export function ValueStrip() {
               <div
                 key={value.title}
                 data-stagger
-                className="group flex items-center justify-center gap-3 border-r border-line px-3 py-3 text-left last:border-0 lg:py-4"
+                className="group flex items-center justify-center gap-3 border-r border-line px-3 py-3 text-left last:border-0 lg:py-6"
               >
                 <Icon
                   className="h-7 w-7 shrink-0 text-brand transition-transform duration-300 group-hover:-translate-y-0.5"

@@ -76,7 +76,7 @@ export function HeroSlider() {
 
   return (
     <section
-      className="group relative isolate h-[540px] overflow-hidden bg-charcoal sm:h-[600px] lg:h-[620px]"
+      className="group relative isolate h-[540px] overflow-hidden bg-charcoal sm:h-[600px] lg:h-[520px]"
       aria-label="Built for the Work That Matters"
       aria-roledescription="carousel"
       aria-live="off"
@@ -142,7 +142,7 @@ export function HeroSlider() {
 
           return (
             <div
-              key={slide.image}
+              key={`${slide.image}-${isActive ? `active-${runId}` : "idle"}`}
               className={cn(
                 "absolute inset-0 transition-opacity duration-700 ease-in-out",
                 isActive ? "opacity-100" : "pointer-events-none opacity-0",
@@ -156,12 +156,24 @@ export function HeroSlider() {
                     isActive ? "translate-y-0" : "translate-y-3",
                   )}
                 >
-                  <p className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[.12em] text-white">
+                  <p
+                    className={cn(
+                      "flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[.12em] text-white",
+                      isActive && "hero-slide-text-in",
+                    )}
+                    style={isActive ? { animationDelay: "0.05s" } : undefined}
+                  >
                     <span className="h-1 w-12 bg-brand" />
                     {slide.eyebrow}
                   </p>
 
-                  <h1 className="mt-4 text-balance text-[clamp(2.5rem,5vw,3.6rem)] font-bold leading-[1.02] tracking-[-.045em]">
+                  <h1
+                    className={cn(
+                      "mt-4 text-balance text-[clamp(2.5rem,5vw,3.6rem)] font-bold leading-[1.02] tracking-[-.045em]",
+                      isActive && "hero-slide-text-in",
+                    )}
+                    style={isActive ? { animationDelay: "0.15s" } : undefined}
+                  >
                     {slide.titleTop}
                     <br />
                     {slide.titleBottom.split(slide.highlight)[0]}
@@ -171,11 +183,23 @@ export function HeroSlider() {
                     {slide.titleBottom.split(slide.highlight)[1] ?? ""}
                   </h1>
 
-                  <p className="mt-3 max-w-[420px] text-sm leading-[1.5] text-white/90 sm:text-base">
+                  <p
+                    className={cn(
+                      "mt-3 max-w-[420px] text-sm leading-[1.5] text-white/90 sm:text-base",
+                      isActive && "hero-slide-text-in",
+                    )}
+                    style={isActive ? { animationDelay: "0.28s" } : undefined}
+                  >
                     {slide.text}
                   </p>
 
-                  <div className="mt-5 flex flex-wrap gap-3">
+                  <div
+                    className={cn(
+                      "mt-5 flex flex-wrap gap-3",
+                      isActive && "hero-slide-text-in",
+                    )}
+                    style={isActive ? { animationDelay: "0.4s" } : undefined}
+                  >
                     <MagneticButton><Link href={slide.primary.href} className="btn-primary min-h-[42px]">{slide.primary.label}<ArrowRight className="h-4 w-4" /></Link></MagneticButton>
                     <MagneticButton><Link href={slide.secondary.href} className="btn-ghost-light min-h-[42px]">{slide.secondary.label}</Link></MagneticButton>
                   </div>

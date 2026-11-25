@@ -336,6 +336,22 @@ body {
   animation: hero-slide-progress 3s linear forwards;
 }
 
+/* Slide copy enters from the left as a slide becomes active. */
+@keyframes hero-slide-text-in {
+  from {
+    opacity: 0;
+    transform: translateX(-48px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-slide-text-in {
+  animation: hero-slide-text-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 /* Category marquee ------------------------------------------------------- */
 @keyframes category-marquee {
   from {

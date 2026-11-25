@@ -9,6 +9,13 @@ export function GlobalMotionEffects() {
   const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Page change ya refresh par hamesha top se start karein.
+    const root = document.documentElement;
+    const previousBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    window.scrollTo(0, 0);
+    root.style.scrollBehavior = previousBehavior;
+
     const { ScrollTrigger } = getGsap();
     let firstFrame = 0;
     let secondFrame = 0;

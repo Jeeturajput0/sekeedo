@@ -157,11 +157,44 @@ export const faqCategories: FaqCategory[] = [
 
 export const allFaqs = faqCategories.flatMap((category) => category.faqs);
 
-export const homeFaqs: Faq[] = [
-  allFaqs[0],
-  allFaqs[4],
-  allFaqs[5],
-  allFaqs[8],
-  allFaqs[2],
-  allFaqs[14],
-].filter(Boolean);
+export type HomeFaq = Faq & { icon: FaqCategoryIcon };
+
+/** Questions shown in the home page FAQ preview. */
+export const homeFaqs: HomeFaq[] = [
+  {
+    icon: "ordering",
+    question: "Do you supply safety footwear in bulk for businesses?",
+    answer:
+      "Yes. SEKEEDO primarily serves B2B clients, including factories, construction firms, distributors and other industrial organizations, with bulk supply and ongoing support.",
+  },
+  {
+    icon: "shield",
+    question: "Are your safety shoes BIS compliant and certified?",
+    answer:
+      "Yes. Our safety footwear is designed and tested as per applicable BIS / ISI requirements and other relevant safety standards. Test reports and certification documents can be shared on request.",
+  },
+  {
+    icon: "product",
+    question: "What safety features are available in your footwear?",
+    answer:
+      "Our range includes steel toe and composite toe protection, slip-resistant and anti-static soles, waterproof options and puncture-resistant construction. Available features vary by model.",
+  },
+  {
+    icon: "workplace",
+    question: "Which industries do you serve?",
+    answer:
+      "We supply safety footwear to manufacturing, construction, automotive, engineering, logistics, chemical, healthcare, mining and many other industrial workplaces.",
+  },
+  {
+    icon: "ordering",
+    question: "What is the typical lead time for bulk orders?",
+    answer:
+      "Lead times depend on the product, quantity and destination. Share your requirements with our team and we will confirm an estimated schedule with your quotation.",
+  },
+  {
+    icon: "general",
+    question: "How can we get a quotation for our requirement?",
+    answer:
+      "Send us your quantity, industry and location through the enquiry form, or contact our sales team directly. We will share product recommendations and a tailored quote.",
+  },
+];

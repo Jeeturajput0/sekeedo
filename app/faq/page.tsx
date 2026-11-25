@@ -19,7 +19,10 @@ export default function FaqPage() {
   return (
     <>
       <FaqHero />
-      <section className="bg-white py-5 sm:py-6" aria-label="Frequently asked questions">
+      <section
+        className="bg-white py-5 sm:py-6"
+        aria-label="Frequently asked questions"
+      >
         <div className="container-page space-y-3 sm:space-y-4">
           {faqCategories.map((category, index) => (
             <SlideIn
@@ -34,11 +37,20 @@ export default function FaqPage() {
           <SlideIn direction="right" distance={48}>
             <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
               <div>
-                <h2 className="text-sm font-bold text-charcoal">Still have a question?</h2>
-                <p className="mt-0.5 text-xs text-muted">Our team can help with product selection, documentation and bulk enquiries.</p>
+                <h2 className="text-sm font-bold text-charcoal">
+                  Still have a question?
+                </h2>
+                <p className="mt-0.5 text-xs text-muted">
+                  Our team can help with product selection, documentation and
+                  bulk enquiries.
+                </p>
               </div>
-              <Link href="/contact" className="btn-primary min-h-9 px-4 text-xs">
-                Contact Our Team <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              <Link
+                href="/contact"
+                className="btn-primary min-h-9 px-4 text-xs"
+              >
+                Contact Our Team{" "}
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
           </SlideIn>

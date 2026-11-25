@@ -5,12 +5,19 @@ import { createMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createMetadata({
   title: "Safety Footwear Blog & Guides",
-  description: "Practical guides and workplace insights for industrial safety footwear selection, product information and procurement teams.",
+  description:
+    "Practical guides and workplace insights for industrial safety footwear selection, product information and procurement teams.",
   path: "/blog",
   image: "/images/industry-construction.jpg",
 });
 
 export default function BlogPage() {
   const [featured, ...articles] = blogArticles;
-  return <BlogHub featured={featured} articles={articles} categories={blogCategories} />;
+  return (
+    <BlogHub
+      featured={featured}
+      articles={articles}
+      categories={blogCategories}
+    />
+  );
 }

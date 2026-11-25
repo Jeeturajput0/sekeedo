@@ -37,7 +37,7 @@ export function SectionHeading({
         ) : null}
         <div className="mt-4">
           <TextReveal
-            as="h2"
+            as="h1"
             text={title}
             className={cn(
               "section-title",

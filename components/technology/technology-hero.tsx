@@ -8,12 +8,7 @@ export function TechnologyHero() {
     <section className="relative overflow-hidden border-b border-line bg-white">
       <div className="container-page relative grid gap-10 py-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-12 lg:py-14">
         <div className="relative z-10">
-          <nav aria-label="Breadcrumb" className="mb-8 flex items-center gap-2 text-[11px] text-muted">
-            <Link href="/" className="transition-colors hover:text-brand">Home</Link>
-            <ChevronRight className="h-3 w-3" aria-hidden="true" />
-            <span className="text-charcoal">Technology &amp; Safety</span>
-          </nav>
-
+     
           <FadeIn>
             <span className="eyebrow">Technology &amp; Safety</span>
           </FadeIn>

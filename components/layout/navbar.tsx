@@ -42,10 +42,10 @@ export function Navbar() {
         scrolled ? "border-line shadow-[0_8px_30px_rgba(22,27,25,0.06)]" : "border-transparent",
       )}
     >
-      <nav className="container-page" aria-label="Primary navigation">
-        <div
+      <nav className="container-page overflow-visible rounded-2xl " aria-label="Primary navigation ">
+        <div  
           className={cn(
-            "flex items-center justify-between transition-all duration-300",
+            "flex items-center justify-between transition-all duration-300 ",
             scrolled ? "h-[68px]" : "h-[74px]",
           )}
         >

@@ -99,7 +99,7 @@ export function AboutStats() {
   return (
     <section
       ref={sectionRef}
-      className="border-y border-line bg-white py-7 sm:py-9"
+      className="border-y border-line bg-white py-7 sm:py-5"
     >
       <div className="container-page">
         <div className="grid grid-cols-2 gap-y-8 lg:grid-cols-4">

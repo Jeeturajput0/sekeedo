@@ -48,7 +48,7 @@ export function TechnologyIndex() {
               <article
                 key={item.slug}
                 data-stagger
-                className="group flex h-full flex-col border border-line bg-white p-5 shadow-[0_2px_12px_rgba(17,17,17,0.03)] transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-[0_14px_30px_rgba(17,17,17,0.08)]"
+                className="group flex h-full rounded-2xl flex-col border border-line bg-white p-5 shadow-[0_2px_12px_rgba(17,17,17,0.03)] transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-[0_14px_30px_rgba(17,17,17,0.08)]"
               >
                 <div className="flex items-start justify-between gap-3">
                   <span className="grid h-9 w-9 place-items-center bg-[#FFF0EA] text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">

@@ -27,7 +27,7 @@ const steps = [
 
 export function SelectionGuide() {
   return (
-    <section className="bg-paper py-14 lg:py-18">
+    <section className="bg-paper py-14 lg:py-8">
       <div className="container-page">
         <SectionHeading
           eyebrow="Selection Guide"
@@ -35,12 +35,12 @@ export function SelectionGuide() {
           lead="Four steps that keep the decision grounded in the work and in verified information."
         />
 
-        <Stagger className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <Stagger className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
-              <div key={step.title} data-stagger className="relative h-full">
-                <div className="flex h-full flex-col border border-line bg-white p-5 shadow-[0_2px_12px_rgba(17,17,17,0.03)] transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-[0_14px_30px_rgba(17,17,17,0.08)]">
+              <div key={step.title} data-stagger className=" rounded-2xl relative h-full">
+                <div className="flex h-full flex-col border rounded-2xl border-line bg-white p-5 shadow-[0_2px_12px_rgba(17,17,17,0.03)] transition-all duration-300 hover:-translate-y-1 hover:border-brand/40 hover:shadow-[0_14px_30px_rgba(17,17,17,0.08)]">
                   <div className="flex items-start justify-between gap-3">
                     <span className="grid h-9 w-9 place-items-center bg-[#FFF0EA] text-brand">
                       <Icon className="h-4 w-4" aria-hidden="true" />

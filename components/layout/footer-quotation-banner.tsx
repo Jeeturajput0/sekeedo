@@ -94,7 +94,7 @@ export function FooterQuotationBanner() {
 
   return (
     <section
-      className="relative isolate overflow-hidden bg-[#111] bg-cover bg-center bg-no-repeat py-16 sm:py-20 lg:py-24"
+      className="relative isolate overflow-hidden bg-[#111] bg-cover bg-center bg-no-repeat py-16 sm:py-20 lg:py-9"
       style={{
         backgroundImage: `
           linear-gradient(

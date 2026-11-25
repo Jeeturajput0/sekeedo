@@ -33,7 +33,7 @@ export function FaqHero() {
         <nav aria-label="Breadcrumb" className="mb-5 flex items-center gap-2 text-[11px]">
           <Link href="/" className="text-white/55 transition-colors hover:text-brand">
             Home
-          </Link>
+          </Link><br />
           <span aria-hidden="true" className="text-white/30">
             /
           </span>

@@ -11,6 +11,7 @@ import { AboutIntroduction } from "@/components/about/about-introduction";
 import { AboutTestimonials } from "@/components/about/about-testimonials";
 import { BlogPreview } from "@/components/home/blog-preview";
 import { FaqPreview } from "@/components/home/faq-preview";
+import { FooterQuotationBanner } from "@/components/layout/footer-quotation-banner";
 
 export const metadata: Metadata = createMetadata({
   title: "SEKEEDO — Built for the Work That Matters",
@@ -23,7 +24,7 @@ export const metadata: Metadata = createMetadata({
 export default function HomePage() {
   return (
     <>
-      <HeroSlider />
+       <FooterQuotationBanner/>
       <AboutStats/>
       <AboutIntroduction />
       <CategoryPreview />

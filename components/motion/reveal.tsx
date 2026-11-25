@@ -16,7 +16,7 @@ type TextRevealProps = {
 
 export function TextReveal({
   text,
-  as = "h2",
+  as = "h3",
   className,
   delay = 0,
   immediate = false,

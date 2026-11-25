@@ -1,4 +1,3 @@
-
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { ShieldCheck, PackageCheck } from "lucide-react";
@@ -39,20 +38,14 @@ export default function ProductsPage({
 }) {
   return (
     <main id="main-content" className="bg-white">
-
       {/* PAGE HEADER */}
       <section className="border-b border-gray-100 bg-[#FAFAFA]">
         <div className="container-page pb-10 pt-7 sm:pb-14 sm:pt-10">
-
-          <Breadcrumb
-            items={[
-              { label: "Products" },
-              { label: "Safety Shoes" },
-            ]}
-          />
+          {/* <Breadcrumb
+            items={[{ label: "Products" }, { label: "Safety Shoes" }]}
+          /> */}
 
           <div className="mt-9 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-
             <div>
               <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-[#F4512C]">
                 <span className="h-[2px] w-7 bg-[#F4512C]" />
@@ -67,9 +60,9 @@ export default function ProductsPage({
               />
 
               <p className="mt-5 max-w-xl text-sm leading-7 text-gray-500 sm:text-base">
-                Built for the work that matters. Explore our industrial
-                safety footwear collection designed for demanding
-                workplaces and professional workforces.
+                Built for the work that matters. Explore our industrial safety
+                footwear collection designed for demanding workplaces and
+                professional workforces.
               </p>
             </div>
 
@@ -85,12 +78,10 @@ export default function ProductsPage({
                 in our collection
               </div>
             </div>
-
           </div>
 
           {/* TRUST STRIP */}
           <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-gray-200 pt-5">
-
             <div className="flex items-center gap-2 text-xs font-medium text-gray-600">
               <ShieldCheck size={17} className="text-[#F4512C]" />
               Safety-focused footwear
@@ -105,18 +96,14 @@ export default function ProductsPage({
               <ShieldCheck size={17} className="text-[#F4512C]" />
               Product-specific certification details
             </div>
-
           </div>
-
         </div>
       </section>
 
       {/* PRODUCT CATALOGUE */}
       <section className="bg-white py-10 sm:py-14 lg:py-16">
         <div className="container-page">
-
           <div className="mb-8 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
-
             <div>
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#F4512C]">
                 Find Your Footwear
@@ -134,7 +121,6 @@ export default function ProductsPage({
             <span className="text-xs font-medium text-gray-400">
               SEKEEDO INDUSTRIAL FOOTWEAR
             </span>
-
           </div>
 
           <Suspense
@@ -158,10 +144,8 @@ export default function ProductsPage({
           >
             <Catalogue searchParams={searchParams} />
           </Suspense>
-
         </div>
       </section>
-
     </main>
   );
 }

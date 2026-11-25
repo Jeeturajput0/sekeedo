@@ -18,7 +18,7 @@ const points = [
 
 export function MaterialConstruction() {
   return (
-    <section className="bg-white py-14 lg:py-18">
+    <section className="bg-white py-14 lg:py-9">
       <div className="container-page grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
         <FadeIn className="relative">
           <div className="absolute -left-6 -top-6 h-40 w-32 skew-x-[-24deg] bg-brand" aria-hidden="true" />

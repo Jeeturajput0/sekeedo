@@ -18,8 +18,8 @@ export function Logo({ className, light = false, showTagline = false }: LogoProp
       <Image
         src="/images/logo/logo.png"
         alt={showTagline ? "SEKEEDO safety footwear — comfort is important, safety is paramount" : "SEKEEDO Safety Footwear"}
-        width={2048}
-        height={576}
+        width={2348}
+        height={676}
         className={cn("h-11 w-auto object-contain", light && "bg-charcoal")}
         priority
       />
