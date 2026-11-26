@@ -305,7 +305,7 @@ export function ProductCatalog({
             </p>
             <h2
               id="category-heading"
-              className="mt-2 text-xl font-semibold tracking-tight text-charcoal"
+              className="section-heading mt-2 font-semibold tracking-tight text-charcoal"
             >
               Shop by category
             </h2>

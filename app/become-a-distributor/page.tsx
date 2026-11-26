@@ -80,7 +80,7 @@ export default function DistributorPage() {
               <TextReveal
                 as="h2"
                 text="Built for businesses that know their market."
-                className="section-title"
+                className="section-title section-heading"
               />
             </div>
             <FadeIn delay={0.1}>
@@ -149,7 +149,7 @@ export default function DistributorPage() {
               <TextReveal
                 as="h2"
                 text="A catalogue built around industrial demand."
-                className="section-title"
+                className="section-title section-heading"
               />
             </div>
             <FadeIn delay={0.1}>
@@ -225,7 +225,7 @@ export default function DistributorPage() {
               <TextReveal
                 as="h2"
                 text="Tell us about your business."
-                className="section-title"
+                className="section-title section-heading"
               />
             </div>
             <FadeIn delay={0.1}>

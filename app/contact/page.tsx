@@ -170,7 +170,7 @@ export default function ContactPage({
           <div className="lg:pt-2">
             <FadeIn>
               <span className="eyebrow text-charcoal">Speak with our team</span>
-              <h2 className="mt-5 text-[clamp(2.5rem,4.6vw,3.8rem)] font-semibold leading-[1.02] tracking-[-0.055em]">
+              <h2 className="section-heading mt-5 font-semibold leading-[1.02] tracking-[-0.055em]">
                 Send us an
                 <br />
                 <span className="text-brand">enquiry.</span>

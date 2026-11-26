@@ -16,7 +16,7 @@ export function DistributorPreview() {
               <TextReveal
                 as="h2"
                 text="For distributors who know their market."
-                className="section-title"
+                className="section-title section-heading"
               />
             </div>
             <FadeIn delay={0.1}>

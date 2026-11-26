@@ -12,6 +12,7 @@ import { AboutTestimonials } from "@/components/about/about-testimonials";
 import { BlogPreview } from "@/components/home/blog-preview";
 import { FaqPreview } from "@/components/home/faq-preview";
 import { FooterQuotationBanner } from "@/components/layout/footer-quotation-banner";
+import { AboutPillars } from "@/components/about/about-pillars";
 
 export const metadata: Metadata = createMetadata({
   title: "SEKEEDO — Built for the Work That Matters",
@@ -28,7 +29,7 @@ export default function HomePage() {
       <AboutStats/>
       <AboutIntroduction />
       <CategoryPreview />
-      <ValueStrip />
+        <AboutPillars/>
       <FeaturedProducts />
       <IndustriesPreview/>
       <WhySekeedo />

@@ -225,7 +225,7 @@ export function WhySekeedo() {
           {/* Section Label */}
           <FadeIn>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
 
               <span className="h-[3px] w-10 bg-brand" />
 
@@ -238,7 +238,7 @@ export function WhySekeedo() {
           </FadeIn>
 
           {/* Main Heading */}
-          <div className="mt-6">
+          <div className="mt-2">
 
             <TextReveal
               as="h2"
@@ -252,7 +252,7 @@ export function WhySekeedo() {
           {/* Description */}
           <FadeIn delay={0.15}>
 
-            <p className="mt-5 max-w-xl text-sm leading-7 text-muted sm:text-base sm:leading-8">
+            <p className="mt-2 max-w-xl text-sm leading-5 text-muted sm:text-base sm:leading-6">
               Designed around the practical needs of modern industries,
               with a focus on workplace protection, dependable product
               information and responsive business support.
@@ -261,7 +261,7 @@ export function WhySekeedo() {
           </FadeIn>
 
           {/* Reasons List */}
-          <Stagger className="mt-9 border-t border-line">
+          <Stagger className="mt-5 border-t border-line">
 
             {reasons.map((reason, index) => {
 
@@ -272,7 +272,7 @@ export function WhySekeedo() {
                 <div
                   key={reason.title}
                   data-stagger
-                  className="group relative grid grid-cols-[48px_1fr_24px] items-center gap-4 overflow-hidden border-b border-line px-3 py-7 transition-all duration-500 hover:bg-[#F8F7F5] sm:grid-cols-[58px_1fr_30px] sm:gap-5 sm:px-4 sm:py-8"
+                  className="group relative grid grid-cols-[48px_1fr_24px] items-center gap-4 overflow-hidden border-b border-line px-3 py-4 transition-all duration-500 hover:bg-[#F8F7F5] sm:grid-cols-[58px_1fr_30px] sm:gap-5 sm:px-4 sm:py-4"
                 >
 
                   {/* Hover Background */}
@@ -307,7 +307,7 @@ export function WhySekeedo() {
                       {reason.title}
                     </h3>
 
-                    <p className="mt-2 text-xs leading-6 text-muted sm:text-sm">
+                    <p className="mt-2 text-xs leading-5 text-muted sm:text-sm">
                       {reason.text}
                     </p>
 

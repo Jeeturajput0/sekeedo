@@ -21,7 +21,7 @@ export function Compliance() {
             <TextReveal
               as="h2"
               text="Documentation you can verify."
-              className="text-[clamp(2rem,4vw,3.5rem)] font-semibold leading-[1.08] tracking-[-0.045em]"
+              className="section-heading font-semibold leading-[1.08] tracking-[-0.045em]"
             />
           </div>
           <FadeIn delay={0.1}>

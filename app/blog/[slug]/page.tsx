@@ -41,7 +41,7 @@ export default async function BlogArticlePage({ params }: { params: Promise<{ sl
         <article className="min-w-0">
           <div className="relative mb-8 aspect-[16/8] overflow-hidden rounded-xl bg-paper"><Image src={article.image} alt={article.imageAlt} fill sizes="(max-width: 1024px) 100vw, 70vw" className="object-cover" /></div>
           <div className="max-w-3xl space-y-9">
-            {article.sections.map((section) => <section key={section.heading}><h2 className="text-2xl font-bold tracking-tight text-charcoal sm:text-3xl">{section.heading}</h2>{section.paragraphs.map((paragraph) => <p key={paragraph} className="mt-4 text-sm leading-7 text-charcoal/80 sm:text-base sm:leading-8">{paragraph}</p>)}</section>)}
+            {article.sections.map((section) => <section key={section.heading}><h2 className="section-heading font-bold tracking-tight text-charcoal">{section.heading}</h2>{section.paragraphs.map((paragraph) => <p key={paragraph} className="mt-4 text-sm leading-7 text-charcoal/80 sm:text-base sm:leading-8">{paragraph}</p>)}</section>)}
           </div>
           <Link href="/blog" className="btn-outline mt-10"><ArrowLeft className="h-4 w-4" />Back to all articles</Link>
         </article>

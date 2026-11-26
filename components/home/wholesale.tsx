@@ -44,7 +44,7 @@ export function Wholesale() {
             <TextReveal
               as="h2"
               text="Your Workforce. Your Requirements. Our Footwear Solutions."
-              className="section-title"
+              className="section-title section-heading"
             />
           </div>
           <FadeIn delay={0.1}>

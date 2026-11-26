@@ -189,7 +189,7 @@ export function IndustriesHub({ industries }: { industries: Industry[] }) {
       >
         <div className="container-page">
           <div className="flex flex-wrap items-center justify-between gap-4">
-            <h2 className="flex items-center gap-3 text-2xl font-bold tracking-tight text-charcoal sm:text-3xl">
+            <h2 className="section-heading flex items-center gap-3 font-bold tracking-tight text-charcoal">
               <span className="h-1 w-9 rounded-full bg-brand" />
               Industries We Serve
             </h2>

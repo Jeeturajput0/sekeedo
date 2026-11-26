@@ -15,7 +15,7 @@ function FeatureIcon({ feature }: { feature: string }) {
 
 export function AboutFeaturedProducts() {
   return (
-    <section className="bg-white py-14 lg:py-16">
+    <section className="bg-white py-9 lg:py-10">
       <div className="container-page">
         <FadeIn>
           <div className="flex flex-wrap items-end justify-between gap-4">
@@ -24,7 +24,7 @@ export function AboutFeaturedProducts() {
                 <span className="h-px w-8 bg-brand" />
                 Featured Products
               </span>
-              <h2 className="mt-4 text-[clamp(1.8rem,3.2vw,2.6rem)] font-semibold leading-[1.1] tracking-[-0.045em] text-charcoal">
+              <h2 className="section-heading mt-3 font-semibold leading-[1.1] tracking-[-0.045em] text-charcoal">
                 Our Safety Footwear <span className="text-brand">Range</span>
               </h2>
               <p className="mt-2 text-sm leading-6 text-muted">
@@ -37,7 +37,7 @@ export function AboutFeaturedProducts() {
           </div>
         </FadeIn>
 
-        <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-2 gap-3.5 lg:grid-cols-4">
           {featuredProducts.map((product, index) => {
             const badge = product.badge;
             const features = (product.safetyFeatures ?? []).slice(0, 2);
@@ -63,7 +63,7 @@ export function AboutFeaturedProducts() {
                     </span>
                   </Link>
 
-                  <div className="pt-3">
+                  <div className="pt-2.5">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.1em] text-brand">{product.sku}</p>
                     <h3 className="mt-1 line-clamp-2 text-sm font-semibold leading-5 text-charcoal">
                       <Link href={`/products/${product.slug}`} className="transition-colors hover:text-brand">

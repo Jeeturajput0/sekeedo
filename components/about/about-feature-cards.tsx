@@ -27,18 +27,18 @@ const cards = [
 
 export function AboutFeatureCards() {
   return (
-    <section className="bg-white py-10 sm:py-12 lg:py-9">
+    <section className="bg-white py-8 sm:py-10 lg:py-7">
       <div className="container-page">
 
         {/* SECTION HEADING */}
         <FadeIn>
-          <div className="mb-7 flex flex-col justify-between gap-4 sm:mb-9 sm:flex-row sm:items-end">
+          <div className="mb-5 flex flex-col justify-between gap-3 sm:mb-6 sm:flex-row sm:items-end">
             <div>
               <span className="eyebrow">
                 SEKEEDO / What We Focus On
               </span>
 
-              <h2 className="mt-3 max-w-xl text-2xl font-semibold leading-tight tracking-[-0.04em] text-charcoal sm:text-3xl lg:text-4xl">
+              <h2 className="section-heading mt-2 max-w-xl font-semibold leading-tight tracking-[-0.04em] text-charcoal">
                 Built for the demands of{" "}
                 <span className="text-brand">real work.</span>
               </h2>
@@ -49,7 +49,7 @@ export function AboutFeatureCards() {
         </FadeIn>
 
         {/* FEATURE CARDS */}
-        <div className="grid gap-5 md:grid-cols-2 lg:gap-6">
+        <div className="grid gap-4 md:grid-cols-2 lg:gap-5">
 
           {cards.map((card, index) => (
             <FadeIn key={card.number} delay={index * 0.12}>
@@ -84,7 +84,7 @@ export function AboutFeatureCards() {
                   </div>
 
                   {/* IMAGE TITLE */}
-                  <div className="absolute bottom-0 left-0 max-w-lg p-5 sm:p-7">
+                  <div className="absolute bottom-0 left-0 max-w-lg p-4 sm:p-5">
                     <h3 className="text-xl font-semibold leading-tight tracking-[-0.03em] text-white sm:text-2xl lg:text-3xl">
                       {card.title}
                     </h3>
@@ -100,7 +100,7 @@ export function AboutFeatureCards() {
                 </Link>
 
                 {/* CARD CONTENT */}
-                <div className="flex items-center justify-between gap-4 p-5 sm:p-6">
+                <div className="flex items-center justify-between gap-4 p-4 sm:p-5">
                   <p className="max-w-md text-sm leading-6 text-muted">
                     {card.text}
                   </p>

@@ -43,11 +43,11 @@ const features = [
 
 export function WhyChooseSekeedo() {
   return (
-    <section className="overflow-hidden bg-white py-12 sm:py-14 lg:py-16">
+    <section className="overflow-hidden bg-white py-9 sm:py-10 lg:py-11">
       <div className="container-page">
 
         {/* HEADER */}
-        <div className="grid gap-4 lg:grid-cols-[1fr_0.7fr] lg:items-end">
+        <div className="grid gap-3 lg:grid-cols-[1fr_0.7fr] lg:items-end">
 
           <div>
             <FadeIn>
@@ -57,12 +57,12 @@ export function WhyChooseSekeedo() {
               </span>
             </FadeIn>
 
-            <div className="mt-4">
+            <div className="mt-3">
               <TextReveal
                 as="h2"
                 text="The Right Safety Footwear for Your Workplace"
                 highlight={["Your", "Workplace"]}
-                className="max-w-[16ch] text-[clamp(2rem,3.5vw,3rem)] font-semibold leading-[1.05] tracking-[-0.05em] text-charcoal"
+                className="section-heading max-w-[16ch] font-semibold leading-[1.05] tracking-[-0.05em] text-charcoal"
               />
             </div>
           </div>
@@ -78,7 +78,7 @@ export function WhyChooseSekeedo() {
         </div>
 
         {/* COMPACT FEATURE CARDS */}
-        <Stagger className="mt-8 grid gap-3 sm:grid-cols-2 lg:gap-4">
+        <Stagger className="mt-6 grid gap-2.5 sm:grid-cols-2 lg:gap-3">
 
           {features.map((feature) => {
             const Icon = feature.icon;
@@ -87,7 +87,7 @@ export function WhyChooseSekeedo() {
               <TiltCard key={feature.number} className="h-full">
               <article
                 data-stagger
-                className="group relative flex h-full gap-4 overflow-hidden border border-line bg-white p-4 transition-all duration-300 hover:border-brand/40 hover:shadow-[0_8px_28px_rgba(0,0,0,0.06)] sm:p-5"
+                className="group relative flex h-full gap-3.5 overflow-hidden border border-line bg-white p-3.5 transition-all duration-300 hover:border-brand/40 hover:shadow-[0_8px_28px_rgba(0,0,0,0.06)] sm:p-4"
               >
 
                 {/* ICON */}
@@ -111,7 +111,7 @@ export function WhyChooseSekeedo() {
                     </span>
                   </div>
 
-                  <p className="mt-1.5 max-w-md text-xs leading-6 text-muted sm:text-[13px]">
+                  <p className="mt-1 max-w-md text-xs leading-6 text-muted sm:text-[13px]">
                     {feature.text}
                   </p>
                 </div>

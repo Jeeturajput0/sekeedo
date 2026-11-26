@@ -90,7 +90,7 @@ export default function IndustriesPreview() {
               </span>
             </div>
 
-            <h2 className="max-w-[420px] text-3xl font-bold leading-[1.08] tracking-tight text-white sm:text-4xl lg:text-[40px]">
+            <h2 className="section-heading max-w-[420px] font-bold leading-[1.08] tracking-tight text-white">
               Trusted Across
               <br />
               Diverse Industries

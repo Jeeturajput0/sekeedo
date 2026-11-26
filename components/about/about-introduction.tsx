@@ -28,12 +28,12 @@ const values = [
 
 export function AboutIntroduction() {
   return (
-    <section className="overflow-hidden bg-white py-16 lg:py-5 ">
-     <div className="container-page grid items-center gap-10  p-2 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14 lg:p-5">
+    <section className="overflow-hidden bg-white py-10 lg:py-4">
+     <div className="container-page grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
         {/* LEFT SIDE - IMAGE */}
         <FadeIn className="relative">
          
-<div className="grid h-[360px] grid-cols-2 gap-3 sm:h-[440px] lg:h-[490px]">
+<div className="grid h-[320px] grid-cols-2 gap-3 sm:h-[400px] lg:h-[440px]">
 
   {/* LEFT - LARGE IMAGE */}
   <div className="group relative overflow-hidden rounded-2xl bg-[#151515]">
@@ -102,18 +102,18 @@ export function AboutIntroduction() {
           </FadeIn>
 
           {/* Heading */}
-          <div className="mt-4">
+          <div className="mt-3">
             <TextReveal
               as="h2"
               text="Built for People Who Build the World"
               highlight={["Build", "the", "World"]}
-              className="home-heading max-w-[13ch] text-[clamp(2rem,3.8vw,3.2rem)] font-semibold leading-[1.06] tracking-[-0.045em] text-charcoal"
+              className="section-heading max-w-[13ch] font-semibold leading-[1.06] tracking-[-0.045em] text-charcoal"
             />
           </div>
 
           {/* Description */}
           <FadeIn delay={0.1}>
-            <p className="mt-4 text-base leading-5 text-charcoal/75 sm:text-lg sm:leading-7">
+            <p className="mt-3 text-base leading-6 text-charcoal/75 sm:text-lg sm:leading-7">
               SEKEEDO is an industrial safety footwear brand committed
               to protecting professionals across demanding work
               environments. Our focus is simple — reliable protection,
@@ -123,7 +123,7 @@ export function AboutIntroduction() {
           </FadeIn>
 
           {/* VALUES */}
-          <div className="mt-5 grid gap-6 sm:grid-cols-3 sm:gap-5">
+          <div className="mt-4 grid gap-4 sm:grid-cols-3">
 
             {values.map((value, index) => {
               const Icon = value.icon;
@@ -134,22 +134,22 @@ export function AboutIntroduction() {
                   delay={0.15 + index * 0.1}
                   className={
                     index > 0
-                      ? "border-t border-line pt-5 sm:border-l sm:border-t-0 sm:pl-5 sm:pt-0"
-                      : "border-t border-line pt-5 sm:border-t-0 sm:pt-0"
+                      ? "border-t border-line pt-4 sm:border-l sm:border-t-0 sm:pl-4 sm:pt-0"
+                      : "border-t border-line pt-4 sm:border-t-0 sm:pt-0"
                   }
                 >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#FFF0E9]">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FFF0E9]">
                     <Icon
                       className="h-6 w-6 text-[#F4512C]"
                       aria-hidden="true"
                     />
                   </div>
 
-                  <h3 className="mt-4 text-sm font-semibold text-charcoal">
+                  <h3 className="mt-3 text-sm font-semibold text-charcoal">
                     {value.title}
                   </h3>
 
-                  <p className="mt-2 text-xs leading-5 text-muted">
+                  <p className="mt-1.5 text-xs leading-5 text-muted">
                     {value.text}
                   </p>
                 </FadeIn>

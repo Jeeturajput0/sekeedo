@@ -129,7 +129,7 @@ export default async function IndustryDetailPage({
               <span className="h-[3px] w-8 bg-brand" />
               Workplace Overview
             </p>
-            <h2 className="mt-4 max-w-xl text-[clamp(2rem,3.6vw,2.8rem)] font-bold leading-[1.02] tracking-[-0.045em] text-charcoal">
+            <h2 className="section-heading mt-4 max-w-xl font-bold leading-[1.02] tracking-[-0.045em] text-charcoal">
               Understand the environment before{" "}
               <span className="text-brand">specifying footwear.</span>
             </h2>
@@ -221,7 +221,7 @@ export default async function IndustryDetailPage({
                 <span className="h-[3px] w-8 bg-brand" />
                 Keep Exploring
               </p>
-              <h2 className="mt-2 text-2xl font-bold tracking-tight text-charcoal sm:text-3xl">
+              <h2 className="section-heading mt-2 font-bold tracking-tight text-charcoal">
                 Other industries we support
               </h2>
             </div>

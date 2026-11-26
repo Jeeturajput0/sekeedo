@@ -88,7 +88,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
       <section className="relative isolate overflow-hidden bg-[#151515] text-white">
         <Image src="/images/hero-worker.webp" alt="Industrial worker preparing safety footwear" fill priority sizes="100vw" className="z-0 object-cover object-center opacity-35" />
         <div className="absolute inset-0 z-0 bg-[linear-gradient(90deg,rgba(15,15,15,0.98)_0%,rgba(15,15,15,0.9)_46%,rgba(15,15,15,0.46)_100%)]" aria-hidden="true" />
-        <div className="container-page relative grid min-h-[300px] items-center gap-7 py-8 sm:min-h-[350px] sm:py-10 lg:min-h-[390px] lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
+        <div className="container-page relative grid min-h-[300px] items-center gap-7 py-8 sm:min-h-[350px] sm:py-2 lg:min-h-[390px] lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
           <div className="relative z-10">
             <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center gap-2 text-[11px] text-white/75">
               <Link href="/" className="hover:text-brand">Home</Link><ChevronRight className="h-3 w-3" />
@@ -124,7 +124,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           <div>
             <FadeIn>
               <span className="eyebrow text-charcoal">{product.sku ?? product.name}</span>
-              <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-[-0.04em] text-charcoal sm:text-4xl">Product Overview</h2>
+              <h2 className="section-heading mt-3 font-semibold leading-tight tracking-[-0.04em] text-charcoal">Product Overview</h2>
               <p className="mt-3 text-sm leading-6 text-charcoal/80">{product.description ?? product.summary}</p>
               <p className="mt-2 text-xs leading-5 text-muted">{product.specificationStatus}</p>
             </FadeIn>
@@ -165,7 +165,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:gap-10">
             <FadeIn>
               <span className="eyebrow">About this product</span>
-              <h2 className="mt-4 max-w-sm text-3xl font-semibold leading-tight tracking-[-0.04em] text-charcoal">Product details for informed procurement</h2>
+              <h2 className="section-heading mt-4 max-w-sm font-semibold leading-tight tracking-[-0.04em] text-charcoal">Product details for informed procurement</h2>
             </FadeIn>
             <FadeIn delay={0.06}>
               <p className="text-sm leading-7 text-charcoal/85">{product.description ?? product.summary}</p>
@@ -230,7 +230,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 
       <section className="border-t border-line bg-white py-12 sm:py-16">
         <div className="container-page">
-          <div className="mb-6 flex flex-wrap items-end justify-between gap-4"><div><span className="eyebrow">Related products</span><h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-charcoal">More Safety Footwear Options</h2></div><Link href="/products" className="btn-link">View All Products<ArrowUpRight className="h-4 w-4" /></Link></div>
+          <div className="mb-6 flex flex-wrap items-end justify-between gap-4"><div><span className="eyebrow">Related products</span><h2 className="section-heading mt-3 font-semibold tracking-[-0.04em] text-charcoal">More Safety Footwear Options</h2></div><Link href="/products" className="btn-link">View All Products<ArrowUpRight className="h-4 w-4" /></Link></div>
           <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{related.map((item) => <div key={item.slug} data-stagger><RelatedProductCard product={item} /></div>)}</Stagger>
         </div>
       </section>

@@ -128,7 +128,7 @@ export function AboutStats() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate overflow-hidden border-y border-[#EAE7E3] bg-[#F8F8F6] py-8 sm:py-10"
+      className="relative isolate overflow-hidden border-y border-[#EAE7E3] bg-[#F8F8F6] py-6 sm:py-7"
     >
       {/* Background Decoration */}
       <div
@@ -144,9 +144,9 @@ export function AboutStats() {
       <div className="container-page relative">
         {/* SECTION HEADING */}
         <FadeIn>
-          <div className="mb-5 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+          <div className="mb-4 flex flex-col justify-between gap-2.5 sm:flex-row sm:items-end">
             <div>
-              <div className="mb-2 flex items-center gap-2.5">
+              <div className="mb-1.5 flex items-center gap-2.5">
                 <span className="h-[3px] w-7 rounded-full bg-[#F4512C]" />
 
                 <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#F4512C]">
@@ -154,7 +154,7 @@ export function AboutStats() {
                 </span>
               </div>
 
-              <h2 className="home-heading text-xl font-extrabold tracking-tight text-[#151515] sm:text-2xl">
+              <h2 className="section-heading font-extrabold tracking-tight text-[#151515]">
                 Our Journey in
                 <span className="text-[#F4512C]"> Numbers.</span>
               </h2>
@@ -168,7 +168,7 @@ export function AboutStats() {
         </FadeIn>
 
         {/* STATISTICS GRID */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
 
@@ -180,15 +180,15 @@ export function AboutStats() {
               >
                 <div
                   className="
-                    group relative flex h-full min-h-[150px]
+                    group relative flex h-full min-h-[130px]
                     flex-col overflow-hidden rounded-2xl
                     border border-[#EAE7E3] bg-white
-                    p-4 shadow-[0_4px_18px_rgba(0,0,0,0.03)]
+                    p-3.5 shadow-[0_4px_18px_rgba(0,0,0,0.03)]
                     transition-all duration-500
                     hover:-translate-y-1
                     hover:border-[#F4512C]/40
                     hover:shadow-[0_12px_26px_rgba(244,81,44,0.10)]
-                    sm:min-h-[158px]
+                    sm:min-h-[136px]
                   "
                 >
 
@@ -214,7 +214,7 @@ export function AboutStats() {
                   </div>
 
                   {/* NUMBER */}
-                  <div className="mt-3">
+                  <div className="mt-2.5">
                     <p className="text-[28px] font-extrabold leading-none tracking-[-0.05em] text-[#171B18] tabular-nums sm:text-[32px]">
                       <CountUp
                         value={stat.value}

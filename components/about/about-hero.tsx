@@ -34,11 +34,11 @@ export function AboutHero() {
 
   return (
     <section className="relative overflow-hidden border-b border-line bg-white">
-      <div className="container-page grid items-center gap-10 py-2 lg:min-h-[560px] lg:grid-cols-[1fr_1.02fr] lg:gap-12 lg:py-2">
+      <div className="container-page grid items-center gap-8 py-2 lg:min-h-[480px] lg:grid-cols-[1fr_1.02fr] lg:gap-10 lg:py-2">
         <div className="relative z-10">
           <span className="eyebrow">SEKEEDO</span>
 
-          <div className="mt-6">
+          <div className="mt-4">
             <TextReveal
               as="h1"
               text="Safety Footwear, Approached with Clarity."
@@ -48,12 +48,12 @@ export function AboutHero() {
             />
           </div>
 
-          <p className="mt-7 max-w-xl text-base leading-8 text-charcoal/65 sm:text-lg">
+          <p className="mt-5 max-w-xl text-base leading-7 text-charcoal/65 sm:text-lg">
             High-performance safety shoes designed for real work environments—combining
             protection, comfort and long-lasting durability.
           </p>
 
-          <div className="mt-9 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap gap-2.5">
             <Link href="/products" className="btn-primary">
               Explore Products
               <ArrowRight className="h-4 w-4" aria-hidden="true" />

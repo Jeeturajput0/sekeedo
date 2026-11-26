@@ -34,7 +34,7 @@ const researchPoints = [
 
 export function ResearchApproach() {
   return (
-    <section className="relative overflow-hidden bg-[#F6F6F4] py-16 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-[#F6F6F4] py-10 sm:py-12 lg:py-14">
 
       {/* Subtle Background Accent */}
       <div
@@ -44,7 +44,7 @@ export function ResearchApproach() {
 
       <div className="container-page relative">
 
-        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+        <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
 
           {/* LEFT IMAGE SECTION */}
           <FadeIn className="relative">
@@ -117,17 +117,17 @@ export function ResearchApproach() {
               </div>
             </FadeIn>
 
-            <div className="mt-6">
+            <div className="mt-4">
               <TextReveal
                 as="h2"
                 text="Thoughtful Design, Real-World Testing"
                 highlight={["Real-World", "Testing"]}
-                className="max-w-[15ch] text-[clamp(2.2rem,4vw,3.5rem)] font-bold leading-[1.08] tracking-[-0.045em] text-charcoal"
+                className="section-heading max-w-[15ch] font-bold leading-[1.08] tracking-[-0.045em] text-charcoal"
               />
             </div>
 
             <FadeIn delay={0.1}>
-              <p className="mt-6 max-w-xl text-sm leading-7 text-muted sm:text-base sm:leading-8">
+              <p className="mt-4 max-w-xl text-sm leading-7 text-muted sm:text-base sm:leading-8">
                 We continuously evaluate materials, design and durability
                 to create safety footwear that performs in real industrial
                 conditions.
@@ -135,7 +135,7 @@ export function ResearchApproach() {
             </FadeIn>
 
             {/* Research Highlights */}
-            <div className="mt-8 space-y-5 border-t border-[#DDDEDA] pt-7">
+            <div className="mt-6 space-y-3.5 border-t border-[#DDDEDA] pt-5">
 
               {researchPoints.map((point, index) => {
                 const Icon = point.icon;
@@ -144,7 +144,7 @@ export function ResearchApproach() {
                   <FadeIn key={point.title} delay={0.12 + index * 0.08}>
                     <div className="group flex items-start gap-4">
 
-                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/10 text-brand transition-all duration-300 group-hover:bg-brand group-hover:text-white">
+                      <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand/10 text-brand transition-all duration-300 group-hover:bg-brand group-hover:text-white">
                         <Icon size={20} />
                       </div>
 
@@ -169,7 +169,7 @@ export function ResearchApproach() {
             <FadeIn delay={0.3}>
               <Link
                 href="/technology-safety"
-                className="group mt-9 inline-flex min-h-12 items-center gap-3 rounded-lg bg-brand px-6 py-3 text-sm font-bold text-white shadow-md shadow-brand/15 transition-all duration-300 hover:-translate-y-1 hover:bg-[#FF6A00] hover:shadow-lg"
+                className="group mt-6 inline-flex min-h-11 items-center gap-3 rounded-lg bg-brand px-5 py-3 text-sm font-bold text-white shadow-md shadow-brand/15 transition-all duration-300 hover:-translate-y-1 hover:bg-[#FF6A00] hover:shadow-lg"
               >
                 Explore Our Technology
 

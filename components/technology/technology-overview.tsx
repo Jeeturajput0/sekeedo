@@ -28,7 +28,7 @@ export function TechnologyOverview() {
                 as="h2"
                 text="The right footwear starts with the right questions."
                 highlight="questions."
-                className="max-w-[13ch] text-[clamp(2rem,3.6vw,3rem)] font-semibold leading-[1.06] tracking-[-0.045em] text-charcoal"
+                className="section-heading max-w-[13ch] font-semibold leading-[1.06] tracking-[-0.045em] text-charcoal"
               />
             </div>
 

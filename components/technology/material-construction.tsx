@@ -52,7 +52,7 @@ export function MaterialConstruction() {
               as="h2"
               text="Construction choices shape performance."
               highlight="performance."
-              className="max-w-[13ch] text-[clamp(1.9rem,3.4vw,2.8rem)] font-semibold leading-[1.08] tracking-[-0.045em] text-charcoal"
+              className="section-heading max-w-[13ch] font-semibold leading-[1.08] tracking-[-0.045em] text-charcoal"
             />
           </div>
           <FadeIn delay={0.1}>

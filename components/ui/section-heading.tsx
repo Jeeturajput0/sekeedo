@@ -41,6 +41,7 @@ export function SectionHeading({
             text={title}
             className={cn(
               "section-title",
+              "section-heading",
               light && "text-white",
             )}
           />

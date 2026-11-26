@@ -5,7 +5,7 @@ import { testimonialRows, type Testimonial } from "@/lib/data/testimonials";
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <article className="flex h-full min-h-[160px] flex-col rounded-xl border border-[#ff8500]/35 bg-white p-4 shadow-none">
+    <article className="flex h-full min-h-[145px] flex-col rounded-xl border border-[#ff8500]/35 bg-white p-3.5 shadow-none">
             <div
         className="mt-2 flex gap-0.5 text-[#ff8500]"
         aria-label={`${testimonial.rating} out of 5 stars (demo rating)`}
@@ -80,13 +80,13 @@ export function AboutTestimonials() {
   return (
     <section
       aria-labelledby="testimonials-title"
-      className="relative isolate overflow-hidden bg-white py-14 sm:py-16 lg:py-4"
+      className="relative isolate overflow-hidden bg-white py-9 sm:py-10 lg:py-4"
     >
       <div className="container-page">
-        <div className="mb-8 max-w-2xl">
+        <div className="mb-6 max-w-2xl">
           <h2
             id="testimonials-title"
-            className="section-title home-heading text-charcoal sm:text-3xl"
+            className="section-title section-heading text-charcoal"
           >
             What Our Customers Say
           </h2>
@@ -97,7 +97,7 @@ export function AboutTestimonials() {
         </div>
       </div>
 
-      <div className="container-page space-y-3 sm:space-y-4">
+      <div className="container-page space-y-2.5 sm:space-y-3">
         <TestimonialRow items={testimonialRows[0]} direction="ltr" />
         <TestimonialRow items={testimonialRows[1]} direction="rtl" />
       </div>

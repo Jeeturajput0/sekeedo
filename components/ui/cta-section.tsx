@@ -64,7 +64,7 @@ export function CtaSection({
           </FadeIn>
 
           <FadeIn delay={0.05}>
-            <h2 className="mt-4 max-w-xl text-[clamp(2.2rem,4.2vw,3.4rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-white">
+            <h2 className="section-heading mt-4 max-w-xl font-semibold leading-[1.02] tracking-[-0.05em] text-white">
               {title}
             </h2>
           </FadeIn>

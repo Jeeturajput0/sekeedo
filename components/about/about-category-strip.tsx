@@ -30,7 +30,7 @@ export function AboutCategoryStrip() {
                 <span className="h-px w-8 bg-brand" />
                 Browse by Category
               </span>
-              <h2 className="mt-4 text-[clamp(1.8rem,3.2vw,2.6rem)] font-semibold leading-[1.1] tracking-[-0.045em] text-charcoal">
+              <h2 className="section-heading mt-4 font-semibold leading-[1.1] tracking-[-0.045em] text-charcoal">
                 Shop by <span className="text-brand">Footwear Category</span>
               </h2>
             </div>

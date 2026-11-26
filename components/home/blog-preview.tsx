@@ -17,7 +17,7 @@ export function BlogPreview() {
             </span>
             <h2
               id="home-blog-title"
-              className="section-title home-heading mt-4"
+              className="section-title home-heading mt-2"
             >
               Insights &amp; <span className="text-brand">Guides</span>
             </h2>
@@ -51,7 +51,7 @@ export function BlogPreview() {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </Link>
-              <div className="p-4">
+              <div className="p-2">
                 <span className="inline-flex rounded bg-[#fff0e8] px-2 py-1 text-[9px] font-bold uppercase text-[#e64b1f]">
                   {article.category}
                 </span>

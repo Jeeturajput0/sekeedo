@@ -435,7 +435,25 @@ body {
   color: #171717;
 }
 
-/* Uniform section heading size on the home page (matches the Industries heading). */
+/* Uniform content-section heading size across the whole project.
+   Matches the Industries heading: 30px -> 36px -> 40px. */
+.section-heading {
+  font-size: 1.875rem;
+}
+
+@media (min-width: 640px) {
+  .section-heading {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-heading {
+    font-size: 40px;
+  }
+}
+
+/* Kept for the home page markup already using this class. */
 .home-page .home-heading {
   font-size: 1.875rem;
 }
@@ -453,7 +471,7 @@ body {
 }
 
 .section-lead {
-  margin-top: 1.25rem;
+ 
   max-width: 42rem;
   font-size: 1rem;
   line-height: 1.75;

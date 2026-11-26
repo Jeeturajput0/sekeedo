@@ -34,7 +34,7 @@ export function AboutCta() {
               as="h2"
               text="Let's Work Together."
               highlight="Together."
-              className="text-[clamp(2.2rem,4.2vw,3.6rem)] font-semibold leading-[1.05] tracking-[-0.045em] text-white"
+              className="section-heading font-semibold leading-[1.05] tracking-[-0.045em] text-white"
             />
           </div>
           <FadeIn delay={0.1}>
