@@ -1,24 +1,29 @@
-
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
+  ArrowRight,
   ArrowUpRight,
   ChevronDown,
-  ChevronUp,
   Factory,
   Headphones,
   Layers,
   Package,
   ShieldCheck,
   Truck,
-  BadgeCheck,
   type LucideIcon,
 } from "lucide-react";
 
+import {
+  FadeIn,
+  ImageReveal,
+  SlideIn,
+  Stagger,
+  TextReveal,
+} from "@/components/motion/reveal";
 import { homeFaqs, type FaqCategoryIcon, type HomeFaq } from "@/lib/data/faqs";
 import { cn } from "@/lib/utils";
 
@@ -31,178 +36,122 @@ const faqIcons: Record<FaqCategoryIcon, LucideIcon> = {
   general: Headphones,
 };
 
-const features = [
-  {
-    icon: BadgeCheck,
-    title: "Certified",
-    subtitle: "Quality",
-  },
-  {
-    icon: Package,
-    title: "Bulk",
-    subtitle: "Supply",
-  },
-  {
-    icon: Headphones,
-    title: "Expert",
-    subtitle: "Support",
-  },
-];
-
-type RevealDirection = "left" | "right" | "up";
-
-const revealVariants = {
-  hidden: (direction: RevealDirection) => ({
-    opacity: 0,
-    x: direction === "left" ? -64 : direction === "right" ? 64 : 0,
-    y: direction === "up" ? 40 : 0,
-  }),
-  visible: { opacity: 1, x: 0, y: 0 },
-};
-
-/** Scroll-triggered reveal used only by the home page FAQ section. */
-function Reveal({
-  direction,
-  className,
-  children,
-}: {
-  direction: RevealDirection;
-  className?: string;
-  children: ReactNode;
-}) {
-  const reduceMotion = useReducedMotion();
-
-  return (
-    <motion.div
-      className={className}
-      custom={direction}
-      variants={revealVariants}
-      initial={reduceMotion ? false : "hidden"}
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
 type FaqPreviewAccordionProps = {
   items: HomeFaq[];
 };
 
-export function FaqPreviewAccordion({
-  items,
-}: FaqPreviewAccordionProps) {
+export function FaqPreviewAccordion({ items }: FaqPreviewAccordionProps) {
   const [open, setOpen] = useState<number | null>(0);
+  const reduceMotion = useReducedMotion();
 
   return (
-    <section className="container-page relative overflow-hidden bg-white py-16 lg:py-6">
+    <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-5">
+      <div className="container-page">
+        {/* =========================================
+            SECTION HEADING
+        ========================================== */}
+        <div className="mb-9 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between lg:mb-11">
+          <FadeIn>
+            <span className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-brand">
+              <span className="h-px w-8 bg-brand" />
+              FAQs / Help Centre
+            </span>
 
-      {/* Decorative Background */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-24 -top-24 h-64 w-64 rounded-full bg-[#F4512C]/10 blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-32 -right-20 h-80 w-80 rounded-full bg-[#F4512C]/[0.06] blur-3xl"
-      />
+            <TextReveal
+              as="h2"
+              text="Questions? We've got answers."
+              highlight={["answers."]}
+              className="section-title home-heading mt-4"
+            />
 
-      <div className="relative">
+            <p className="section-lead">
+              Straight answers to the questions we hear most from businesses,
+              factories and procurement teams.
+            </p>
+          </FadeIn>
 
-        {/* SECTION HEADING - bottom to top */}
-        <Reveal direction="up" className="mb-10 lg:mb-12">
-          <span className="eyebrow">Frequently asked questions</span>
+          <FadeIn delay={0.1}>
+            <Link href="/faq" className="btn-link shrink-0">
+              View all FAQs
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </FadeIn>
+        </div>
 
-          <h2 className="section-title mt-4 sm:text-3xl">
-            Frequently Asked <span className="text-brand">Questions</span>
-          </h2>
+        {/* =========================================
+            MAIN TWO COLUMN LAYOUT
+        ========================================== */}
+        <div className="grid items-stretch gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-8">
+          {/* ---------------------------------------
+              LEFT SUPPORT PANEL
+          --------------------------------------- */}
+          <SlideIn direction="left" className="h-full">
+            <div className="group relative h-full min-h-[380px] overflow-hidden rounded-xl bg-[#101C16] shadow-xl lg:min-h-[520px]">
+              <ImageReveal className="absolute inset-0">
+                <Image
+                  src="/images/hero-worker.webp"
+                  alt="SEKEEDO industrial safety footwear at work"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  className="object-cover object-center transition-transform duration-1000 group-hover:scale-105"
+                />
+              </ImageReveal>
 
-          <p className="section-lead">
-            Quick answers to common queries from our business and industry
-            partners.
-          </p>
-        </Reveal>
-
-        {/* MAIN TWO COLUMN LAYOUT */}
-        <div className="grid items-center gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:gap-10">
-
-          {/* LEFT IMAGE PANEL - left to right */}
-          <Reveal
-            direction="left"
-            className="relative isolate overflow-hidden rounded-[24px] border border-[#F0EAE5] bg-[#F4512C] shadow-[0_15px_45px_rgba(0,0,0,0.10)]"
-          >
-
-            {/* Main Image */}
-            <div className="relative h-[300px] overflow-hidden sm:h-[390px] lg:h-[410px]">
-
-              <Image
-                src="/images/hero-safety-shoe.jpg"
-                alt="SEKEEDO industrial safety footwear"
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover object-center transition-transform duration-700 hover:scale-105"
+              {/* Dark gradient for text legibility */}
+              <div
+                className="absolute inset-0 bg-gradient-to-t from-[#101C16] via-[#101C16]/50 to-transparent"
+                aria-hidden="true"
               />
 
-              {/* Image Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-
-              {/* Small Brand Label */}
-              <div className="absolute left-5 top-5 rounded-full border border-white/40 bg-black/30 px-4 py-2 text-xs font-bold tracking-wider text-white backdrop-blur-md">
-                SEKEEDO INDUSTRIAL SAFETY
+              {/* Top label */}
+              <div className="absolute left-5 top-5 z-10 sm:left-6 sm:top-6">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/30 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur-md">
+                  <span className="h-2 w-2 rounded-full bg-brand" />
+                  SEKEEDO / Support Desk
+                </span>
               </div>
-            </div>
 
-            {/* Orange Bottom Feature Panel */}
-            <div className="relative z-10 -mt-7 rounded-t-[48%_18px] bg-gradient-to-br from-[#FF6A00] to-[#E9471F] px-3 pb-6 pt-10 sm:px-5">
+              {/* Bottom content */}
+              <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8">
+                <span className="text-xs font-bold uppercase tracking-[0.18em] text-brand">
+                  Here to help
+                </span>
 
-              <div className="grid grid-cols-3 divide-x divide-white/40">
+                <h3 className="mt-3 max-w-md text-2xl font-bold leading-[1.12] tracking-tight text-white sm:text-3xl">
+                  Still need a hand? Our team is here.
+                </h3>
 
-                {features.map((feature) => {
-                  const Icon = feature.icon;
+                <p className="mt-3 max-w-sm text-sm leading-6 text-white/80">
+                  Can&apos;t find what you&apos;re looking for? Share your
+                  requirement and we&apos;ll guide you to the right product.
+                </p>
 
-                  return (
-                    <div
-                      key={feature.title}
-                      className="flex flex-col items-center px-2 text-center text-white"
-                    >
-                      <Icon
-                        size={32}
-                        strokeWidth={1.8}
-                        className="mb-2"
-                      />
-
-                      <span className="text-sm font-extrabold sm:text-base">
-                        {feature.title}
-                      </span>
-
-                      <span className="text-sm font-bold">
-                        {feature.subtitle}
-                      </span>
-                    </div>
-                  );
-                })}
-
+                <Link
+                  href="/contact"
+                  className="group/cta mt-6 inline-flex min-h-12 items-center gap-3 rounded-full bg-brand px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#FF6A00] hover:shadow-lg hover:shadow-brand/30"
+                >
+                  Talk to our team
+                  <ArrowRight
+                    size={17}
+                    className="transition-transform duration-300 group-hover/cta:translate-x-1"
+                    aria-hidden="true"
+                  />
+                </Link>
               </div>
+
+              {/* Brand accent */}
+              <div
+                className="absolute bottom-0 left-0 h-1.5 w-28 bg-brand"
+                aria-hidden="true"
+              />
             </div>
-          </Reveal>
+          </SlideIn>
 
-          {/* RIGHT FAQ ACCORDION - right to left */}
-          <Reveal direction="right" className="min-w-0">
-
-            <div className="mb-5">
-              <h4 className="text-xl font-extrabold text-[#151515] sm:text-2xl">
-                Common Questions
-              </h4>
-
-              <p className="mt-1 text-sm text-[#737873]">
-                Everything you need to know before enquiring.
-              </p>
-            </div>
-
-            <div className="space-y-2.5">
-
+          {/* ---------------------------------------
+              RIGHT FAQ ACCORDION
+          --------------------------------------- */}
+          <div className="min-w-0">
+            <Stagger selector="[data-faq-item]" className="space-y-2.5">
               {items.map((item, index) => {
                 const Icon = faqIcons[item.icon];
                 const isOpen = open === index;
@@ -211,116 +160,85 @@ export function FaqPreviewAccordion({
                 return (
                   <div
                     key={item.question}
+                    data-faq-item
                     className={cn(
-                      "overflow-hidden rounded-2xl border transition-all duration-300",
+                      "overflow-hidden rounded-xl border bg-white shadow-[0_3px_12px_rgba(0,0,0,0.04)] transition-all duration-300",
                       isOpen
-                        ? "border-[#F4512C] bg-white shadow-[0_10px_28px_rgba(244,81,44,0.12)]"
-                        : "border-[#EAEAE7] bg-white shadow-[0_5px_18px_rgba(0,0,0,0.045)] hover:border-[#F4512C]/40 hover:shadow-md",
+                        ? "border-brand shadow-[0_12px_30px_rgba(244,81,44,0.12)]"
+                        : "border-line hover:border-brand/40 hover:shadow-md",
                     )}
                   >
-
-                    {/* QUESTION */}
                     <h3>
                       <button
                         type="button"
                         aria-expanded={isOpen}
                         aria-controls={panelId}
-                        onClick={() =>
-                          setOpen(isOpen ? null : index)
-                        }
-                        className={cn(
-                          "flex w-full items-center gap-3 px-4 py-4 text-left transition-colors duration-300 sm:gap-4 sm:px-5 sm:py-[17px]",
-                          isOpen
-                            ? "bg-[#F4512C] text-white"
-                            : "bg-white text-[#171B18]",
-                        )}
+                        onClick={() => setOpen(isOpen ? null : index)}
+                        className="flex w-full items-center gap-3 px-4 py-4 text-left sm:gap-4 sm:px-5"
                       >
-
-                        {/* Icon */}
-                        <span
-                          className={cn(
-                            "grid h-10 w-10 shrink-0 place-items-center rounded-xl transition-colors",
-                            isOpen
-                              ? "bg-white/20 text-white"
-                              : "bg-[#FFF0E9] text-[#F4512C]",
-                          )}
-                        >
-                          <Icon
-                            size={21}
-                            strokeWidth={1.9}
-                            aria-hidden="true"
-                          />
+                        <span className="text-[11px] font-bold tracking-widest text-brand">
+                          {String(index + 1).padStart(2, "0")}
                         </span>
 
-                        {/* Question Text */}
-                        <span className="flex-1 text-sm font-extrabold leading-snug sm:text-base">
+                        <span
+                          className={cn(
+                            "grid h-10 w-10 shrink-0 place-items-center rounded-lg transition-colors duration-300",
+                            isOpen
+                              ? "bg-brand text-white"
+                              : "bg-brand/10 text-brand",
+                          )}
+                        >
+                          <Icon size={19} strokeWidth={1.8} aria-hidden="true" />
+                        </span>
+
+                        <span className="flex-1 text-sm font-bold leading-snug text-charcoal transition-colors duration-300 sm:text-base">
                           {item.question}
                         </span>
 
-                        {/* Arrow */}
-                        <span className="grid h-8 w-8 shrink-0 place-items-center">
-                          {isOpen ? (
-                            <ChevronUp size={22} />
-                          ) : (
-                            <ChevronDown size={22} />
-                          )}
-                        </span>
+                        <motion.span
+                          animate={{ rotate: isOpen ? 180 : 0 }}
+                          transition={{ duration: reduceMotion ? 0 : 0.25 }}
+                          className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-line text-charcoal"
+                        >
+                          <ChevronDown size={18} aria-hidden="true" />
+                        </motion.span>
                       </button>
                     </h3>
 
-                    {/* ANSWER */}
                     <AnimatePresence initial={false}>
                       {isOpen && (
                         <motion.div
                           id={panelId}
-                          initial={{
-                            height: 0,
-                            opacity: 0,
-                          }}
-                          animate={{
-                            height: "auto",
-                            opacity: 1,
-                          }}
-                          exit={{
-                            height: 0,
-                            opacity: 0,
-                          }}
+                          initial={reduceMotion ? false : { height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={reduceMotion ? undefined : { height: 0, opacity: 0 }}
                           transition={{
-                            duration: 0.28,
+                            duration: reduceMotion ? 0 : 0.28,
                             ease: [0.22, 1, 0.36, 1],
                           }}
                           className="overflow-hidden"
                         >
-                          <p className="mx-3 my-3 rounded-xl bg-[#FFF3EC] px-4 py-4 text-sm leading-6 text-[#454743] sm:mx-4 sm:px-5 sm:py-4">
+                          <p className="ml-[4.25rem] mr-4 border-l-2 border-brand bg-paper px-4 py-3 text-sm leading-6 text-charcoal/75 sm:ml-[5.25rem] sm:mr-5">
                             {item.answer}
                           </p>
                         </motion.div>
                       )}
                     </AnimatePresence>
-
                   </div>
                 );
               })}
+            </Stagger>
 
-            </div>
-
-            {/* VIEW ALL FAQ */}
-            <div className="mt-6 flex justify-center lg:justify-end">
+            <p className="mt-5 text-center text-sm text-muted lg:text-right">
+              Have a different question?{" "}
               <Link
-                href="/faq"
-                className="group inline-flex items-center gap-2 border-b-2 border-[#F4512C] pb-1 text-base font-extrabold text-[#F4512C] transition-colors hover:text-[#D93F20]"
+                href="/contact"
+                className="font-bold text-brand transition-colors hover:text-[#FF6A00]"
               >
-                View all FAQs
-
-                <ArrowUpRight
-                  size={21}
-                  className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-                  aria-hidden="true"
-                />
+                Contact us directly
               </Link>
-            </div>
-
-          </Reveal>
+            </p>
+          </div>
         </div>
       </div>
     </section>

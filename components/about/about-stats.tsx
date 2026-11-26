@@ -128,50 +128,47 @@ export function AboutStats() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate overflow-hidden border-y border-[#EAE7E3] bg-[#F8F8F6] py-12 sm:py-16 lg:py-6"
+      className="relative isolate overflow-hidden border-y border-[#EAE7E3] bg-[#F8F8F6] py-8 sm:py-10"
     >
       {/* Background Decoration */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-24 -top-24 -z-10 h-64 w-64 rounded-full bg-[#F4512C]/[0.06] blur-3xl"
+        className="pointer-events-none absolute -left-24 -top-24 -z-10 h-56 w-56 rounded-full bg-[#F4512C]/[0.06] blur-3xl"
       />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-28 -right-20 -z-10 h-72 w-72 rounded-full bg-[#F4512C]/[0.05] blur-3xl"
+        className="pointer-events-none absolute -bottom-24 -right-20 -z-10 h-56 w-56 rounded-full bg-[#F4512C]/[0.05] blur-3xl"
       />
 
       <div className="container-page relative">
-
         {/* SECTION HEADING */}
         <FadeIn>
-          <div className="mb-4 flex flex-col justify-between gap-4 sm:flex-row sm:items-end lg:mb-12">
-
+          <div className="mb-5 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
             <div>
-              <div className="mb-3 flex items-center gap-3">
-                <span className="h-[3px] w-9 rounded-full bg-[#F4512C]" />
+              <div className="mb-2 flex items-center gap-2.5">
+                <span className="h-[3px] w-7 rounded-full bg-[#F4512C]" />
 
-                <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#F4512C]">
+                <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#F4512C]">
                   SEKEEDO In Numbers
                 </span>
               </div>
 
-              <h2 className="text-2xl font-extrabold tracking-tight text-[#151515] sm:text-3xl lg:text-3xl">
+              <h2 className="home-heading text-xl font-extrabold tracking-tight text-[#151515] sm:text-2xl">
                 Our Journey in
                 <span className="text-[#F4512C]"> Numbers.</span>
               </h2>
             </div>
 
-            <p className="max-w-md text-sm leading-6 text-[#686D68] sm:text-right">
-              Building confidence through industrial safety
-              footwear and business-focused solutions.
+            <p className="max-w-sm text-xs leading-5 text-[#686D68] sm:text-right">
+              Building confidence through industrial safety footwear and
+              business-focused solutions.
             </p>
           </div>
         </FadeIn>
 
         {/* STATISTICS GRID */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
-
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
 
@@ -183,42 +180,42 @@ export function AboutStats() {
               >
                 <div
                   className="
-                    group relative flex h-full min-h-[190px]
+                    group relative flex h-full min-h-[150px]
                     flex-col overflow-hidden rounded-2xl
                     border border-[#EAE7E3] bg-white
-                    p-4 shadow-[0_5px_22px_rgba(0,0,0,0.035)]
+                    p-4 shadow-[0_4px_18px_rgba(0,0,0,0.03)]
                     transition-all duration-500
-                    hover:-translate-y-2
+                    hover:-translate-y-1
                     hover:border-[#F4512C]/40
-                    hover:shadow-[0_16px_35px_rgba(244,81,44,0.10)]
-                    sm:min-h-[220px] sm:p-6
+                    hover:shadow-[0_12px_26px_rgba(244,81,44,0.10)]
+                    sm:min-h-[158px]
                   "
                 >
 
-                  {/* TOP ACCENT */}
+   
                   <div className="absolute left-0 top-0 h-[3px] w-0 bg-[#F4512C] transition-all duration-500 group-hover:w-full" />
 
                   {/* ICON + ARROW */}
                   <div className="flex items-center justify-between">
 
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#FFF0E9] text-[#F4512C] transition-all duration-300 group-hover:bg-[#F4512C] group-hover:text-white sm:h-12 sm:w-12">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#FFF0E9] text-[#F4512C] transition-all duration-300 group-hover:bg-[#F4512C] group-hover:text-white sm:h-10 sm:w-10">
                       <Icon
-                        size={23}
-                        strokeWidth={1.8}
+                        size={19}
+                        strokeWidth={1.9}
                         aria-hidden="true"
                       />
                     </div>
 
                     <ArrowUpRight
-                      size={19}
-                      className="text-[#C7C7C2] transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#F4512C]"
+                      size={16}
+                      className="text-[#C7C7C2] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#F4512C]"
                       aria-hidden="true"
                     />
                   </div>
 
                   {/* NUMBER */}
-                  <div className="mt-5">
-                    <p className="text-3xl font-extrabold tracking-[-0.05em] text-[#171B18] tabular-nums sm:text-4xl lg:text-[42px]">
+                  <div className="mt-3">
+                    <p className="text-[28px] font-extrabold leading-none tracking-[-0.05em] text-[#171B18] tabular-nums sm:text-[32px]">
                       <CountUp
                         value={stat.value}
                         suffix={stat.suffix}
@@ -226,11 +223,11 @@ export function AboutStats() {
                       />
                     </p>
 
-                    <h3 className="mt-2 text-xs font-extrabold text-[#303530] sm:text-sm">
+                    <h3 className="mt-1.5 text-[11px] font-extrabold text-[#303530] sm:text-xs">
                       {stat.label}
                     </h3>
 
-                    <p className="mt-1 text-[10px] leading-5 text-[#858983] sm:text-xs">
+                    <p className="mt-0.5 text-[10px] leading-4 text-[#858983] sm:text-[11px]">
                       {stat.description}
                     </p>
                   </div>

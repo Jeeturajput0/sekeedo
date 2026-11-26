@@ -86,7 +86,7 @@ export function AboutTestimonials() {
         <div className="mb-8 max-w-2xl">
           <h2
             id="testimonials-title"
-            className="section-title text-charcoal sm:text-3xl"
+            className="section-title home-heading text-charcoal sm:text-3xl"
           >
             What Our Customers Say
           </h2>

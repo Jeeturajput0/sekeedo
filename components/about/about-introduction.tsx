@@ -107,7 +107,7 @@ export function AboutIntroduction() {
               as="h2"
               text="Built for People Who Build the World"
               highlight={["Build", "the", "World"]}
-              className="max-w-[13ch] text-[clamp(2rem,3.8vw,3.2rem)] font-semibold leading-[1.06] tracking-[-0.045em] text-charcoal"
+              className="home-heading max-w-[13ch] text-[clamp(2rem,3.8vw,3.2rem)] font-semibold leading-[1.06] tracking-[-0.045em] text-charcoal"
             />
           </div>
 

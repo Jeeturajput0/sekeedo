@@ -18,7 +18,7 @@ export function   CategoryPreview() {
       <div className="container-page">
         <div className="mb-3 flex items-end justify-between gap-4">
           <div>
-            <h2 className="text-xl font-bold tracking-tight text-charcoal sm:text-2xl">Shop by <span className="text-brand">Category</span></h2>
+            <h2 className="home-heading font-bold tracking-tight text-charcoal">Shop by <span className="text-brand">Category</span></h2>
           </div>
           <Link href="/products" className="hidden items-center gap-2 text-xs font-semibold text-brand transition-colors hover:text-charcoal sm:inline-flex">View All Categories <ArrowUpRight className="h-4 w-4" /></Link>
         </div>

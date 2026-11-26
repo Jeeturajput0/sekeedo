@@ -435,6 +435,23 @@ body {
   color: #171717;
 }
 
+/* Uniform section heading size on the home page (matches the Industries heading). */
+.home-page .home-heading {
+  font-size: 1.875rem;
+}
+
+@media (min-width: 640px) {
+  .home-page .home-heading {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-page .home-heading {
+    font-size: 40px;
+  }
+}
+
 .section-lead {
   margin-top: 1.25rem;
   max-width: 42rem;

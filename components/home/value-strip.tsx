@@ -44,7 +44,7 @@ export function ValueStrip() {
             Why Choose SEKEEDO
           </span>
 
-          <h2 className="mt-1 text-2xl font-extrabold tracking-tight text-[#151515] sm:text-3xl">
+          <h2 className="home-heading mt-1 font-extrabold tracking-tight text-[#151515]">
             Built Around Your
             <span className="text-[#F4512C]"> Work Needs.</span>
           </h2>

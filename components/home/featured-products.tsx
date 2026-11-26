@@ -8,7 +8,7 @@ export function FeaturedProducts() {
     <section className="bg-white py-12 sm:py-8">
       <div className="container-page">
         <div className="mb-6 flex items-end justify-between gap-4">
-          <h2 className="text-xl font-bold tracking-tight text-charcoal sm:text-2xl">
+          <h2 className="home-heading font-bold tracking-tight text-charcoal">
             Featured <span className="text-brand">Safety Shoes</span>
           </h2>
           <Link href="/products" className="btn-link">

@@ -17,7 +17,7 @@ export function BlogPreview() {
             </span>
             <h2
               id="home-blog-title"
-              className="section-title mt-4 sm:text-3xl"
+              className="section-title home-heading mt-4"
             >
               Insights &amp; <span className="text-brand">Guides</span>
             </h2>

@@ -123,7 +123,7 @@ export function HeroSlider() {
             GET A QUOTATION
           </span>
 
-          <h2 className="text-4xl font-extrabold leading-[1.12] tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h2 className="home-heading font-extrabold leading-[1.12] tracking-tight text-white">
             Looking for Safety Footwear in{" "}
             <span className="text-[#F4512C]">Bulk?</span>
           </h2>

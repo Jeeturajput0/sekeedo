@@ -244,7 +244,7 @@ export function WhySekeedo() {
               as="h2"
               text="The Difference Behind Better Work."
               highlight={["Better Work."]}
-              className="max-w-[15ch] text-[clamp(2.1rem,4vw,3.4rem)] font-bold leading-[1.08] tracking-[-0.045em] text-charcoal"
+              className="home-heading max-w-[15ch] font-bold leading-[1.08] tracking-[-0.045em] text-charcoal"
             />
 
           </div>
