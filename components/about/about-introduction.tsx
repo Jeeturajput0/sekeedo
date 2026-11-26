@@ -38,8 +38,8 @@ export function AboutIntroduction() {
   {/* LEFT - LARGE IMAGE */}
   <div className="group relative overflow-hidden rounded-2xl bg-[#151515]">
     <Image
-      src="/images/about-craft.jpg"
-      alt="Industrial safety professional at work"
+      src="/images/hero-worker.webp"
+      alt="Worker fitting a safety shoe at an industrial site"
       fill
       sizes="(max-width: 1024px) 50vw, 30vw"
       className="object-cover object-center transition-transform duration-700 group-hover:scale-105"

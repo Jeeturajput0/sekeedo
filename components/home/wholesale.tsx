@@ -20,8 +20,8 @@ export function Wholesale() {
           <div className="relative">
             <ImageReveal className="h-[360px] w-full sm:h-[480px]">
               <Image
-                src="/images/wholesale-lockers.webp"
-                alt="Organised industrial locker room with protective footwear"
+                src="/images/ind-warehouse-aisle.webp"
+                alt="Bulk stock of industrial safety footwear stored in a warehouse"
                 fill
                 sizes="(max-width: 1024px) 100vw, 48vw"
                 className="object-cover"

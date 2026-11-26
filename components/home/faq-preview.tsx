@@ -84,7 +84,7 @@ export function FaqPreviewAccordion({ items }: FaqPreviewAccordionProps) {
               LEFT SUPPORT PANEL
           --------------------------------------- */}
           <SlideIn direction="left" className="h-full">
-            <div className="group relative h-full min-h-[380px] overflow-hidden rounded-xl bg-[#101C16] bg-[url('/images/about-team.webp')] bg-cover bg-center shadow-xl lg:min-h-[520px]">
+            <div className="group relative h-full min-h-[380px] overflow-hidden rounded-xl bg-[#101C16] bg-[url('/images/cta-workforce.webp')] bg-cover bg-center shadow-xl lg:min-h-[520px]">
               {/* Dark gradient for text legibility */}
               <div
                 className="absolute inset-0 bg-gradient-to-t from-[#101C16] via-[#101C16]/50 to-transparent"

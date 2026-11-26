@@ -20,7 +20,7 @@ export function Logo({ className, light = false, showTagline = false }: LogoProp
         alt={showTagline ? "SEKEEDO safety footwear — comfort is important, safety is paramount" : "SEKEEDO Safety Footwear"}
         width={2348}
         height={676}
-        className={cn("h-11 w-auto object-contain", light && "bg-charcoal")}
+        className={cn("h-14 w-auto object-contain", light && "bg-charcoal")}
         priority
       />
     </Link>

@@ -9,8 +9,8 @@ import { cn } from "@/lib/utils";
 
 const slides = [
   {
-    src: "/images/about-team.webp",
-    alt: "Professionals working with industrial equipment in a workshop",
+    src: "/images/cta-workforce.webp",
+    alt: "Worker wearing industrial safety boots at a worksite",
   },
   {
     src: "/images/technology-detail.jpg",
