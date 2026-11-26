@@ -5,6 +5,7 @@ import { TechnologyIndex } from "@/components/technology/technology-index";
 import { MaterialConstruction } from "@/components/technology/material-construction";
 import { SelectionGuide } from "@/components/technology/selection-guide";
 import { TechnologyCompliance } from "@/components/technology/technology-compliance";
+import { TechnologyDetails } from "@/components/technology/technology-details";
 import { CtaSection } from "@/components/ui/cta-section";
 import { createMetadata } from "@/lib/seo";
 
@@ -23,10 +24,16 @@ export default function TechnologyPage() {
       <TechnologyOverview />
       <TechnologyIndex />
       <MaterialConstruction />
+      <TechnologyDetails />
       <SelectionGuide />
       <TechnologyCompliance />
 
-   
+      {/* <CtaSection
+        title="Need help specifying the right footwear?"
+        text="Share your workplace requirements and our team will help you shortlist products, confirm the current documentation and request a quote."
+        image="/images/cta-workforce.webp"
+        imageAlt="SEKEEDO industrial safety footwear"
+      /> */}
     </>
   );
 }

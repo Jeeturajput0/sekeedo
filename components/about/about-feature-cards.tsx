@@ -27,7 +27,7 @@ const cards = [
 
 export function AboutFeatureCards() {
   return (
-    <section className="bg-white py-8 sm:py-10 lg:py-7">
+    <section className="bg-white py-8 sm:py-10 lg:py-4">
       <div className="container-page">
 
         {/* SECTION HEADING */}
@@ -38,9 +38,9 @@ export function AboutFeatureCards() {
                 SEKEEDO / What We Focus On
               </span>
 
-              <h2 className="section-heading mt-2 max-w-xl font-semibold leading-tight tracking-[-0.04em] text-charcoal">
-                Built for the demands of{" "}
-                <span className="text-brand">real work.</span>
+              <h2 className="section-heading mt-2  font-semibold leading-tight tracking-[-0.04em] text-charcoal">
+                Built for the demands of
+                <span className="text-brand">  real work.</span>
               </h2>
             </div>
 
@@ -49,11 +49,11 @@ export function AboutFeatureCards() {
         </FadeIn>
 
         {/* FEATURE CARDS */}
-        <div className="grid gap-4 md:grid-cols-2 lg:gap-5">
+        <div className="grid gap-4 rounded-2xl md:grid-cols-2 lg:gap-5">
 
           {cards.map((card, index) => (
             <FadeIn key={card.number} delay={index * 0.12}>
-              <article className="group relative h-full overflow-hidden border border-line bg-white transition-all duration-500 hover:border-brand/40 hover:shadow-xl">
+              <article className="group  rounded-2xl relative h-full overflow-hidden border border-line bg-white transition-all duration-500 hover:border-brand/40 hover:shadow-xl">
 
                 {/* IMAGE */}
                 <Link

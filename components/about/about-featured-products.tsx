@@ -15,7 +15,7 @@ function FeatureIcon({ feature }: { feature: string }) {
 
 export function AboutFeaturedProducts() {
   return (
-    <section className="bg-white py-9 lg:py-10">
+    <section className="bg-white py-9 lg:py-4">
       <div className="container-page">
         <FadeIn>
           <div className="flex flex-wrap items-end justify-between gap-4">
@@ -37,13 +37,13 @@ export function AboutFeaturedProducts() {
           </div>
         </FadeIn>
 
-        <div className="mt-6 grid grid-cols-2 gap-3.5 lg:grid-cols-4">
+        <div className="mt-6 rounded-2xl grid grid-cols-2 gap-3.5 lg:grid-cols-4">
           {featuredProducts.map((product, index) => {
             const badge = product.badge;
             const features = (product.safetyFeatures ?? []).slice(0, 2);
             return (
               <FadeIn key={product.slug} delay={index * 0.06}>
-                <article className="group h-full border border-line bg-white p-3 transition-all duration-300 hover:border-brand/40 hover:shadow-[0_14px_30px_rgba(23,23,23,0.07)]">
+                <article className="group h-full border border-line rounded-2xl bg-white p-3 transition-all duration-300 hover:border-brand/40 hover:shadow-[0_14px_30px_rgba(23,23,23,0.07)]">
                   <Link href={`/products/${product.slug}`} className="relative block aspect-[5/4] overflow-hidden bg-paper" aria-label={product.name}>
                     {product.imagePosition !== undefined ? (
                       <ShoeSprite position={product.imagePosition} className="h-full w-full p-2 transition-transform duration-500 group-hover:scale-105" />

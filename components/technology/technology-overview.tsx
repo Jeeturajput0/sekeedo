@@ -2,11 +2,7 @@
 import Image from "next/image";
 import { Info, ShieldCheck, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import {
-  FadeIn,
-  ImageReveal,
-  TextReveal,
-} from "@/components/motion/reveal";
+import { FadeIn, TextReveal } from "@/components/motion/reveal";
 
 export function TechnologyOverview() {
   return (
@@ -41,7 +37,25 @@ export function TechnologyOverview() {
               </p>
             </FadeIn>
 
-            
+            <FadeIn delay={0.18}>
+              <div className="group relative mt-6 aspect-[16/9] overflow-hidden rounded-xl border border-line bg-paper">
+                <Image
+                  src="/images/technology-detail.jpg"
+                  alt="Engineer reviewing industrial footwear testing data"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                />
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent"
+                  aria-hidden="true"
+                />
+                <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full border border-white/25 bg-black/35 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-white backdrop-blur-md">
+                  <ShieldCheck className="h-3.5 w-3.5 text-brand" aria-hidden="true" />
+                  Verified product data
+                </div>
+              </div>
+            </FadeIn>
           </div>
 
           {/* RIGHT CONTENT */}

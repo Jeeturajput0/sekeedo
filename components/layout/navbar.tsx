@@ -92,25 +92,42 @@ export function Navbar() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={reduceMotion ? undefined : { opacity: 0, y: 8 }}
                           transition={{ duration: reduceMotion ? 0 : 0.18, ease: "easeOut" }}
-                          className="absolute left-0 top-full w-[290px] border border-line bg-white p-2 shadow-[0_24px_50px_rgba(22,27,25,0.12)]"
+                          className="absolute left-1/2 top-full w-[560px] -translate-x-1/2 border border-line bg-white p-2.5 shadow-[0_24px_50px_rgba(22,27,25,0.12)]"
                         >
-                          {item.children.map((child) => (
-                            <Link
-                              key={child.label}
-                              href={child.href}
-                              onClick={() => setOpenDropdown(null)}
-                              className="group block px-3 py-2.5 transition-colors hover:bg-offwhite"
-                            >
-                              <span className="block text-[13px] font-semibold text-charcoal group-hover:text-brand">
-                                {child.label}
-                              </span>
-                              {child.description ? (
-                                <span className="mt-0.5 block text-[11px] text-muted">
-                                  {child.description}
-                                </span>
-                              ) : null}
-                            </Link>
-                          ))}
+                          <div className="grid grid-cols-2 gap-2">
+                            {item.children.map((child) => {
+                              const Icon = child.icon;
+
+                              return (
+                                <Link
+                                  key={child.label}
+                                  href={child.href}
+                                  onClick={() => setOpenDropdown(null)}
+                                  className="group block rounded-lg border border-line bg-white p-3 transition-all duration-200 hover:border-brand/40 hover:bg-[#FFF8F5]"
+                                >
+                                  <span className="flex items-center gap-2.5">
+                                    {Icon ? (
+                                      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-[#EAF2FF] text-[#3B82F6]">
+                                        <Icon
+                                          size={15}
+                                          strokeWidth={1.8}
+                                          aria-hidden="true"
+                                        />
+                                      </span>
+                                    ) : null}
+                                    <span className="text-[12px] font-bold leading-tight text-charcoal group-hover:text-brand">
+                                      {child.label}
+                                    </span>
+                                  </span>
+                                  {child.description ? (
+                                    <span className="mt-2 block text-[10.5px] leading-[1.5] text-muted">
+                                      {child.description}
+                                    </span>
+                                  ) : null}
+                                </Link>
+                              );
+                            })}
+                          </div>
                         </motion.div>
                       ) : null}
                     </AnimatePresence>

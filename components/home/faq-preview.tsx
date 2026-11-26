@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
@@ -19,7 +18,6 @@ import {
 
 import {
   FadeIn,
-  ImageReveal,
   SlideIn,
   Stagger,
   TextReveal,
@@ -86,17 +84,7 @@ export function FaqPreviewAccordion({ items }: FaqPreviewAccordionProps) {
               LEFT SUPPORT PANEL
           --------------------------------------- */}
           <SlideIn direction="left" className="h-full">
-            <div className="group relative h-full min-h-[380px] overflow-hidden rounded-xl bg-[#101C16] shadow-xl lg:min-h-[520px]">
-              <ImageReveal className="absolute inset-0">
-                <Image
-                  src="/images/hero-worker.webp"
-                  alt="SEKEEDO industrial safety footwear at work"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 42vw"
-                  className="object-cover object-center transition-transform duration-1000 group-hover:scale-105"
-                />
-              </ImageReveal>
-
+            <div className="group relative h-full min-h-[380px] overflow-hidden rounded-xl bg-[#101C16] bg-[url('/images/about-team.webp')] bg-cover bg-center shadow-xl lg:min-h-[520px]">
               {/* Dark gradient for text legibility */}
               <div
                 className="absolute inset-0 bg-gradient-to-t from-[#101C16] via-[#101C16]/50 to-transparent"

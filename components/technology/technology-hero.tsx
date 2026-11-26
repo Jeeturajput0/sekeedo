@@ -30,6 +30,19 @@ export function TechnologyHero() {
               selection.
             </p>
           </FadeIn>
+
+          <FadeIn delay={0.2}>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href="/products" className="btn-primary">
+                Explore Products
+                <ChevronRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+              <Link href="#technology-index" className="btn-outline">
+                Browse Technologies
+                <ChevronRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+          </FadeIn>
         </div>
 
         <div className="relative">

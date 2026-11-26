@@ -4,10 +4,25 @@
  * verified company information before publishing.
  */
 
+import type { LucideIcon } from "lucide-react";
+import {
+  Construction,
+  Factory,
+  Fuel,
+  Grid2X2,
+  Pickaxe,
+  Warehouse,
+} from "lucide-react";
+
 export type NavItem = {
   label: string;
   href: string;
-  children?: { label: string; href: string; description?: string }[];
+  children?: {
+    label: string;
+    href: string;
+    description?: string;
+    icon?: LucideIcon;
+  }[];
 };
 
 export const navItems: NavItem[] = [
@@ -23,11 +38,42 @@ export const navItems: NavItem[] = [
     label: "Industries We Serve",
     href: "/industries",
     children: [
-      { label: "All industries", href: "/industries", description: "Explore every sector" },
-      { label: "Construction & Infrastructure", href: "/industries/construction-infrastructure" },
-      { label: "Manufacturing & Factories", href: "/industries/manufacturing" },
-      { label: "Logistics & Warehousing", href: "/industries/logistics-warehousing" },
-      { label: "Oil & Gas", href: "/industries/oil-gas" },
+      {
+        label: "All industries",
+        href: "/industries",
+        description: "Explore every sector we serve.",
+        icon: Grid2X2,
+      },
+      {
+        label: "Construction & Infrastructure",
+        href: "/industries/construction-infrastructure",
+        description: "Sites, projects and infrastructure crews.",
+        icon: Construction,
+      },
+      {
+        label: "Manufacturing & Factories",
+        href: "/industries/manufacturing",
+        description: "Production floors and plant teams.",
+        icon: Factory,
+      },
+      {
+        label: "Logistics & Warehousing",
+        href: "/industries/logistics-warehousing",
+        description: "Warehouses, fleets and distribution.",
+        icon: Warehouse,
+      },
+      {
+        label: "Oil & Gas",
+        href: "/industries/oil-gas",
+        description: "Refineries, rigs and energy operations.",
+        icon: Fuel,
+      },
+      {
+        label: "Mining & Heavy Industries",
+        href: "/industries/mining-quarrying",
+        description: "Mining sites and heavy-duty work.",
+        icon: Pickaxe,
+      },
     ],
   },
   { label: "FAQ", href: "/faq" },

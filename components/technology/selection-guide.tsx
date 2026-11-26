@@ -1,4 +1,4 @@
-import { ArrowRight, BadgeCheck, ClipboardList, FileCheck2, Sparkles } from "lucide-react";
+import { BadgeCheck, ClipboardList, FileCheck2, Sparkles } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Stagger } from "@/components/motion/reveal";
 

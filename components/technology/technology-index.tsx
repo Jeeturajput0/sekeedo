@@ -33,7 +33,7 @@ const iconMap: Record<TechnologyIcon, typeof Shield> = {
 
 export function TechnologyIndex() {
   return (
-    <section className="bg-paper py-14 lg:py-18">
+    <section id="technology-index" className="scroll-mt-24 bg-paper py-14 lg:py-18">
       <div className="container-page">
         <SectionHeading
           eyebrow="Technology Index"

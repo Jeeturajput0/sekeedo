@@ -12,6 +12,7 @@ import {
   TextReveal,
   Stagger,
 } from "@/components/motion/reveal";
+
 import { TiltCard } from "@/components/animation/tilt-card";
 
 const features = [
@@ -43,32 +44,39 @@ const features = [
 
 export function WhyChooseSekeedo() {
   return (
-    <section className="overflow-hidden bg-white py-9 sm:py-10 lg:py-11">
+    <section className="relative isolate overflow-hidden bg-[#FAFAF9] py-14 sm:py-16 lg:py-5">
+
+      {/* SUBTLE BACKGROUND DECORATION */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-32 -top-32 -z-10 h-80 w-80 rounded-full bg-[#F4512C]/[0.045] blur-3xl"
+      />
+
       <div className="container-page">
 
-        {/* HEADER */}
-        <div className="grid gap-3 lg:grid-cols-[1fr_0.7fr] lg:items-end">
+        {/* SECTION HEADER */}
+        <div className="grid gap-5 lg:grid-cols-[1fr_0.75fr] lg:items-end">
 
           <div>
             <FadeIn>
-              <span className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand">
-                <span className="h-[2px] w-7 bg-brand" />
+              <span className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#F4512C]">
+                <span className="h-[2px] w-8 rounded-full bg-[#F4512C]" />
                 Why Choose SEKEEDO
               </span>
             </FadeIn>
 
-            <div className="mt-3">
+            <div className="mt-2">
               <TextReveal
                 as="h2"
                 text="The Right Safety Footwear for Your Workplace"
                 highlight={["Your", "Workplace"]}
-                className="section-heading max-w-[16ch] font-semibold leading-[1.05] tracking-[-0.05em] text-charcoal"
+                className="max-w-[17ch] text-[clamp(2rem,3.8vw,3.3rem)] font-bold leading-[1.08] tracking-[-0.045em] text-[#171717]"
               />
             </div>
           </div>
 
           <FadeIn delay={0.12}>
-            <p className="max-w-md text-sm leading-7 text-muted lg:ml-auto lg:pb-1">
+            <p className="max-w-md text-sm leading-7 text-[#686D68] lg:ml-auto lg:pb-1 lg:text-base">
               Designed around the practical needs of modern industries,
               with a focus on workplace protection, everyday comfort
               and dependable business support.
@@ -77,51 +85,89 @@ export function WhyChooseSekeedo() {
 
         </div>
 
-        {/* COMPACT FEATURE CARDS */}
-        <Stagger className="mt-6 grid gap-2.5 sm:grid-cols-2 lg:gap-3">
+        {/* FEATURE CARDS */}
+        <Stagger className="mt-9 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4 lg:gap-5">
 
           {features.map((feature) => {
             const Icon = feature.icon;
 
             return (
-              <TiltCard key={feature.number} className="h-full">
-              <article
-                data-stagger
-                className="group relative flex h-full gap-3.5 overflow-hidden border border-line bg-white p-3.5 transition-all duration-300 hover:border-brand/40 hover:shadow-[0_8px_28px_rgba(0,0,0,0.06)] sm:p-4"
+              <TiltCard
+                key={feature.number}
+                className="h-full"
               >
+                <article
+                  data-stagger
+                  className="
+                    group relative flex h-full min-h-[245px]
+                    flex-col overflow-hidden rounded-2xl
+                    border border-[#EAE7E3] bg-white
+                    p-2 shadow-[0_5px_22px_rgba(0,0,0,0.035)]
+                    transition-all duration-500
+                    hover:-translate-y-1
+                    hover:border-[#F4512C]/45
+                    hover:shadow-[0_18px_40px_rgba(244,81,44,0.09)]
+                    sm:p-6
+                  "
+                >
 
-                {/* ICON */}
-                <div className="grid h-10 w-10 shrink-0 place-items-center border border-brand/20 bg-brand/[0.05] text-brand transition-all duration-300 group-hover:bg-brand group-hover:text-white">
-                  <Icon
-                    className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
-                    strokeWidth={1.7}
-                    aria-hidden="true"
-                  />
-                </div>
+                  {/* TOP ACCENT */}
+                  <span className="absolute left-0 top-0 h-[3px] w-0 rounded-r-full bg-[#F4512C] transition-all duration-500 group-hover:w-full" />
 
-                {/* CONTENT */}
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center justify-between gap-3">
-                    <h3 className="text-[15px] font-semibold tracking-[-0.02em] text-charcoal transition-colors duration-300 group-hover:text-brand">
+                  {/* CARD TOP */}
+                  <div className="flex items-center justify-between">
+
+                    <div className="
+                      grid h-14 w-14 place-items-center
+                      rounded-2xl border border-[#F4512C]/15
+                      bg-[#FFF0E9] text-[#F4512C]
+                      transition-all duration-500
+                      group-hover:scale-105
+                      group-hover:border-[#F4512C]
+                      group-hover:bg-[#F4512C]
+                      group-hover:text-white
+                    ">
+                      <Icon
+                        className="h-6 w-6 transition-transform duration-500 group-hover:scale-110"
+                        strokeWidth={1.7}
+                        aria-hidden="true"
+                      />
+                    </div>
+
+                    <span className="text-sm font-bold tracking-[0.12em] text-[#C8C8C3] transition-colors duration-300 group-hover:text-[#F4512C]">
+                      {feature.number}
+                    </span>
+
+                  </div>
+
+                  {/* CARD CONTENT */}
+                  <div className="mt-2 flex-1">
+
+                    <h3 className="text-lg font-bold leading-snug tracking-tight text-[#202420] transition-colors duration-300 group-hover:text-[#F4512C]">
                       {feature.title}
                     </h3>
 
-                    <span className="shrink-0 text-[10px] font-semibold tracking-widest text-muted/60">
-                      {feature.number}
-                    </span>
+                    <p className="mt-2 text-sm leading-5 text-[#777D77]">
+                      {feature.text}
+                    </p>
+
                   </div>
 
-                  <p className="mt-1 max-w-md text-xs leading-6 text-muted sm:text-[13px]">
-                    {feature.text}
-                  </p>
-                </div>
+                  {/* BOTTOM ARROW */}
+                  <div className="mt-3 flex items-center justify-between border-t border-[#EEEEEA] pt-4">
 
-                {/* HOVER ACCENT */}
-                <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-brand transition-all duration-500 group-hover:w-full" />
+                    <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#A0A09A] transition-colors duration-300 group-hover:text-[#F4512C]">
+                      SEKEEDO
+                    </span>
 
-                <ArrowUpRight className="absolute bottom-3 right-3 h-3.5 w-3.5 text-brand opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
+                    <ArrowUpRight
+                      className="h-5 w-5 text-[#B8B8B2] transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#F4512C]"
+                      aria-hidden="true"
+                    />
 
-              </article>
+                  </div>
+
+                </article>
               </TiltCard>
             );
           })}

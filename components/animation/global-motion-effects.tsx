@@ -9,12 +9,32 @@ export function GlobalMotionEffects() {
   const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Page change ya refresh par hamesha top se start karein.
+    // Page change par hamesha top se start karein.
+    // Hash wale links (#section) apne target par le jate hain, top par nahi.
     const root = document.documentElement;
-    const previousBehavior = root.style.scrollBehavior;
-    root.style.scrollBehavior = "auto";
-    window.scrollTo(0, 0);
-    root.style.scrollBehavior = previousBehavior;
+    const hash = window.location.hash;
+
+    const jump = () => {
+      const previousBehavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+
+      if (hash) {
+        const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+        if (target) {
+          target.scrollIntoView({ block: "start" });
+        } else {
+          window.scrollTo(0, 0);
+        }
+      } else {
+        window.scrollTo(0, 0);
+      }
+
+      root.style.scrollBehavior = previousBehavior;
+    };
+
+    jump();
+    // Streamed content ke baad position dobara set karein.
+    const frame = requestAnimationFrame(jump);
 
     const { ScrollTrigger } = getGsap();
     let firstFrame = 0;
@@ -23,6 +43,7 @@ export function GlobalMotionEffects() {
       secondFrame = requestAnimationFrame(() => ScrollTrigger.refresh());
     });
     return () => {
+      cancelAnimationFrame(frame);
       cancelAnimationFrame(firstFrame);
       cancelAnimationFrame(secondFrame);
     };
